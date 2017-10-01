@@ -574,25 +574,43 @@
 </ul>
 <h2 id="发布新文章"><a href="#发布新文章" class="headerlink" title="发布新文章"></a>发布新文章</h2><ul>
 <li><p>创建文件</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new &quot;fileName&quot;// 比如：hexo new helloHexo</div></pre></td></tr></table></figure>
+<p>$ hexo new “fileName”// 比如：hexo new helloHexo</p>
 </li>
 <li><p>编辑</p>
 <p>  打开上一步生成的文件”helloHexo.md”文件（路径：./source/_posts/helloHexo.md)并编辑。</p>
 </li>
 <li><p>本地运行</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">	$ hexo server  //本地就可以及时访问</div><div class="line">	```	</div><div class="line">	</div><div class="line">- 推到远程GitHub仓库</div></pre></td></tr></table></figure>
-<p>  $ hexo generate  //类似编译过程</p>
-<p>  $ hexo deploy //ok，发布完成，可以通过yourname.github.io访问了。</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">	</div><div class="line">- 错误解决：error deployer not found:git</div></pre></td></tr></table></figure>
-<p>  //执行以下命令<br>  sudo npm install hexo-deployer-git –save    </p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 如果修改后运行，本地访问生效了，但github.io访问还是未改变？</div></pre></td></tr></table></figure>
-<p>  //执行clean命令先<br>  $ hexo clean<br>  ```</p>
-<h2 id="后续优化"><a href="#后续优化" class="headerlink" title="后续优化"></a>后续优化</h2></li>
-<li>主题<ul>
-<li><a href="https://hexo.io/themes/" target="_blank" rel="external">hexo官网提供了很多theme</a></li>
-<li><a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="external">我使用的是NexT</a></li>
-</ul>
+<p>$ hexo server  //本地就可以及时访问</p>
 </li>
+</ul>
+<ul>
+<li><p>推到远程GitHub仓库    </p>
+<p>$ hexo generate  //类似编译过程</p>
+<p>$ hexo deploy //ok，发布完成，可以通过yourname.github.io访问了。</p>
+</li>
+</ul>
+<ul>
+<li><p>错误解决：error deployer not found:git </p>
+<p>//执行以下命令</p>
+<p>sudo npm install hexo-deployer-git –save    </p>
+</li>
+<li><p>如果修改后运行，本地访问生效了，但github.io访问还是未改变？</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//执行clean命令先</div><div class="line">$ hexo clean</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h2><ul>
+<li><a href="https://hexo.io/themes/" target="_blank" rel="external">hexo官网提供了很多theme</a></li>
+<li><a href="http://theme-next.iissnan.com/" target="_blank" rel="external">我使用的是NexT</a></li>
+</ul>
+<h3 id="NexT-相关配置"><a href="#NexT-相关配置" class="headerlink" title="NexT 相关配置"></a>NexT 相关配置</h3><ul>
+<li>基础配置-<a href="http://theme-next.iissnan.com/" target="_blank" rel="external">参考官网</a></li>
+<li><a href="https://notes.wanghao.work/2015-10-21-%E4%B8%BANexT%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E9%87%8F%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD.html#%E9%85%8D%E7%BD%AELeanCloud" target="_blank" rel="external">添加文字阅读量统计</a></li>
+<li><a href="http://www.zhaiqianfeng.com/2017/03/changyan-for-hexo-next-theme.html#SOHUCS" target="_blank" rel="external">增加畅言评论的支持</a> ，由于畅言需要域名备案，暂且没加评论功能。</li>
+<li><p>背景动效<br>修改themes/next/_config.yml 主题配置文件，将想要的效果置为true。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">// Canvas-nest  这个使用的多，比较适合主题：Muse、Mist</div><div class="line">canvas_nest: true</div><div class="line"></div><div class="line">// three_waves</div><div class="line">three_waves: false</div><div class="line"></div><div class="line">// canvas_lines</div><div class="line">canvas_lines: false</div><div class="line"></div><div class="line">// canvas_sphere</div><div class="line">canvas_sphere: false</div><div class="line"></div><div class="line">// Only fit scheme Pisces Canvas-ribbon</div><div class="line">canvas_ribbon: false</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="后续优化"><a href="#后续优化" class="headerlink" title="后续优化"></a>后续优化</h2><ul>
 <li>统计</li>
 <li>域名绑定</li>
 </ul>
@@ -803,6 +821,8 @@
   
 
 
+  
+
 
 
 
@@ -830,6 +850,9 @@
 
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
   
@@ -1017,6 +1040,7 @@
   
 
   
+
 
 </body>
 </html>
