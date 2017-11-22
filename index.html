@@ -355,124 +355,14 @@
 
       
         
-          
-            <p>大图浏览可以说是所有App必备功能，可见其重要性，所以有必要将其独立，便于维护和复用。本文代码基于<a href="https://github.com/davemorrissey/subsampling-scale-image-view">SubsamplingScaleImageView</a>开源库实现。</p>
-<h3 id="浏览效果"><a href="#浏览效果" class="headerlink" title="浏览效果"></a>浏览效果</h3><p><img src="https://github.com/yangjiantao/AndroidUiKit/blob/master/art/photoviewer/photoview001.gif" width="216/">  <img src="https://raw.githubusercontent.com/yangjiantao/AndroidUiKit/master/art/photoviewer/photoview002.gif" width="216/"> </p>
-<h3 id="功能实现"><a href="#功能实现" class="headerlink" title="功能实现"></a>功能实现</h3><ul>
-<li><p>超大图浏览</p>
-<p>SubsamplingScaleImageView基于BitmapRegionDecoder实现，避免OOM情况下，轻松浏览超大图，支持各种手势操作。感兴趣的请查阅其源码。</p>
-</li>
-<li><p>图片拖拽退出</p>
-<ul>
-<li><p>浏览Activity背景透明</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//manifest 设置Activity theme属性</div><div class="line">android:theme=&quot;@style/photoviewer_theme&quot;</div><div class="line"></div><div class="line">//对应style定义</div><div class="line">&lt;style name=&quot;photoviewer_theme&quot; parent=&quot;Theme.AppCompat.NoActionBar&quot;&gt;</div><div class="line">     	&lt;item name=&quot;android:windowBackground&quot;&gt;@android:color/transparent&lt;/item&gt;</div><div class="line">     	&lt;item name=&quot;android:windowIsTranslucent&quot;&gt;true&lt;/item&gt;</div><div class="line">  &lt;/style&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>沉浸式效果</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">  private void hideSystemUI() &#123;</div><div class="line">       if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.KITKAT) &#123;</div><div class="line">           View decorView = getWindow().getDecorView();</div><div class="line">           decorView.setSystemUiVisibility(</div><div class="line">                   View.SYSTEM_UI_FLAG_LAYOUT_STABLE</div><div class="line">                           | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION</div><div class="line">                           | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN</div><div class="line">                           | View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar</div><div class="line">                           | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);</div><div class="line">       &#125; else &#123;</div><div class="line">           WindowManager.LayoutParams attrs = getWindow().getAttributes();</div><div class="line">           attrs.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;</div><div class="line">           getWindow().setAttributes(attrs);</div><div class="line">           getWindow().addFlags(</div><div class="line">                   WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);</div><div class="line">       &#125;</div><div class="line">       //change navigationbar bg color</div><div class="line">       if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP) &#123;</div><div class="line">           getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);</div><div class="line">           getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);</div><div class="line">           getWindow().setNavigationBarColor(Color.TRANSPARENT);</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line">  ```   </div><div class="line">- 自定义DragPhotoView拦截touch事件</div></pre></td></tr></table></figure>
-<p>  setOnTouchListener(new View.OnTouchListener() {</p>
-<pre><code>@Override
-public boolean onTouch(View v, MotionEvent event) {
-    //如果正在动画，拦截不处理。
-    if (isAnimating()) {
-        return true;
-    }
-    //判断图片是否为初始状态（第一次进入后显示的大小）
-    if (isReady() &amp;&amp; (firstDisplayScale == getScale())) {
-        final int action = event.getAction();
-        switch (action &amp; MotionEvent.ACTION_MASK) {
-            case MotionEvent.ACTION_DOWN:
-                if (DEBUG) {
-                    Log.d(TAG, &quot;action_down  = &quot; + firstDisplayScale + &quot;, getScale = &quot; + getScale() + &quot; isFirstEnterState = &quot; + (firstDisplayScale == getScale()));
-                }
-                downX = event.getX();
-                downY = event.getY();
-                canDrag = true;
-                break;
-
-            case MotionEvent.ACTION_MOVE:
-
-                if (canDrag) {
-
-                    final float dy = Math.abs(downY - event.getY());
-                    if (firstDisplayScale == getScale() &amp;&amp; dy &gt; touchSlop) {
-                        isDragging = true;
-                        translateX = event.getX() - downX;
-                        translateY = event.getY() - downY;
-
-                        float percent = dy / maxTranslateY;
-                        if (percent &gt; 1.0f) {
-                            percent = 1.0f;
-                        }
-                        bgAlpha = (int) (255 * (1 - percent));
-                        bgAlpha = bgAlpha &lt; minBgAlpha ? minBgAlpha : bgAlpha;
-                        //尽量将图片缩放比例设置小点
-                        final float p = dy / getHeight();
-                        bitmapScale = (1 - p);
-                        bitmapScale = bitmapScale &lt; minBitmapScale ? minBitmapScale : bitmapScale;
-                        if(DEBUG) {
-                            Log.d(TAG, &quot;action_move translateX = &quot; + translateX + &quot;; translateY = &quot; + translateY + &quot;; pointerCount = &quot; + event.getPointerCount());
-                        }
-                        invalidate();
-                    }
-                }
-                break;
-
-            case MotionEvent.ACTION_CANCEL:
-            case MotionEvent.ACTION_UP:
-                if(DEBUG) {
-                    Log.d(TAG, &quot;action = &quot; + action + &quot;; pointerCount = &quot; + event.getPointerCount());
-                }
-                if (isDragging) {
-                    //最后一个手指离开屏幕时,检查y轴方向拖拽距离是否超过阀值，若超过则回调dismiss接口
-                    if (Math.abs(translateY) &gt;= maxTranslateY &amp;&amp; dismissListener != null) {
-                        dismissListener.onDismiss();
-                    }else{
-                        //若为超过阀值，则指定动画回到初始位置。
-                        restoreFirstEnterState();
-                    }
-                    isDragging = false;
-                }
-                break;
-            case MotionEvent.ACTION_POINTER_UP:
-            case MotionEvent.ACTION_POINTER_DOWN:
-                if(DEBUG){
-                    Log.d(TAG, &quot;action pointer down or up= &quot; + action + &quot;; pointerCount = &quot; + event.getPointerCount());
-                }
-                //防止拖拽过程中多点触摸导致事件错乱。
-                canDrag = isDragging;
-                break;
-
-            default:
-
-                break;
-        }
-    }
-    return isDragging;
-}
-</code></pre><p>  });</p>
-<p>  @Override<br>protected void onDraw(Canvas canvas) {</p>
-<pre><code>//肯定touch move事件，不断更新以下几个变量的值来达到动画效果。
-createPaint();
-bgPaint.setAlpha(bgAlpha);
-canvas.drawRect(0, 0, getWidth(), getHeight(), bgPaint);
-canvas.translate(translateX, translateY);
-canvas.scale(bitmapScale, bitmapScale, getWidth() / 2, getHeight() / 2);
-super.onDraw(canvas);
-</code></pre><p>}<br> ```</p>
-</li>
-<li><p>点击位置（进入和退出动画）</p>
-<p>// TODO 非刚需，暂未实现。</p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="源码地址"><a href="#源码地址" class="headerlink" title="源码地址"></a>源码地址</h3><p>以上提及代码均在<a href="https://github.com/yangjiantao/AndroidUiKit"><strong>AndroidUiKit项目</strong></a>（安卓常用UI组件库。 总结、沉淀、封装优化；为避免重复造轮子，此项目会收集优秀的三方库，或直接引用，或修改源码；目标很明确：快速集成开发，提高效率。）      </p>
-<h3 id="App图片处理库推荐"><a href="#App图片处理库推荐" class="headerlink" title="App图片处理库推荐"></a>App图片处理库推荐</h3><ul>
-<li>图片加载神器<a href="https://github.com/bumptech/glide">Glide</a></li>
-<li>Multi-media selector(本地图片视频选择器) AndroidUiKit项目中有推荐。</li>
-</ul>
-
-          
+          <p>大图浏览可以说是所有App必备功能，可见其重要性，所以有必要将其独立，便于维护和复用。本文代码基于<a href="https://github.com/davemorrissey/subsampling-scale-image-view">SubsamplingScaleImageView</a>开源库实现，增加单手拖拽返回，透明度变化等效果。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/20/安卓图片浏览(借鉴微信、Twitter，支持超大图，附源码)/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
