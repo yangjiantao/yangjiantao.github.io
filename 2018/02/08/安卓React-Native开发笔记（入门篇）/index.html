@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="react-native,Android," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="开发资料 官方文档 中文文档  使用工具 Visual Studio  // 开发react Android Studio // 安卓开发神器 Git nodejs Flow  // 静态的JS类型检查工具">
+<meta name="keywords" content="react-native,Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安卓React-Native开发笔记（入门篇）">
+<meta property="og:url" content="https://github.com/yangjiantao/2018/02/08/安卓React-Native开发笔记（入门篇）/index.html">
+<meta property="og:site_name" content="Jiantao">
+<meta property="og:description" content="开发资料 官方文档 中文文档  使用工具 Visual Studio  // 开发react Android Studio // 安卓开发神器 Git nodejs Flow  // 静态的JS类型检查工具">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-08T15:58:35.480Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="安卓React-Native开发笔记（入门篇）">
+<meta name="twitter:description" content="开发资料 官方文档 中文文档  使用工具 Visual Studio  // 开发react Android Studio // 安卓开发神器 Git nodejs Flow  // 静态的JS类型检查工具">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://github.com/yangjiantao/2018/02/08/安卓React-Native开发笔记（入门篇）/"/>
+
+
+
+
+
+  <title>安卓React-Native开发笔记（入门篇） | Jiantao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?5946086a98998af8f48b6192f72cca2c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jiantao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">android developer</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/yangjiantao/2018/02/08/安卓React-Native开发笔记（入门篇）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiantao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar_x225.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jiantao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">安卓React-Native开发笔记（入门篇）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-08T23:41:45+08:00">
+                2018-02-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/02/08/安卓React-Native开发笔记（入门篇）/" class="leancloud_visitors" data-flag-title="安卓React-Native开发笔记（入门篇）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="开发资料"><a href="#开发资料" class="headerlink" title="开发资料"></a>开发资料</h2><ul>
+<li><a href="https://facebook.github.io/react-native/" target="_blank" rel="external">官方文档</a></li>
+<li><a href="https://reactnative.cn/" target="_blank" rel="external">中文文档</a></li>
+</ul>
+<h2 id="使用工具"><a href="#使用工具" class="headerlink" title="使用工具"></a>使用工具</h2><ul>
+<li><strong>Visual Studio</strong>  // 开发react</li>
+<li><strong>Android Studio</strong> // 安卓开发神器</li>
+<li><strong>Git</strong></li>
+<li><strong>nodejs</strong></li>
+<li><strong>Flow</strong>  // 静态的JS类型检查工具</li>
+</ul>
+<a id="more"></a>
+<h2 id="和原生交互"><a href="#和原生交互" class="headerlink" title="和原生交互"></a>和原生交互</h2><p><strong>应用场景多，主要是js扩展功能调用Native实现。</strong><br>官方文档有介绍，主要注意下@ReactMethod 参数类型与js映射关系。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Boolean -&gt; Bool</div><div class="line">Integer -&gt; Number</div><div class="line">Double -&gt; Number</div><div class="line">Float -&gt; Number</div><div class="line">String -&gt; String</div><div class="line">Callback -&gt; function</div><div class="line">ReadableMap -&gt; Object</div><div class="line">ReadableArray -&gt; Array</div></pre></td></tr></table></figure>
+<p>WriteableMap和Java中map使用基本一样。</p>
+<h3 id="native-通知js"><a href="#native-通知js" class="headerlink" title="native 通知js"></a>native 通知js</h3><ul>
+<li><p><strong>应用场景</strong>：网络状态改变、用户登录状态、新消息（push）等等Native实现的功能，收到对应数据后需通知js。</p>
+</li>
+<li><p>Android 端伪代码</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">private void sendEvent(ReactContext reactContext,</div><div class="line">                       String eventName,</div><div class="line">                       @Nullable WritableMap params) &#123;</div><div class="line">  reactContext</div><div class="line">      .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)</div><div class="line">      .emit(eventName, params);</div><div class="line">&#125;</div><div class="line">...</div><div class="line">WritableMap params = Arguments.createMap();</div><div class="line">...</div><div class="line">sendEvent(reactContext, &quot;keyboardWillShow&quot;, params);</div></pre></td></tr></table></figure>
+<ul>
+<li>js端 伪代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">import &#123; DeviceEventEmitter &#125; from &apos;react-native&apos;;</div><div class="line">...</div><div class="line">  </div><div class="line">// 兼容 ios用法 start</div><div class="line">import &#123; NativeModules, NativeEventEmitter &#125; from &apos;react-native&apos;;</div><div class="line"></div><div class="line">const MedEventEmitter = new NativeEventEmitter(NativeModules.MLRCTEventEmitter);</div><div class="line">// 兼容 ios用法 end</div><div class="line"></div><div class="line">var ScrollResponderMixin = &#123;</div><div class="line">  mixins: [Subscribable.Mixin],</div><div class="line"></div><div class="line"></div><div class="line">  componentWillMount: function() &#123;</div><div class="line">    ...</div><div class="line">    this.addListenerOn(DeviceEventEmitter,</div><div class="line">                       &apos;keyboardWillShow&apos;,</div><div class="line">                       this.scrollResponderKeyboardWillShow);</div><div class="line">    ...</div><div class="line">  &#125;,</div><div class="line">  scrollResponderKeyboardWillShow:function(e: Event) &#123;</div><div class="line">    this.keyboardWillOpenTo = e;</div><div class="line">    this.props.onKeyboardWillShow &amp;&amp; this.props.onKeyboardWillShow(e);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://facebook.github.io/react-native/docs/native-modules-android.html" target="_blank" rel="external">参考官方文档</a></li>
+</ul>
+<h2 id="app进入RN界面分发"><a href="#app进入RN界面分发" class="headerlink" title="app进入RN界面分发"></a>app进入RN界面分发</h2><ul>
+<li>应用场景：如果是App部分功能使用了rn，不同模块进入的页面就会不一样。<strong>（纯rn项目，不用考虑这个。）</strong></li>
+<li>js端使用 NavigationNavigator 等’react-navigation’模块实现。</li>
+<li>native 通过bundle传入数据，区分moduleName和routerName，供react解析。</li>
+</ul>
+<h2 id="控制台常用命令"><a href="#控制台常用命令" class="headerlink" title="控制台常用命令"></a>控制台常用命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ npm start //开启本地服务</div><div class="line">$ npm install //安装组件</div><div class="line">$ react-native log-ios</div><div class="line">$ react-native log-android</div></pre></td></tr></table></figure>
+<h2 id="生成jsbundle文件"><a href="#生成jsbundle文件" class="headerlink" title="生成jsbundle文件"></a>生成jsbundle文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">React-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res</div></pre></td></tr></table></figure>
+<h2 id="配置打包脚本"><a href="#配置打包脚本" class="headerlink" title="配置打包脚本"></a>配置打包脚本</h2><p><strong>一行命令生成bundle并完成打包。</strong></p>
+<h3 id="Makefile脚本实现"><a href="#Makefile脚本实现" class="headerlink" title="Makefile脚本实现"></a>Makefile脚本实现</h3> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">out := ios/JSBoudle/* android/app/src/main/assets/index.android.bundl*</div><div class="line">version := 1.0.0</div><div class="line">appName := xxx</div><div class="line"></div><div class="line">.PHONY : all ios android</div><div class="line">all: ios android</div><div class="line"></div><div class="line">ios:</div><div class="line">	react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ./ios/JSBoudle/main.jsbundle --assets-dest ./ios/JSBoudle</div><div class="line"></div><div class="line">droidBundle:</div><div class="line">	react-native bundle --entry-file index.js --platform android --dev false --bundle-output ./android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res</div><div class="line"></div><div class="line">droidRelease:</div><div class="line">	cd android &amp;&amp; ./gradlew clean assembleReleaseChannels -PchannelList=medlinker</div><div class="line"></div><div class="line">iosRelease:	ios	push</div><div class="line"></div><div class="line">android: 	droidBundle droidRelease</div><div class="line"></div><div class="line">clean:</div><div class="line">	rm -rf $(out)</div></pre></td></tr></table></figure>
+<p> Mac终端直接执行：<strong>make android</strong> 就ok。</p>
+<h3 id="Python脚本（主要为兼容windows）"><a href="#Python脚本（主要为兼容windows）" class="headerlink" title="Python脚本（主要为兼容windows）"></a>Python脚本（主要为兼容windows）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">import os</div><div class="line">import sys</div><div class="line">import platform</div><div class="line"></div><div class="line"># 先拉取两个项目代码</div><div class="line">print(&apos;update git repo start&apos;)</div><div class="line">os.system(&apos;git pull&apos;)</div><div class="line">os.system(&apos;cd android &amp;&amp; git pull&apos;)</div><div class="line">print(&apos;update git repo end&apos;)</div><div class="line"></div><div class="line">print(&apos;gradle release apk file all channels ? &apos;, &apos;all&apos; in sys.argv)</div><div class="line"></div><div class="line"># 区分平台执行打包任务</div><div class="line">sysstr = platform.system()</div><div class="line">cmdPrefix = &apos;./gradlew&apos;</div><div class="line">if(sysstr ==&quot;Windows&quot;):</div><div class="line">     print (&quot;Call Windows tasks&quot;)</div><div class="line">     cmdPrefix = &apos;gradlew&apos;</div><div class="line">elif(sysstr == &quot;Linux&quot;):</div><div class="line">     print (&quot;Call Linux tasks&quot;)</div><div class="line">else:</div><div class="line">     print (&quot;Other System tasks&quot;)</div><div class="line"></div><div class="line">if &apos;all&apos; in sys.argv:</div><div class="line">     os.system(&apos;cd android &amp;&amp; %s clean assembleReleaseChannels&apos; %(cmdPrefix))</div><div class="line">else:</div><div class="line">    os.system(&apos;cd android &amp;&amp; %s clean assembleReleaseChannels -PchannelList=medlinker&apos; %(cmdPrefix))</div></pre></td></tr></table></figure>
+<p> 看到了吧，Python更加灵活，打包前先同步远程仓库代码，再分平台打包。（这是由于对Makefile不熟悉，才这样搞的，囧~）</p>
+<h2 id="自定义react-UI组件"><a href="#自定义react-UI组件" class="headerlink" title="自定义react UI组件"></a>自定义react UI组件</h2><ul>
+<li>使用场景：炫酷的自定义view、动效、触摸滑动事件等高级UI，需要Native来实现，然后封装给js使用。</li>
+<li><a href="https://facebook.github.io/react-native/docs/native-components-android.html" target="_blank" rel="external">参考官方文档</a> 看有文档胜过搜索。</li>
+</ul>
+<h2 id="热更新方案"><a href="#热更新方案" class="headerlink" title="热更新方案"></a>热更新方案</h2><p>我们使用的 <a href="https://github.com/Microsoft/react-native-code-push">Microsoft/react-native-code-push</a>，有没有惊讶到，微软咋搞这个呢？是的，说实话，还搞的不错。已在线上使用两次热更新，效果不错。</p>
+<ul>
+<li><a href="https://github.com/Microsoft/code-push/blob/master/cli/README-cn.md">code-push 使用指南</a> </li>
+<li><a href="http://bbs.reactnative.cn/topic/725/code-push-%E7%83%AD%E6%9B%B4%E6%96%B0%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E8%AF%B4%E6%98%8E%E5%92%8C%E6%95%99%E7%A8%8B" target="_blank" rel="external">中文文档</a></li>
+</ul>
+<h2 id="动画效果实现Lottie-for-React-Native"><a href="#动画效果实现Lottie-for-React-Native" class="headerlink" title="动画效果实现Lottie for React-Native"></a>动画效果实现<a href="http://airbnb.io/lottie/" target="_blank" rel="external">Lottie for React-Native</a></h2><p>iOS上表现不错，安卓上内存偏高，卡顿。（低端机上明显）</p>
+<h2 id="js-View截图react-native-view-shot"><a href="#js-View截图react-native-view-shot" class="headerlink" title="js View截图react-native-view-shot"></a>js View截图<a href="https://github.com/gre/react-native-view-shot">react-native-view-shot</a></h2><h2 id="遇到的坑"><a href="#遇到的坑" class="headerlink" title="遇到的坑"></a>遇到的坑</h2><ul>
+<li><p>版本兼容问题</p>
+<p>reactnative更新很快，我们上个版本开发是0.51.0，现在已经是0.53.RC。建议使用最新版，很多第三方库也不支持旧版本，尤其是0.49.0之前版本。</p>
+</li>
+<li><p><a href="https://github.com/react-navigation/react-navigation/issues/1976#issuecomment-340493501">xxx uncompiled PNG file passed as argument. Must be compiled first into .flat file.</a></p>
+</li>
+<li>android/app/build/intermediates/res/merged/release/drawable-mdpi-v4/xxx.png<br>Error:error: Duplicate file. — <strong>删除react-native生成的所有资源。</strong></li>
+</ul>
+<p>说实话遇到的问题较多，但Google基本都能找到答案。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>由于公司战略需要，我们项目尝试接入reactnative，部分新功能就开始使用rn来开发，本文就是对Android端开发rn过程的记录，包括使用了那些黑科技、踩过那些坑，希望对正在接入或者准备接入rn开发的你有帮助。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Jiantao
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://github.com/yangjiantao/2018/02/08/安卓React-Native开发笔记（入门篇）/" title="安卓React-Native开发笔记（入门篇）">https://github.com/yangjiantao/2018/02/08/安卓React-Native开发笔记（入门篇）/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/react-native/" rel="tag"># react-native</a>
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/19/猫扑素数/" rel="next" title="猫扑素数">
+                <i class="fa fa-chevron-left"></i> 猫扑素数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="SOHUCS"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar_x225.jpeg"
+              alt="Jiantao" />
+          
+            <p class="site-author-name" itemprop="name">Jiantao</p>
+            <p class="site-description motion-element" itemprop="description">believe , passion , persistent.</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开发资料"><span class="nav-number">1.</span> <span class="nav-text">开发资料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用工具"><span class="nav-number">2.</span> <span class="nav-text">使用工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#和原生交互"><span class="nav-number">3.</span> <span class="nav-text">和原生交互</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#native-通知js"><span class="nav-number">3.1.</span> <span class="nav-text">native 通知js</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#app进入RN界面分发"><span class="nav-number">4.</span> <span class="nav-text">app进入RN界面分发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#控制台常用命令"><span class="nav-number">5.</span> <span class="nav-text">控制台常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成jsbundle文件"><span class="nav-number">6.</span> <span class="nav-text">生成jsbundle文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置打包脚本"><span class="nav-number">7.</span> <span class="nav-text">配置打包脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Makefile脚本实现"><span class="nav-number">7.1.</span> <span class="nav-text">Makefile脚本实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python脚本（主要为兼容windows）"><span class="nav-number">7.2.</span> <span class="nav-text">Python脚本（主要为兼容windows）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义react-UI组件"><span class="nav-number">8.</span> <span class="nav-text">自定义react UI组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#热更新方案"><span class="nav-number">9.</span> <span class="nav-text">热更新方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动画效果实现Lottie-for-React-Native"><span class="nav-number">10.</span> <span class="nav-text">动画效果实现Lottie for React-Native</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js-View截图react-native-view-shot"><span class="nav-number">11.</span> <span class="nav-text">js View截图react-native-view-shot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遇到的坑"><span class="nav-number">12.</span> <span class="nav-text">遇到的坑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">13.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiantao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("TtBkE4yS0DgwwJ7ew5J8lC2i-gzGzoHsz", "OYl57QlnOB4NOSU5UWfyvV6h");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
