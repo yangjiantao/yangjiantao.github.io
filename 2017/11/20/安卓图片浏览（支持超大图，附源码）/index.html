@@ -79,7 +79,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://raw.githubusercontent.com/yangjiantao/AndroidUiKit/master/art/photoviewer/photoview001.gif">
 <meta property="og:image" content="https://raw.githubusercontent.com/yangjiantao/AndroidUiKit/master/art/photoviewer/photoview002.gif">
-<meta property="og:updated_time" content="2017-11-22T09:19:08.900Z">
+<meta property="og:updated_time" content="2018-03-03T09:44:23.252Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安卓图片浏览(支持超大图，附源码)">
 <meta name="twitter:description" content="大图浏览可以说是所有App必备功能，可见其重要性，所以有必要将其独立，便于维护和复用。本文代码基于SubsamplingScaleImageView开源库实现，增加单手拖拽返回，透明度变化等效果。">
@@ -382,6 +382,12 @@
 <p>  // TODO 非刚需，暂未实现。</p>
 </li>
 </ul>
+<h3 id="兼容处理-18-03-03更新"><a href="#兼容处理-18-03-03更新" class="headerlink" title="兼容处理(18.03.03更新)"></a>兼容处理(18.03.03更新)</h3><ul>
+<li><p>Image failed to decode using JPEG decoder</p>
+<p> 由于使用了<strong>SubsamplingScaleImageView</strong>库显示大图，内部使用的是系统<strong>BitmapRegionDecoder</strong>解码，其只支持JPG和PNG格式，而且在不同的设备和版本上表现有差异，一句话：<strong>不稳定，还出问题。</strong></p>
+<p> 我的解决思路：监听<strong>SubsamplingScaleImageView</strong>解码错误回调，转为使用<a href="https://github.com/chrisbanes/PhotoView"><strong>PhotoView</strong></a>显示图片。    </p>
+</li>
+</ul>
 <h3 id="源码地址"><a href="#源码地址" class="headerlink" title="源码地址"></a>源码地址</h3><p>以上提及代码均在<a href="https://github.com/yangjiantao/AndroidUiKit"><strong>AndroidUiKit项目</strong></a>（安卓常用UI组件库。 总结、沉淀、封装优化；为避免重复造轮子，此项目会收集优秀的三方库，或直接引用，或修改源码；目标很明确：快速集成开发，提高效率。）</p>
 <p><strong>代码位置：</strong><a href="https://github.com/yangjiantao/AndroidUiKit/tree/master/uikit/src/main/java/io/jiantao/android/uikit/photoviewer">uikit module中photoviewer包下</a>      </p>
 <h3 id="App图片处理库推荐"><a href="#App图片处理库推荐" class="headerlink" title="App图片处理库推荐"></a>App图片处理库推荐</h3><ul>
@@ -589,7 +595,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览效果"><span class="nav-number">1.</span> <span class="nav-text">浏览效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#功能实现"><span class="nav-number">2.</span> <span class="nav-text">功能实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#源码地址"><span class="nav-number">3.</span> <span class="nav-text">源码地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#App图片处理库推荐"><span class="nav-number">4.</span> <span class="nav-text">App图片处理库推荐</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览效果"><span class="nav-number">1.</span> <span class="nav-text">浏览效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#功能实现"><span class="nav-number">2.</span> <span class="nav-text">功能实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#兼容处理-18-03-03更新"><span class="nav-number">3.</span> <span class="nav-text">兼容处理(18.03.03更新)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#源码地址"><span class="nav-number">4.</span> <span class="nav-text">源码地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#App图片处理库推荐"><span class="nav-number">5.</span> <span class="nav-text">App图片处理库推荐</span></a></li></ol></div>
             
 
           </div>
