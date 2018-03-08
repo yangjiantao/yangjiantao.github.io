@@ -79,7 +79,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://raw.githubusercontent.com/yangjiantao/AndroidUiKit/master/art/photoviewer/photoview001.gif">
 <meta property="og:image" content="https://raw.githubusercontent.com/yangjiantao/AndroidUiKit/master/art/photoviewer/photoview002.gif">
-<meta property="og:updated_time" content="2018-03-03T09:44:23.252Z">
+<meta property="og:updated_time" content="2018-03-03T11:41:14.162Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安卓图片浏览(支持超大图，附源码)">
 <meta name="twitter:description" content="大图浏览可以说是所有App必备功能，可见其重要性，所以有必要将其独立，便于维护和复用。本文代码基于SubsamplingScaleImageView开源库实现，增加单手拖拽返回，透明度变化等效果。">
@@ -384,7 +384,7 @@
 </ul>
 <h3 id="兼容处理-18-03-03更新"><a href="#兼容处理-18-03-03更新" class="headerlink" title="兼容处理(18.03.03更新)"></a>兼容处理(18.03.03更新)</h3><ul>
 <li><p>Image failed to decode using JPEG decoder</p>
-<p> 由于使用了<strong>SubsamplingScaleImageView</strong>库显示大图，内部使用的是系统<strong>BitmapRegionDecoder</strong>解码，其只支持JPG和PNG格式，而且在不同的设备和版本上表现有差异，一句话：<strong>不稳定，还出问题。</strong></p>
+<p> 由于使用了<strong>SubsamplingScaleImageView</strong>库显示大图，内部使用的是系统<strong>BitmapRegionDecoder</strong>解码，其只支持JPG和PNG格式，而且在不同的设备和版本上表现有差异，一句话：<strong>不稳定，容易出问题。</strong>官方给出的方案<a href="https://github.com/davemorrissey/subsampling-scale-image-view/wiki/04.-Custom-decoders">Custom-decoders</a>。</p>
 <p> 我的解决思路：监听<strong>SubsamplingScaleImageView</strong>解码错误回调，转为使用<a href="https://github.com/chrisbanes/PhotoView"><strong>PhotoView</strong></a>显示图片。    </p>
 </li>
 </ul>
@@ -538,7 +538,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -560,7 +560,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
