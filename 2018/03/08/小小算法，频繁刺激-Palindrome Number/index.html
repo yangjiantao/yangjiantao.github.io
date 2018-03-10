@@ -69,18 +69,18 @@
 
 
 
-<meta name="description" content="今天刷LeetCode，遇到一道简单算法题，Palindrome Number，但解题过程比较有意思，特借此文记录下。 解析题目问题描述： Determine whether an integer is a palindrome. Do this without extra space. 判断一个int类型的数是否为回文数？ 不使用额外空间。 关于什么是回文数？给个定义：正反方向输出的值相等的数称">
+<meta name="description" content="今天刷LeetCode，遇到一道简单算法题，Palindrome Number，但解题过程比较有意思，借此文记录下。 解析题目问题描述： Determine whether an integer is a palindrome. Do this without extra space. 判断一个int类型的数是否为回文数？ 不使用额外空间。 关于什么是回文数？给个定义：正反方向输出的值相等的数称为">
 <meta name="keywords" content="Number,String">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小小算法，频繁刺激-Palindrome Number">
 <meta property="og:url" content="https://github.com/yangjiantao/2018/03/08/小小算法，频繁刺激-Palindrome Number/index.html">
 <meta property="og:site_name" content="Jiantao">
-<meta property="og:description" content="今天刷LeetCode，遇到一道简单算法题，Palindrome Number，但解题过程比较有意思，特借此文记录下。 解析题目问题描述： Determine whether an integer is a palindrome. Do this without extra space. 判断一个int类型的数是否为回文数？ 不使用额外空间。 关于什么是回文数？给个定义：正反方向输出的值相等的数称">
+<meta property="og:description" content="今天刷LeetCode，遇到一道简单算法题，Palindrome Number，但解题过程比较有意思，借此文记录下。 解析题目问题描述： Determine whether an integer is a palindrome. Do this without extra space. 判断一个int类型的数是否为回文数？ 不使用额外空间。 关于什么是回文数？给个定义：正反方向输出的值相等的数称为">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-08T17:17:42.009Z">
+<meta property="og:updated_time" content="2018-03-09T02:22:58.765Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小小算法，频繁刺激-Palindrome Number">
-<meta name="twitter:description" content="今天刷LeetCode，遇到一道简单算法题，Palindrome Number，但解题过程比较有意思，特借此文记录下。 解析题目问题描述： Determine whether an integer is a palindrome. Do this without extra space. 判断一个int类型的数是否为回文数？ 不使用额外空间。 关于什么是回文数？给个定义：正反方向输出的值相等的数称">
+<meta name="twitter:description" content="今天刷LeetCode，遇到一道简单算法题，Palindrome Number，但解题过程比较有意思，借此文记录下。 解析题目问题描述： Determine whether an integer is a palindrome. Do this without extra space. 判断一个int类型的数是否为回文数？ 不使用额外空间。 关于什么是回文数？给个定义：正反方向输出的值相等的数称为">
 
 
 
@@ -353,7 +353,7 @@
       
 
       
-        <p>今天刷LeetCode，遇到一道简单算法题，<a href="https://leetcode.com/problems/palindrome-number/description/" target="_blank" rel="external">Palindrome Number</a>，但解题过程比较有意思，特借此文记录下。</p>
+        <p>今天刷LeetCode，遇到一道简单算法题，<a href="https://leetcode.com/problems/palindrome-number/description/" target="_blank" rel="external">Palindrome Number</a>，但解题过程比较有意思，借此文记录下。</p>
 <h2 id="解析题目"><a href="#解析题目" class="headerlink" title="解析题目"></a>解析题目</h2><p><strong>问题描述：</strong> Determine whether an integer is a palindrome. Do this without extra space. <strong>判断一个int类型的数是否为回文数？ 不使用额外空间。</strong></p>
 <p>关于什么是回文数？<strong>给个定义：正反方向输出的值相等的数称为回文数。</strong> 没理解到的，可以去网上搜下。</p>
 <p>举例：1、1221、11211等是回文数；-1、0、12、123323等就不是回文数。</p>
@@ -363,17 +363,18 @@
 <ul>
 <li><strong>按位比较：</strong> 1. 计算整数的位数（长度）， 2. 从第一位和最后一位开始依次递增和增减循环比较。</li>
 <li><strong>反转输入int，与原数比较看是否相等。</strong>  之前有道题是：反转一个int数，其中需要考虑<strong>溢出</strong>问题。</li>
-<li><strong>转成字符串，按位比较。</strong>  题目限制不能占用额外内存。</li>
+<li><strong>转成字符串，按位比较。</strong>  但题目限制不能占用额外内存。</li>
 </ul>
-<p>考虑使用第一种思路试试，这道题比较简单，有了思路后，按说就可以编码了，但为了养成好习惯，别着急编码还是想下case情况先。我只想到两个：<strong>1.负数不是回文数。 2. 考虑位数奇偶数情况。</strong>虽然少，过程不能省。</p>
+<p>考虑使用第一种思路，这道题比较简单，有了思路后，按说就可以编码了，但为了养成好习惯，别着急编码还是想下case情况先。我只想到两个：<strong>1.负数不是回文数。 2. 考虑位数奇偶数情况。</strong>虽然少，过程不能省。</p>
 <p>开始编码，贴下我第一版代码。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">public boolean isPalindrome(int x) &#123;</div><div class="line">        if (x &lt; 0) &#123; // 负数情况</div><div class="line">            return false;</div><div class="line">        &#125;</div><div class="line">        final int originX = x;</div><div class="line">        int bitCount = 1;</div><div class="line">        // 算出有多少位（长度）</div><div class="line">        while (x &gt;= 10) &#123;</div><div class="line">            x /= 10;</div><div class="line">            bitCount++;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        int l = 0;</div><div class="line">        int r = bitCount - 1;</div><div class="line">        // 依次比较</div><div class="line">        while (getBitNum(originX, bitCount, l) == getBitNum(originX, bitCount, r)) &#123;</div><div class="line">            l++;</div><div class="line">            r--;</div><div class="line">            if (l &gt;= r) &#123;</div><div class="line">                return true;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return false;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">	// 去取原数对应位下标的数值</div><div class="line">    int getBitNum(int num, final int len, int index) &#123;</div><div class="line">        int temp = 1;</div><div class="line">        while (len - index &gt; 1) &#123;</div><div class="line">            temp *= 10;</div><div class="line">            index++;</div><div class="line">        &#125;</div><div class="line">        return (num / temp) % 10;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p>LeetCode上类似白板编程，代码比较龊，请见谅。编写完了自测case，好都没问题，怎么简单提交吧，提交是通过了，但提示该算法击败了<strong>1.7%</strong>的其它用户提交，也就是说效率很差，垫底了。这样怎么行呢，毕竟咋还是有追求的程序猿对吧。于是分析代码，其中三处循环，还有嵌套，<strong>时间复杂度为：O(n*log10n)。</strong> （ps:时间复杂度计算，不是很清楚，有知道的大神请留言指教，谢谢。）</p>
-<p>怀着焦虑的心情，点开了<a href="https://leetcode.com/problems/palindrome-number/solution/" target="_blank" rel="external">官方推荐解法页面</a>。看到一半，哎呀，这不是上文中我想到的第二条思路吗，<strong>反转int整数，但官方建议只反转int的一半，然后与剩下一半比较，如果相等则是回文数。完美避开了Integer.MAX_VALUE溢出问题，不得不服。</strong></p>
+<p>LeetCode上类似白板编程，代码比较龊，请见谅。编写完了自测case，好都没问题，这么简单那就提交吧，提交是通过了，但提示该算法击败了<strong>1.7%</strong>的其它用户提交，也就是说效率很差，垫底了。这样怎么行呢，毕竟咋还是有追求的程序猿对吧。于是分析代码，其中三处循环，还有嵌套；<strong>估算时间复杂度为：O(n*log10n)。</strong> （ps:时间复杂度计算，不是很清楚，有知道的大神请留言指教，谢谢。）</p>
+<p>怀着焦虑的心情，点开了<a href="https://leetcode.com/problems/palindrome-number/solution/" target="_blank" rel="external">官方推荐解法页面</a>。看到一半，哎呀，这不是上文中我想到的第二条思路吗，<strong>反转int整数。但官方建议只反转int的一半，然后与剩下一半比较，如果相等则是回文数。这就完美避开了Integer.MAX_VALUE溢出问题，不得不服。</strong></p>
 <p>想着先不看其代码实现，自己写一下再说，于是在之前基础上改出了下面的代码。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">boolean isPalindromeNum(int x) &#123;</div><div class="line">        if (x &lt; 0) &#123;</div><div class="line">            return false;</div><div class="line">        &#125;</div><div class="line">        final int originX = x;</div><div class="line">        int bitCount = 1;</div><div class="line">        while (x &gt;= 10) &#123;</div><div class="line">            x /= 10;</div><div class="line">            bitCount++;</div><div class="line">        &#125;</div><div class="line">        int index = 0;</div><div class="line">        int halfNum = 0;</div><div class="line">        final int halfLen = bitCount / 2;</div><div class="line">        int tempX = originX;</div><div class="line">        while (index &lt; halfLen) &#123;</div><div class="line">            halfNum = halfNum * 10 + tempX % 10;</div><div class="line">            tempX /= 10;</div><div class="line">            index++;</div><div class="line">        &#125;</div><div class="line">        // 判断奇偶情况</div><div class="line">        return halfNum == (bitCount % 2 == 0 ? tempX : tempX / 10);</div></pre></td></tr></table></figure>
 <p>提交跑起来，嗯快了不少，击败了48%，感觉不错对吧。这会去看官方给出的C#代码实现，看完<strong>感觉受到一万点伤害，吐血了。</strong>不说了，贴代码。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">// 官方解法：主要三点：1. 判断尾数为0的情况 2. 取消判断位数的逻辑 3. 聪明处理奇偶位数情况</div><div class="line">    boolean isPalindromeNumOfficial(int x) &#123;</div><div class="line">        // Special cases:</div><div class="line">        // As discussed above, when x &lt; 0, x is not a palindrome.</div><div class="line">        // Also if the last digit of the number is 0, in order to be a palindrome,</div><div class="line">        // the first digit of the number also needs to be 0.</div><div class="line">        // Only 0 satisfy this property.</div><div class="line">        if (x &lt; 0 || (x % 10 == 0 &amp;&amp; x != 0)) &#123;</div><div class="line">            return false;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        int revertedNumber = 0;</div><div class="line">        while (x &gt; revertedNumber) &#123;</div><div class="line">            revertedNumber = revertedNumber * 10 + x % 10;</div><div class="line">            x /= 10;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        // When the length is an odd number, we can get rid of the middle digit by revertedNumber/10</div><div class="line">        // For example when the input is 12321, at the end of the while loop we get x = 12, revertedNumber = 123,</div><div class="line">        // since the middle digit doesn&apos;t matter in palidrome(it will always equal to itself), we can simply get rid of it.</div><div class="line">        return x == revertedNumber || x == revertedNumber / 10;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">boolean isPalindromeNumOfficial(int x) &#123;</div><div class="line">    // Special cases:</div><div class="line">    // As discussed above, when x &lt; 0, x is not a palindrome.</div><div class="line">    // Also if the last digit of the number is 0, in order to be a palindrome,</div><div class="line">    // the first digit of the number also needs to be 0.</div><div class="line">    // Only 0 satisfy this property.</div><div class="line">    if (x &lt; 0 || (x % 10 == 0 &amp;&amp; x != 0)) &#123;</div><div class="line">        return false;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    int revertedNumber = 0;</div><div class="line">    while (x &gt; revertedNumber) &#123;</div><div class="line">        revertedNumber = revertedNumber * 10 + x % 10;</div><div class="line">        x /= 10;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // When the length is an odd number, we can get rid of the middle digit by revertedNumber/10</div><div class="line">    // For example when the input is 12321, at the end of the while loop we get x = 12, revertedNumber = 123,</div><div class="line">    // since the middle digit doesn&apos;t matter in palidrome(it will always equal to itself), we can simply get rid of it.</div><div class="line">    return x == revertedNumber || x == revertedNumber / 10;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注释写的很清楚了，主要有三点：<strong>1. 判断尾数为0的情况 2. 取消判断位数的逻辑 3. 聪明处理奇偶位数情况。</strong> </p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>小小一道简单的算法题，都能频繁带给你刺激，是不是很过瘾。想想平时我们写的代码，是不是应该翻出来再斟酌斟酌，哈哈哈。</p>
 <p><strong>最后贴下转字符串思路实现的代码。</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// 转字符串在比较 ，速度是很快的</div><div class="line">    public boolean isPalindromeForString(int x) &#123;</div><div class="line">        String num = String.valueOf(x);</div><div class="line">        if (num == null || num.length() == 0) return true;</div><div class="line">        int start = 0, end = num.length() - 1;</div><div class="line">        while (start &lt; end) &#123;</div><div class="line">            if ((char) num.charAt(start) != (char) num.charAt(end)) return false;</div><div class="line">            start++;</div><div class="line">            end--;</div><div class="line">        &#125;</div><div class="line">        return true;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
@@ -437,6 +438,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/10/git实用技巧/" rel="prev" title="git实用技巧">
+                git实用技巧 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -518,7 +523,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -529,7 +534,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -540,7 +545,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
