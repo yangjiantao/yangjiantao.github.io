@@ -82,7 +82,7 @@
 <meta name="description" content="believe , passion , persistent.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Jiantao">
-<meta property="og:url" content="https://github.com/yangjiantao/tags/Android/index.html">
+<meta property="og:url" content="https://github.com/yangjiantao/tags/android/index.html">
 <meta property="og:site_name" content="Jiantao">
 <meta property="og:description" content="believe , passion , persistent.">
 <meta property="og:locale" content="zh-Hans">
@@ -118,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/yangjiantao/tags/Android/"/>
+  <link rel="canonical" href="https://github.com/yangjiantao/tags/android/"/>
 
 
 
 
 
-  <title>标签: Android | Jiantao</title>
+  <title>标签: android | Jiantao</title>
   
 
 
@@ -274,7 +274,7 @@
 
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h2>Android<small>标签</small>
+        <h2>android<small>标签</small>
         </h2>
       </div>
 
@@ -286,37 +286,9 @@
 
       <h3 class="post-title">
         
-            <a class="post-title-link" href="/2018/02/08/安卓React-Native开发笔记（入门篇）/" itemprop="url">
+            <a class="post-title-link" href="/2017/10/25/深入理解Glide/" itemprop="url">
               
-                <span itemprop="name">安卓React-Native开发笔记（入门篇）</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-02-08T23:41:45+08:00"
-              content="2018-02-08" >
-          02-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2017/11/20/安卓图片浏览（支持超大图，附源码）/" itemprop="url">
-              
-                <span itemprop="name">安卓图片浏览(支持超大图，附源码)</span>
+                <span itemprop="name">深入理解Glide</span>
               
             </a>
         
@@ -324,9 +296,9 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2017-11-20T22:44:33+08:00"
-              content="2017-11-20" >
-          11-20
+              datetime="2017-10-25T23:29:06+08:00"
+              content="2017-10-25" >
+          10-25
         </time>
       </div>
 
@@ -440,7 +412,7 @@
                   <span class="links-of-author-item">
                     <a href="https://www.jianshu.com/u/888f58971e84" target="_blank" title="简书">
                       
-                        <i class="fa fa-fw fa-heartbeat"></i>简书</a>
+                        <i class="fa fa-fw fa-book"></i>简书</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -488,21 +460,21 @@
 </div>
 
 <div class="powered-by">
-<i class="fa fa-user-md"></i><span id="busuanzi_container_site_pv">
-    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+<i class="fa fa-users"></i><span id="busuanzi_container_site_uv">
+  访问用户: <span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+<span class="post-meta-divider">   |   </span>
+<div class="powered-by">
+<i class="fa fa-eye"></i><span id="busuanzi_container_site_pv">
+  访问量: <span id="busuanzi_value_site_pv"></span>
 </span>
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
 
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -748,6 +720,50 @@
             newcounter.set("time", 1);
             newcounter.save(null, {
               success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
+tion(newcounter) {
                 var $element = $(document.getElementById(url));
                 $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
               },
