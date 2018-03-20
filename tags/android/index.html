@@ -82,7 +82,7 @@
 <meta name="description" content="believe , passion , persistent.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Jiantao">
-<meta property="og:url" content="https://github.com/yangjiantao/tags/android/index.html">
+<meta property="og:url" content="https://github.com/yangjiantao/tags/Android/index.html">
 <meta property="og:site_name" content="Jiantao">
 <meta property="og:description" content="believe , passion , persistent.">
 <meta property="og:locale" content="zh-Hans">
@@ -118,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/yangjiantao/tags/android/"/>
+  <link rel="canonical" href="https://github.com/yangjiantao/tags/Android/"/>
 
 
 
 
 
-  <title>标签: android | Jiantao</title>
+  <title>标签: Android | Jiantao</title>
   
 
 
@@ -274,7 +274,7 @@
 
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h2>android<small>标签</small>
+        <h2>Android<small>标签</small>
         </h2>
       </div>
 
@@ -286,9 +286,9 @@
 
       <h3 class="post-title">
         
-            <a class="post-title-link" href="/2017/10/25/深入理解Glide/" itemprop="url">
+            <a class="post-title-link" href="/2018/02/08/安卓React-Native开发笔记（入门篇）/" itemprop="url">
               
-                <span itemprop="name">深入理解Glide</span>
+                <span itemprop="name">安卓React-Native开发笔记（入门篇）</span>
               
             </a>
         
@@ -296,9 +296,37 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-25T23:29:06+08:00"
-              content="2017-10-25" >
-          10-25
+              datetime="2018-02-08T23:41:45+08:00"
+              content="2018-02-08" >
+          02-08
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h3 class="post-title">
+        
+            <a class="post-title-link" href="/2017/11/20/安卓图片浏览（支持超大图，附源码）/" itemprop="url">
+              
+                <span itemprop="name">安卓图片浏览(支持超大图，附源码)</span>
+              
+            </a>
+        
+      </h3>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2017-11-20T22:44:33+08:00"
+              content="2017-11-20" >
+          11-20
         </time>
       </div>
 
@@ -362,7 +390,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -384,7 +412,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -720,50 +748,6 @@
             newcounter.set("time", 1);
             newcounter.save(null, {
               success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
-
-
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
-
-</body>
-</html>
-tion(newcounter) {
                 var $element = $(document.getElementById(url));
                 $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
               },
