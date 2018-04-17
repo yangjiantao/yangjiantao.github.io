@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Jiantao">
 <meta property="og:description" content="作为一名有多年开发经验的老兵，版本控制从最开始的SVN到Git，用着还算顺手，今天总结下整理成文章，以便用时查阅，也希望对需要的朋友有帮助。当然，本文只是记录平时开发过程中常用的命令及使用技巧；若有时间还是建议进行系统的学习，文末会给出一些参考资料。 Git 简介Git是一个开源的分布式版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。Git 是 Linus Torvalds 为了帮">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-20T08:03:26.076Z">
+<meta property="og:updated_time" content="2018-03-29T17:31:56.406Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git实用技巧">
 <meta name="twitter:description" content="作为一名有多年开发经验的老兵，版本控制从最开始的SVN到Git，用着还算顺手，今天总结下整理成文章，以便用时查阅，也希望对需要的朋友有帮助。当然，本文只是记录平时开发过程中常用的命令及使用技巧；若有时间还是建议进行系统的学习，文末会给出一些参考资料。 Git 简介Git是一个开源的分布式版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。Git 是 Linus Torvalds 为了帮">
@@ -431,6 +431,9 @@
 </ul>
 <h2 id="Tag标签"><a href="#Tag标签" class="headerlink" title="Tag标签"></a>Tag标签</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ git tag tagName   // 生成新标签</div><div class="line">$ git tag -a v1.1 -m &quot;new release&quot; //  添加标签描述</div><div class="line">$ git tag  // 查看本地标签列表</div><div class="line">$ git tag -d name // 删除一个本地标签</div><div class="line">$ git show &lt;tagname&gt; // 查看标签信息</div><div class="line">$ git tag v1.0 &lt;commitid&gt; // 以某次提交commitid，打个标签</div><div class="line">$ git push origin &lt;tagname&gt; // 将本地标签push到远程仓库</div><div class="line">$ git push origin --delete tag &lt;tagname&gt; 删除远程标签</div></pre></td></tr></table></figure>
 <h2 id="查看log日志"><a href="#查看log日志" class="headerlink" title="查看log日志"></a>查看log日志</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git log </div><div class="line">$ git log --pretty=oneline // 简洁log日志</div></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://www.cnblogs.com/bellkosmos/p/5923439.html" target="_blank" rel="external">git log命令全解析</a></li>
+</ul>
 <h2 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h2><pre><code>$ git reset --hard HEAD^  回退上一个版本
 $ git reset --hard 3628164  回退指定版本；
 </code></pre><p><strong>reset命令有3种方式：</strong></p>
