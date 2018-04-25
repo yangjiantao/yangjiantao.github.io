@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Number,String," />
+  <meta name="keywords" content="python," />
 
 
 
@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="今天刷LeetCode，遇到一道简单算法题，Palindrome Number，但解题过程比较有意思，借此文记录下。 解析题目问题描述： Determine whether an integer is a palindrome. Do this without extra space. 判断一个int类型的数是否为回文数？ 不使用额外空间。 关于什么是回文数？给个定义：正反方向输出的值相等的数称为">
-<meta name="keywords" content="Number,String">
+<meta name="description" content="大家在开发过程中，是否也有这样的场景，测试同学跑过来说，给我打个包吧；可能这时你正在“写bug”，好嘛，为了团队，停下来，stash本地修改，Studio打个包，整个过程6分钟左右，然后继续编码；过一会儿老板又来了。。。 本文就分享如何用Python打包来拯救你的时间。">
+<meta name="keywords" content="python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小小算法，频繁刺激-Palindrome Number">
-<meta property="og:url" content="https://github.com/yangjiantao/2018/03/08/小小算法，频繁刺激-Palindrome Number/index.html">
+<meta property="og:title" content="Python实现优雅打包">
+<meta property="og:url" content="https://github.com/yangjiantao/2018/04/25/Python实现优雅打包/index.html">
 <meta property="og:site_name" content="Jiantao">
-<meta property="og:description" content="今天刷LeetCode，遇到一道简单算法题，Palindrome Number，但解题过程比较有意思，借此文记录下。 解析题目问题描述： Determine whether an integer is a palindrome. Do this without extra space. 判断一个int类型的数是否为回文数？ 不使用额外空间。 关于什么是回文数？给个定义：正反方向输出的值相等的数称为">
+<meta property="og:description" content="大家在开发过程中，是否也有这样的场景，测试同学跑过来说，给我打个包吧；可能这时你正在“写bug”，好嘛，为了团队，停下来，stash本地修改，Studio打个包，整个过程6分钟左右，然后继续编码；过一会儿老板又来了。。。 本文就分享如何用Python打包来拯救你的时间。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-12T15:17:59.253Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2217296-2179dc511c4b02cb.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-04-25T16:53:29.010Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小小算法，频繁刺激-Palindrome Number">
-<meta name="twitter:description" content="今天刷LeetCode，遇到一道简单算法题，Palindrome Number，但解题过程比较有意思，借此文记录下。 解析题目问题描述： Determine whether an integer is a palindrome. Do this without extra space. 判断一个int类型的数是否为回文数？ 不使用额外空间。 关于什么是回文数？给个定义：正反方向输出的值相等的数称为">
+<meta name="twitter:title" content="Python实现优雅打包">
+<meta name="twitter:description" content="大家在开发过程中，是否也有这样的场景，测试同学跑过来说，给我打个包吧；可能这时你正在“写bug”，好嘛，为了团队，停下来，stash本地修改，Studio打个包，整个过程6分钟左右，然后继续编码；过一会儿老板又来了。。。 本文就分享如何用Python打包来拯救你的时间。">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2217296-2179dc511c4b02cb.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/yangjiantao/2018/03/08/小小算法，频繁刺激-Palindrome Number/"/>
+  <link rel="canonical" href="https://github.com/yangjiantao/2018/04/25/Python实现优雅打包/"/>
 
 
 
 
 
-  <title>小小算法，频繁刺激-Palindrome Number | Jiantao</title>
+  <title>Python实现优雅打包 | Jiantao</title>
   
 
 
@@ -283,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/yangjiantao/2018/03/08/小小算法，频繁刺激-Palindrome Number/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/yangjiantao/2018/04/25/Python实现优雅打包/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jiantao">
@@ -300,7 +302,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">小小算法，频繁刺激-Palindrome Number</h2>
+          <h2 class="post-title" itemprop="name headline">Python实现优雅打包</h2>
         
 
         <div class="post-meta">
@@ -312,8 +314,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-08T23:27:43+08:00">
-                2018-03-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-25T14:19:56+08:00">
+                2018-04-25
               </time>
             
 
@@ -335,8 +337,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/DSAA/" itemprop="url" rel="index">
-                    <span itemprop="name">DSAA</span>
+                  <a href="/categories/Tools/" itemprop="url" rel="index">
+                    <span itemprop="name">Tools</span>
                   </a>
                 </span>
 
@@ -352,7 +354,7 @@
 
           
           
-             <span id="/2018/03/08/小小算法，频繁刺激-Palindrome Number/" class="leancloud_visitors" data-flag-title="小小算法，频繁刺激-Palindrome Number">
+             <span id="/2018/04/25/Python实现优雅打包/" class="leancloud_visitors" data-flag-title="Python实现优雅打包">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -383,32 +385,32 @@
       
 
       
-        <p>今天刷LeetCode，遇到一道简单算法题，<a href="https://leetcode.com/problems/palindrome-number/description/" target="_blank" rel="external">Palindrome Number</a>，但解题过程比较有意思，借此文记录下。</p>
-<h2 id="解析题目"><a href="#解析题目" class="headerlink" title="解析题目"></a>解析题目</h2><p><strong>问题描述：</strong> Determine whether an integer is a palindrome. Do this without extra space. <strong>判断一个int类型的数是否为回文数？ 不使用额外空间。</strong></p>
-<p>关于什么是回文数？<strong>给个定义：正反方向输出的值相等的数称为回文数。</strong> 没理解到的，可以去网上搜下。</p>
-<p>举例：1、1221、11211等是回文数；-1、0、12、123323等就不是回文数。</p>
+        <p>大家在开发过程中，是否也有这样的场景，测试同学跑过来说，给我打个包吧；可能这时你正在“写bug”，好嘛，为了团队，停下来，stash本地修改，Studio打个包，整个过程6分钟左右，然后继续编码；过一会儿老板又来了。。。</p>
+<p><strong>本文就分享如何用Python打包来拯救你的时间。</strong> </p>
 <a id="more"></a>
-<p>那什么是回文字符串呢？可以参考这篇文章<a href="https://yangjiantao.github.io/2018/01/03/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91Longest-Palindromic-Substring/" target="_blank" rel="external">【算法】Longest Palindromic Substring</a>。</p>
-<h2 id="分析思路"><a href="#分析思路" class="headerlink" title="分析思路"></a>分析思路</h2><p>理解题目后，总共想到三个思路：</p>
-<ul>
-<li><strong>按位比较：</strong> 1. 计算整数的位数（长度）， 2. 从第一位和最后一位开始依次递增和增减循环比较。</li>
-<li><strong>反转输入int，与原数比较看是否相等。</strong>  之前有道题是：反转一个int数，其中需要考虑<strong>溢出</strong>问题。</li>
-<li><strong>转成字符串，按位比较。</strong>  但题目限制不能占用额外内存。</li>
+<h2 id="说下思路"><a href="#说下思路" class="headerlink" title="说下思路"></a>说下思路</h2><ul>
+<li>首先用Python封装gradle打包脚本，配置server环境参数（兼容windows）</li>
+<li>打包前同步git远程仓库代码</li>
+<li>打包后上传<a href="https://www.pgyer.com/" target="_blank" rel="external"><strong>蒲公英</strong></a></li>
+<li>上传后获取apk相关信息，发送通知邮件</li>
 </ul>
-<p>考虑使用第一种思路，这道题比较简单，有了思路后，按说就可以编码了，但为了养成好习惯，别着急编码还是想下case情况先。我只想到两个：<strong>1.负数不是回文数。 2. 考虑位数奇偶数情况。</strong>虽然少，过程不能省。</p>
-<p>开始编码，贴下我第一版代码。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">public boolean isPalindrome(int x) &#123;</div><div class="line">        if (x &lt; 0) &#123; // 负数情况</div><div class="line">            return false;</div><div class="line">        &#125;</div><div class="line">        final int originX = x;</div><div class="line">        int bitCount = 1;</div><div class="line">        // 算出有多少位（长度）</div><div class="line">        while (x &gt;= 10) &#123;</div><div class="line">            x /= 10;</div><div class="line">            bitCount++;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        int l = 0;</div><div class="line">        int r = bitCount - 1;</div><div class="line">        // 依次比较</div><div class="line">        while (getBitNum(originX, bitCount, l) == getBitNum(originX, bitCount, r)) &#123;</div><div class="line">            l++;</div><div class="line">            r--;</div><div class="line">            if (l &gt;= r) &#123;</div><div class="line">                return true;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return false;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">	// 去取原数对应位下标的数值</div><div class="line">    int getBitNum(int num, final int len, int index) &#123;</div><div class="line">        int temp = 1;</div><div class="line">        while (len - index &gt; 1) &#123;</div><div class="line">            temp *= 10;</div><div class="line">            index++;</div><div class="line">        &#125;</div><div class="line">        return (num / temp) % 10;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p>LeetCode上类似白板编程，代码比较龊，请见谅。编写完了自测case，好都没问题，这么简单那就提交吧，提交是通过了，但提示该算法击败了<strong>1.7%</strong>的其它用户提交，也就是说效率很差，垫底了。这样怎么行呢，毕竟咋还是有追求的程序猿对吧。于是分析代码，其中三处循环，还有嵌套；<strong>估算时间复杂度为：O(n*log10n)。</strong> （ps:时间复杂度计算，不是很清楚，有知道的大神请留言指教，谢谢。）</p>
-<p>怀着焦虑的心情，点开了<a href="https://leetcode.com/problems/palindrome-number/solution/" target="_blank" rel="external">官方推荐解法页面</a>。看到一半，哎呀，这不是上文中我想到的第二条思路吗，<strong>反转int整数。但官方建议只反转int的一半，然后与剩下一半比较，如果相等则是回文数。这就完美避开了Integer.MAX_VALUE溢出问题，不得不服。</strong></p>
-<p>想着先不看其代码实现，自己写一下再说，于是在之前基础上改出了下面的代码。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">boolean isPalindromeNum(int x) &#123;</div><div class="line">        if (x &lt; 0) &#123;</div><div class="line">            return false;</div><div class="line">        &#125;</div><div class="line">        final int originX = x;</div><div class="line">        int bitCount = 1;</div><div class="line">        while (x &gt;= 10) &#123;</div><div class="line">            x /= 10;</div><div class="line">            bitCount++;</div><div class="line">        &#125;</div><div class="line">        int index = 0;</div><div class="line">        int halfNum = 0;</div><div class="line">        final int halfLen = bitCount / 2;</div><div class="line">        int tempX = originX;</div><div class="line">        while (index &lt; halfLen) &#123;</div><div class="line">            halfNum = halfNum * 10 + tempX % 10;</div><div class="line">            tempX /= 10;</div><div class="line">            index++;</div><div class="line">        &#125;</div><div class="line">        // 判断奇偶情况</div><div class="line">        return halfNum == (bitCount % 2 == 0 ? tempX : tempX / 10);</div></pre></td></tr></table></figure>
-<p>提交跑起来，嗯快了不少，击败了48%，感觉不错对吧。这会去看官方给出的C#代码实现，看完<strong>感觉受到一万点伤害，吐血了。</strong>不说了，贴代码。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">boolean isPalindromeNumOfficial(int x) &#123;</div><div class="line">    // Special cases:</div><div class="line">    // As discussed above, when x &lt; 0, x is not a palindrome.</div><div class="line">    // Also if the last digit of the number is 0, in order to be a palindrome,</div><div class="line">    // the first digit of the number also needs to be 0.</div><div class="line">    // Only 0 satisfy this property.</div><div class="line">    if (x &lt; 0 || (x % 10 == 0 &amp;&amp; x != 0)) &#123;</div><div class="line">        return false;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    int revertedNumber = 0;</div><div class="line">    while (x &gt; revertedNumber) &#123;</div><div class="line">        revertedNumber = revertedNumber * 10 + x % 10;</div><div class="line">        x /= 10;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // When the length is an odd number, we can get rid of the middle digit by revertedNumber/10</div><div class="line">    // For example when the input is 12321, at the end of the while loop we get x = 12, revertedNumber = 123,</div><div class="line">    // since the middle digit doesn&apos;t matter in palidrome(it will always equal to itself), we can simply get rid of it.</div><div class="line">    return x == revertedNumber || x == revertedNumber / 10;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>注释写的很清楚了，主要有三点：<strong>1. 判断尾数为0的情况 2. 取消判断位数的逻辑 3. 聪明处理奇偶位数情况。</strong><br>解析下第一点：比如 10 的倍数的数 10010，它也会返回 true，所以要排除非零情况10的倍数。</p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>小小一道简单的算法题，都能频繁带给你刺激，是不是很过瘾。想想平时我们写的代码，是不是应该翻出来再斟酌斟酌，哈哈哈。</p>
-<p><strong>最后贴下转字符串思路实现的代码。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// 转字符串在比较 ，速度是很快的</div><div class="line">    public boolean isPalindromeForString(int x) &#123;</div><div class="line">        String num = String.valueOf(x);</div><div class="line">        if (num == null || num.length() == 0) return true;</div><div class="line">        int start = 0, end = num.length() - 1;</div><div class="line">        while (start &lt; end) &#123;</div><div class="line">            if ((char) num.charAt(start) != (char) num.charAt(end)) return false;</div><div class="line">            start++;</div><div class="line">            end--;</div><div class="line">        &#125;</div><div class="line">        return true;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p>以上代码均由Java实现，项目地址<a href="https://github.com/yangjiantao/DSAA">https://github.com/yangjiantao/DSAA</a>。</p>
+<p>ps: 其实可以使用Jenkins集成环境来搞定上述所有需求。之前我们也用过Jenkins，整体都不错，唯一劣势是，当出现因为开发环境导致打包失败时，需要去打包服务器处理；但与其带来的效率来比，这些是值得的。本文介绍的Python打包就没更新打包环境的困扰，但不支持离线打包。</p>
+<h2 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h2><p><img src="https://upload-images.jianshu.io/upload_images/2217296-2179dc511c4b02cb.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="邮件内容截图"></p>
+<p><strong>邮件内容主要有几个：</strong></p>
+<ul>
+<li>build版本号 ，方便下载时选择正确版本</li>
+<li>api环境</li>
+<li>App发布详情页及下载二维码</li>
+<li>最近20条git提交日志（<strong>在发版前夕，测试团队尤其关系这个</strong>）</li>
+</ul>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"> # python入口函数</div><div class="line"> if __name__ == &apos;__main__&apos;:</div><div class="line"> </div><div class="line">     print (sys.argv)</div><div class="line">     # 同步远程仓库代码</div><div class="line">     updateGitRepo()</div><div class="line">     # 执行打包</div><div class="line">     exeGradleCmd()</div><div class="line">     # 上传蒲公英并发送邮件</div><div class="line">     uploadPgyer()</div><div class="line">     </div><div class="line">     </div><div class="line"> # 看看git同步函数</div><div class="line"> </div><div class="line"> def updateGitRepo():</div><div class="line">      print(&apos;update git repo start&apos;)</div><div class="line">      # 当前目录时rn仓库</div><div class="line">      ret = exeShellCmd(&apos;git pull&apos;)</div><div class="line">      hasError = &apos;error&apos; in ret </div><div class="line">      # 如果更新失败，就抛异常（类似Java的throw），停止任务 </div><div class="line">      if(hasError):</div><div class="line">          raise ValueError(&apos;git pull failed&apos;)</div><div class="line">      # 进入Android项目同步</div><div class="line">      ret = exeShellCmd(&apos;cd android &amp;&amp; git pull&apos;)</div><div class="line">      hasError = &apos;error&apos; in ret  </div><div class="line">      if(hasError):</div><div class="line">          raise ValueError(&apos;git pull failed&apos;)</div><div class="line">      </div><div class="line">      print(&apos;update git repo end&apos;)</div><div class="line">      return</div><div class="line">    </div><div class="line"></div><div class="line"># 执行shell命令并返回执行结果</div><div class="line">def exeShellCmd(cmd):</div><div class="line">      popen = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)</div><div class="line">      cmdRetBytes = popen.stdout.read()</div><div class="line">      cmdRetStr = str(cmdRetBytes, encoding=&apos;utf-8&apos;)</div><div class="line">      print(cmdRetStr)</div><div class="line">      return cmdRetStr</div></pre></td></tr></table></figure>
+<p>以上只贴了主函数和git同步函数代码实现，如果想了解代码细节及剩下的打包、上传和发送邮件等功能实现，<a href="https://github.com/yangjiantao/python-study-notes"><strong>请点击这里获取。</strong></a></p>
+<h2 id="如何打包（终端执行以下命令）"><a href="#如何打包（终端执行以下命令）" class="headerlink" title="如何打包（终端执行以下命令）"></a>如何打包（终端执行以下命令）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># 默认打qa环境的包</div><div class="line">$ python3 releaseApk.py</div><div class="line"></div><div class="line"># 打线上环境的包</div><div class="line">$ python3 releaseApk.py online </div><div class="line"></div><div class="line"># 指定不发送邮件</div><div class="line">$ python3 releaseApk.py noemail</div></pre></td></tr></table></figure>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>作为一名安卓开发人员，打包是工作内容之一，尤其在测试阶段，频率还很高。为了节约时间和提高效率，就想着能否使用Python来打包，于是就尝试着实现了该想法，才有了这篇文章。由于我对Python不是很熟悉，可能实现还有不少问题，如果您有好的建议，请告诉我；有如何问题都可联系我，与君共勉~</p>
+<h2 id="推荐"><a href="#推荐" class="headerlink" title="推荐"></a>推荐</h2><ul>
+<li><a href="https://github.com/Meituan-Dianping/walle">Android打包神器walle</a></li>
+<li><a href="">Jenkins集成环境</a></li>
+</ul>
 
       
     </div>
@@ -429,7 +431,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://github.com/yangjiantao/2018/03/08/小小算法，频繁刺激-Palindrome Number/" title="小小算法，频繁刺激-Palindrome Number">https://github.com/yangjiantao/2018/03/08/小小算法，频繁刺激-Palindrome Number/</a>
+    <a href="https://github.com/yangjiantao/2018/04/25/Python实现优雅打包/" title="Python实现优雅打包">https://github.com/yangjiantao/2018/04/25/Python实现优雅打包/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -444,9 +446,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Number/" rel="tag"># Number</a>
-          
-            <a href="/tags/String/" rel="tag"># String</a>
+            <a href="/tags/python/" rel="tag"># python</a>
           
         </div>
       
@@ -459,8 +459,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/08/安卓React-Native开发笔记（入门篇）/" rel="next" title="安卓React-Native开发笔记（入门篇）">
-                <i class="fa fa-chevron-left"></i> 安卓React-Native开发笔记（入门篇）
+              <a href="/2018/03/19/resume/" rel="next" title="我的简历">
+                <i class="fa fa-chevron-left"></i> 我的简历
               </a>
             
           </div>
@@ -468,10 +468,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/10/git实用技巧/" rel="prev" title="git实用技巧">
-                git实用技巧 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -640,7 +636,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#解析题目"><span class="nav-number">1.</span> <span class="nav-text">解析题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析思路"><span class="nav-number">2.</span> <span class="nav-text">分析思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#说下思路"><span class="nav-number">1.</span> <span class="nav-text">说下思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最终效果"><span class="nav-number">2.</span> <span class="nav-text">最终效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现"><span class="nav-number">3.</span> <span class="nav-text">代码实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何打包（终端执行以下命令）"><span class="nav-number">4.</span> <span class="nav-text">如何打包（终端执行以下命令）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">5.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推荐"><span class="nav-number">6.</span> <span class="nav-text">推荐</span></a></li></ol></div>
             
 
           </div>
