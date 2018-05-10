@@ -88,7 +88,7 @@
 <meta property="og:description" content="大家在开发过程中，是否也有这样的场景，测试同学跑过来说，给我打个包吧；可能这时你正在“写bug”，好嘛，为了团队，停下来，stash本地修改，Studio打个包，整个过程6分钟左右，然后继续编码；过一会儿老板又来了。。。 本文就分享如何用Python打包来拯救你的时间。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2217296-2179dc511c4b02cb.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-04-25T16:53:29.010Z">
+<meta property="og:updated_time" content="2018-04-26T06:06:37.262Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python实现优雅打包">
 <meta name="twitter:description" content="大家在开发过程中，是否也有这样的场景，测试同学跑过来说，给我打个包吧；可能这时你正在“写bug”，好嘛，为了团队，停下来，stash本地修改，Studio打个包，整个过程6分钟左右，然后继续编码；过一会儿老板又来了。。。 本文就分享如何用Python打包来拯救你的时间。">
@@ -401,7 +401,7 @@
 <li>build版本号 ，方便下载时选择正确版本</li>
 <li>api环境</li>
 <li>App发布详情页及下载二维码</li>
-<li>最近20条git提交日志（<strong>在发版前夕，测试团队尤其关系这个</strong>）</li>
+<li>最近20条git提交日志（<strong>在发版前夕，测试团队尤其关心这个</strong>）</li>
 </ul>
 <h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"> # python入口函数</div><div class="line"> if __name__ == &apos;__main__&apos;:</div><div class="line"> </div><div class="line">     print (sys.argv)</div><div class="line">     # 同步远程仓库代码</div><div class="line">     updateGitRepo()</div><div class="line">     # 执行打包</div><div class="line">     exeGradleCmd()</div><div class="line">     # 上传蒲公英并发送邮件</div><div class="line">     uploadPgyer()</div><div class="line">     </div><div class="line">     </div><div class="line"> # 看看git同步函数</div><div class="line"> </div><div class="line"> def updateGitRepo():</div><div class="line">      print(&apos;update git repo start&apos;)</div><div class="line">      # 当前目录时rn仓库</div><div class="line">      ret = exeShellCmd(&apos;git pull&apos;)</div><div class="line">      hasError = &apos;error&apos; in ret </div><div class="line">      # 如果更新失败，就抛异常（类似Java的throw），停止任务 </div><div class="line">      if(hasError):</div><div class="line">          raise ValueError(&apos;git pull failed&apos;)</div><div class="line">      # 进入Android项目同步</div><div class="line">      ret = exeShellCmd(&apos;cd android &amp;&amp; git pull&apos;)</div><div class="line">      hasError = &apos;error&apos; in ret  </div><div class="line">      if(hasError):</div><div class="line">          raise ValueError(&apos;git pull failed&apos;)</div><div class="line">      </div><div class="line">      print(&apos;update git repo end&apos;)</div><div class="line">      return</div><div class="line">    </div><div class="line"></div><div class="line"># 执行shell命令并返回执行结果</div><div class="line">def exeShellCmd(cmd):</div><div class="line">      popen = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)</div><div class="line">      cmdRetBytes = popen.stdout.read()</div><div class="line">      cmdRetStr = str(cmdRetBytes, encoding=&apos;utf-8&apos;)</div><div class="line">      print(cmdRetStr)</div><div class="line">      return cmdRetStr</div></pre></td></tr></table></figure>
 <p>以上只贴了主函数和git同步函数代码实现，如果想了解代码细节及剩下的打包、上传和发送邮件等功能实现，<a href="https://github.com/yangjiantao/python-study-notes"><strong>请点击这里获取。</strong></a></p>
@@ -468,6 +468,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/09/Google搜索技巧/" rel="prev" title="Google搜索技巧">
+                Google搜索技巧 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -553,7 +557,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -575,7 +579,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
