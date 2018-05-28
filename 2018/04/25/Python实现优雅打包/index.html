@@ -88,7 +88,7 @@
 <meta property="og:description" content="大家在开发过程中，是否也有这样的场景，测试同学跑过来说，给我打个包吧；可能这时你正在“写bug”，好嘛，为了团队，停下来，stash本地修改，Studio打个包，整个过程6分钟左右，然后继续编码；过一会儿老板又来了。。。 本文就分享如何用Python打包来拯救你的时间。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2217296-2179dc511c4b02cb.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-04-26T06:06:37.262Z">
+<meta property="og:updated_time" content="2018-05-27T09:30:59.042Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python实现优雅打包">
 <meta name="twitter:description" content="大家在开发过程中，是否也有这样的场景，测试同学跑过来说，给我打个包吧；可能这时你正在“写bug”，好嘛，为了团队，停下来，stash本地修改，Studio打个包，整个过程6分钟左右，然后继续编码；过一会儿老板又来了。。。 本文就分享如何用Python打包来拯救你的时间。">
@@ -406,9 +406,11 @@
 <h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"> # python入口函数</div><div class="line"> if __name__ == &apos;__main__&apos;:</div><div class="line"> </div><div class="line">     print (sys.argv)</div><div class="line">     # 同步远程仓库代码</div><div class="line">     updateGitRepo()</div><div class="line">     # 执行打包</div><div class="line">     exeGradleCmd()</div><div class="line">     # 上传蒲公英并发送邮件</div><div class="line">     uploadPgyer()</div><div class="line">     </div><div class="line">     </div><div class="line"> # 看看git同步函数</div><div class="line"> </div><div class="line"> def updateGitRepo():</div><div class="line">      print(&apos;update git repo start&apos;)</div><div class="line">      # 当前目录时rn仓库</div><div class="line">      ret = exeShellCmd(&apos;git pull&apos;)</div><div class="line">      hasError = &apos;error&apos; in ret </div><div class="line">      # 如果更新失败，就抛异常（类似Java的throw），停止任务 </div><div class="line">      if(hasError):</div><div class="line">          raise ValueError(&apos;git pull failed&apos;)</div><div class="line">      # 进入Android项目同步</div><div class="line">      ret = exeShellCmd(&apos;cd android &amp;&amp; git pull&apos;)</div><div class="line">      hasError = &apos;error&apos; in ret  </div><div class="line">      if(hasError):</div><div class="line">          raise ValueError(&apos;git pull failed&apos;)</div><div class="line">      </div><div class="line">      print(&apos;update git repo end&apos;)</div><div class="line">      return</div><div class="line">    </div><div class="line"></div><div class="line"># 执行shell命令并返回执行结果</div><div class="line">def exeShellCmd(cmd):</div><div class="line">      popen = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)</div><div class="line">      cmdRetBytes = popen.stdout.read()</div><div class="line">      cmdRetStr = str(cmdRetBytes, encoding=&apos;utf-8&apos;)</div><div class="line">      print(cmdRetStr)</div><div class="line">      return cmdRetStr</div></pre></td></tr></table></figure>
 <p>以上只贴了主函数和git同步函数代码实现，如果想了解代码细节及剩下的打包、上传和发送邮件等功能实现，<a href="https://github.com/yangjiantao/python-study-notes"><strong>请点击这里获取。</strong></a></p>
 <h2 id="如何打包（终端执行以下命令）"><a href="#如何打包（终端执行以下命令）" class="headerlink" title="如何打包（终端执行以下命令）"></a>如何打包（终端执行以下命令）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># 默认打qa环境的包</div><div class="line">$ python3 releaseApk.py</div><div class="line"></div><div class="line"># 打线上环境的包</div><div class="line">$ python3 releaseApk.py online </div><div class="line"></div><div class="line"># 指定不发送邮件</div><div class="line">$ python3 releaseApk.py noemail</div></pre></td></tr></table></figure>
+<h2 id="打包命令提示（5-26更新）"><a href="#打包命令提示（5-26更新）" class="headerlink" title="打包命令提示（5.26更新）"></a>打包命令提示（5.26更新）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ python3 releaseApk.py -h</div><div class="line"> </div><div class="line"> Usage: </div><div class="line"> releaseApk.py -m &lt;message&gt; -e &lt;env&gt; </div><div class="line"> -m, --message &lt;message&gt; 打包日志信息 </div><div class="line"> -e, --env &lt;env&gt;  打包环境：[qa,online], 不传默认为qa。</div><div class="line"> noemail  不发邮件，默认要发送。</div></pre></td></tr></table></figure>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>作为一名安卓开发人员，打包是工作内容之一，尤其在测试阶段，频率还很高。为了节约时间和提高效率，就想着能否使用Python来打包，于是就尝试着实现了该想法，才有了这篇文章。由于我对Python不是很熟悉，可能实现还有不少问题，如果您有好的建议，请告诉我；有如何问题都可联系我，与君共勉~</p>
-<h2 id="推荐"><a href="#推荐" class="headerlink" title="推荐"></a>推荐</h2><ul>
-<li><a href="https://github.com/Meituan-Dianping/walle">Android打包神器walle</a></li>
+<h2 id="参考、推荐"><a href="#参考、推荐" class="headerlink" title="参考、推荐"></a>参考、推荐</h2><ul>
+<li><a href="http://www.runoob.com/python/python-command-line-arguments.html" target="_blank" rel="external">python命令行参数使用</a></li>
+<li><a href="https://github.com/Meituan-Dianping/walle">Androd打包神器walle</a></li>
 <li><a href="">Jenkins集成环境</a></li>
 </ul>
 
@@ -459,8 +461,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/19/resume/" rel="next" title="我的简历">
-                <i class="fa fa-chevron-left"></i> 我的简历
+              <a href="/2018/03/19/resume/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
               </a>
             
           </div>
@@ -557,7 +559,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -579,7 +581,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -640,7 +642,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#说下思路"><span class="nav-number">1.</span> <span class="nav-text">说下思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最终效果"><span class="nav-number">2.</span> <span class="nav-text">最终效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现"><span class="nav-number">3.</span> <span class="nav-text">代码实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何打包（终端执行以下命令）"><span class="nav-number">4.</span> <span class="nav-text">如何打包（终端执行以下命令）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">5.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推荐"><span class="nav-number">6.</span> <span class="nav-text">推荐</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#说下思路"><span class="nav-number">1.</span> <span class="nav-text">说下思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最终效果"><span class="nav-number">2.</span> <span class="nav-text">最终效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现"><span class="nav-number">3.</span> <span class="nav-text">代码实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何打包（终端执行以下命令）"><span class="nav-number">4.</span> <span class="nav-text">如何打包（终端执行以下命令）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打包命令提示（5-26更新）"><span class="nav-number">5.</span> <span class="nav-text">打包命令提示（5.26更新）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">6.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考、推荐"><span class="nav-number">7.</span> <span class="nav-text">参考、推荐</span></a></li></ol></div>
             
 
           </div>
