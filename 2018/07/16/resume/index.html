@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="数据结构和算法有多重要？打个比方，在金庸的武侠世界里，数据结构和算法它就像一门上乘的内功心法，一旦掌握了它，各种武功信手拈来（张无忌就是典型的例子）；对于程序员来说，它能决定你在技术这条道路上能走多远。 现在去大公司面试，都会有算法题。本文主要涉及数组、字符串、List这几个数据结构，我们一起来分析和解答几道常见算法题，后面我会分享一下我的学习心得和一些解题套路。 题目1：翻转句子 题目： 给定一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="玉刚写作平台-常见算法之(Array、String、List)">
+<meta property="og:url" content="https://github.com/yangjiantao/2018/07/16/resume/index.html">
+<meta property="og:site_name" content="Jiantao">
+<meta property="og:description" content="数据结构和算法有多重要？打个比方，在金庸的武侠世界里，数据结构和算法它就像一门上乘的内功心法，一旦掌握了它，各种武功信手拈来（张无忌就是典型的例子）；对于程序员来说，它能决定你在技术这条道路上能走多远。 现在去大公司面试，都会有算法题。本文主要涉及数组、字符串、List这几个数据结构，我们一起来分析和解答几道常见算法题，后面我会分享一下我的学习心得和一些解题套路。 题目1：翻转句子 题目： 给定一">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2217296-4172ebdd960979ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-07-17T02:32:24.001Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="玉刚写作平台-常见算法之(Array、String、List)">
+<meta name="twitter:description" content="数据结构和算法有多重要？打个比方，在金庸的武侠世界里，数据结构和算法它就像一门上乘的内功心法，一旦掌握了它，各种武功信手拈来（张无忌就是典型的例子）；对于程序员来说，它能决定你在技术这条道路上能走多远。 现在去大公司面试，都会有算法题。本文主要涉及数组、字符串、List这几个数据结构，我们一起来分析和解答几道常见算法题，后面我会分享一下我的学习心得和一些解题套路。 题目1：翻转句子 题目： 给定一">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2217296-4172ebdd960979ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://github.com/yangjiantao/2018/07/16/resume/"/>
+
+
+
+
+
+  <title>玉刚写作平台-常见算法之(Array、String、List) | Jiantao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?5946086a98998af8f48b6192f72cca2c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jiantao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">android developer</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/yangjiantao/2018/07/16/resume/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiantao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar_x225.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jiantao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">玉刚写作平台-常见算法之(Array、String、List)</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-16T19:28:46+08:00">
+                2018-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/DSAA/" itemprop="url" rel="index">
+                    <span itemprop="name">DSAA</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/07/16/resume/" class="leancloud_visitors" data-flag-title="玉刚写作平台-常见算法之(Array、String、List)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="数据结构和算法有多重要？"><a href="#数据结构和算法有多重要？" class="headerlink" title="数据结构和算法有多重要？"></a>数据结构和算法有多重要？</h3><p>打个比方，在金庸的武侠世界里，数据结构和算法它就像一门上乘的内功心法，一旦掌握了它，各种武功信手拈来（张无忌就是典型的例子）；<strong>对于程序员来说，它能决定你在技术这条道路上能走多远。</strong> 现在去大公司面试，都会有算法题。本文主要涉及数组、字符串、List这几个数据结构，我们一起来分析和解答几道常见算法题，后面我会分享一下我的学习心得和一些解题套路。</p>
+<h3 id="题目1：翻转句子"><a href="#题目1：翻转句子" class="headerlink" title="题目1：翻转句子"></a>题目1：翻转句子</h3><blockquote>
+<p>题目： 给定一个英文句子，每个单词之间都是由一个或多个空格隔开，请翻转句子中的单词顺序（包括空格的顺序），但单词内字符的顺序保持不变。例如输入”www google com “，则应输出” com google www”。 </p>
+</blockquote>
+<p>   如果你经常关注算法相关文章，这道题应该会比较熟悉，各种博客和书籍上都有出现，不熟悉也没关系，现在我们就一起来尝试解答下。要注意一下和网上流传的题目的不同点：每个单词之间都是由<strong>一个或多个空格隔开</strong>，而网上大多是单词间由空格分隔，<strong>有且只有一个空格。</strong></p>
+<h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><p>试想一下，如果将整个字符串翻转，结果是句子是反转了，但单词内的字符顺序也翻转了。如果要保证单词内顺序不变，只需要再将每个单词翻转一下就满足要求了。</p>
+<p>理一下思路：</p>
+<ul>
+<li>第一步翻转所有字符。比如翻转”www google com “中所有的字符得到” moc elgoog www”，可以看出不仅翻转了句子中单词的顺序，连单词内的字符顺序也翻转了。</li>
+<li>第二步再翻转每个单词中字符的顺序，就得到了” com google www”。这正是符合题目的输出。</li>
+</ul>
+<p>此思路的关键是：<strong>1. 实现一个函数/方法，翻转字符串中的一段。 2. 判断句子中的单词，注意空格。</strong> </p>
+<h4 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h4><ul>
+<li>功能测试：多个单词、1个单词、单词间只有一个空格、单词间有多个空格。</li>
+<li>特殊输入测试：空字符、字符串中只有空格、null对象（指针）。</li>
+</ul>
+<h4 id="编码实现"><a href="#编码实现" class="headerlink" title="编码实现"></a>编码实现</h4><ul>
+<li>Java代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @param chars 原字符串</div><div class="line"> * @param start 大于等于0</div><div class="line"> * @param end   小于 length</div><div class="line"> * @return</div><div class="line"> */</div><div class="line">private char[] v1_0_reverse(char[] chars, int start, int end) &#123;</div><div class="line"></div><div class="line">    // str 判断null， 索引有效值判断</div><div class="line">    if (chars == null || start &lt; 0 || end &gt;= chars.length || start &gt;= end) &#123;</div><div class="line">        return chars;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    while (start &lt; end) &#123;</div><div class="line">        // 收尾字符互换，直到替换完成。</div><div class="line">        char temp = chars[start];</div><div class="line">        chars[start] = chars[end];</div><div class="line">        chars[end] = temp;</div><div class="line">        start++;</div><div class="line">        end--;</div><div class="line">    &#125;</div><div class="line">    return chars;</div><div class="line">&#125;</div><div class="line"></div><div class="line">private String v1_0_solution(String sentence) &#123;</div><div class="line">    if (sentence == null || sentence.isEmpty()) &#123;</div><div class="line">        return sentence;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    int length = sentence.length();</div><div class="line">    // 第一步翻转所有字符</div><div class="line">    char[] chars = v1_0_reverse(sentence.toCharArray(), 0, length - 1);</div><div class="line">    System.out.println(new String(chars));</div><div class="line"></div><div class="line">    // 第二步翻转每个单词（重点：怎么找到单词）</div><div class="line">    int start = 0, end = 0;</div><div class="line">    while (start &lt; length) &#123;</div><div class="line">        if (chars[start] == &apos; &apos;) &#123;</div><div class="line">            // 遇到空格就向右边继续查找</div><div class="line">            start++;</div><div class="line">            end++;</div><div class="line">        &#125; else if (end == length || chars[end] == &apos; &apos;) &#123;</div><div class="line">            // 遇到空格或者已经到了字符串末尾，此时翻转找到的单词内部字符，这里需要注意end-1</div><div class="line">            chars = v1_0_reverse(chars, start, end - 1);</div><div class="line">            System.out.println(new String(chars));</div><div class="line">            // 重新制定检查索引start</div><div class="line">            start = end++;</div><div class="line">        &#125; else &#123;</div><div class="line">            // end加1，为了检查单词是否结束</div><div class="line">            end++;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return new String(chars);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>C++ 代码实现</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">// todo</div></pre></td></tr></table></figure>
+<p>如果你在面试的时候遇到这道题，并且很容易就想到了这个算法，有经验的面试官就会在这道题基础上加点难度，继续考查面试者。so，第二道题来了：</p>
+<blockquote>
+<p>题目：接上题，面试官继续提问，我们得到的” com google www”需要被用作一个URL的参数，所以这里需要的处理是去掉开头结尾的无效空格，并将两个单词中间的每一个空格都替换为”%20″。例如” com google www”应被转换为”com%20%20google%20www”，请给出转换函数。</p>
+</blockquote>
+<h4 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h4><ul>
+<li>第一步去掉收尾的无效空格；比如” com google www”去掉后得到”com google www”。</li>
+<li>第二步将两个单词中间的每一个空格都替换为”%20”。</li>
+</ul>
+<h4 id="测试用例-1"><a href="#测试用例-1" class="headerlink" title="测试用例"></a>测试用例</h4><ul>
+<li>功能测试：前后有无空格情况、中间一个或多个空格情况。</li>
+<li>特殊输入测试：空字符、字符串中只有空格、null对象（指针）。</li>
+</ul>
+<h4 id="编码实现-1"><a href="#编码实现-1" class="headerlink" title="编码实现"></a>编码实现</h4><ul>
+<li>Java代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line">private String v1_1_solution(String sentence) &#123;</div><div class="line">    if (sentence == null || sentence.isEmpty()) &#123;</div><div class="line">        return sentence;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // 去掉字符串收尾的空格</div><div class="line">    sentence = trim(sentence);</div><div class="line">    int len = sentence.length();</div><div class="line">    char[] chars = sentence.toCharArray();</div><div class="line">    int count = getSpaceCount(sentence);</div><div class="line">    int newLen = 2 * count + len;</div><div class="line">    // 扩容，内部使用System.arraycopy 方法实现。</div><div class="line">    chars = Arrays.copyOf(chars, newLen);</div><div class="line"></div><div class="line">    int index = len - 1;</div><div class="line">    int newIndex = newLen - 1;</div><div class="line">    while (index &gt;= 0 &amp;&amp; newIndex &gt; index) &#123;</div><div class="line">        if (chars[index] == &apos; &apos;) &#123;</div><div class="line">            chars[newIndex--] = &apos;0&apos;;</div><div class="line">            chars[newIndex--] = &apos;2&apos;;</div><div class="line">            chars[newIndex--] = &apos;%&apos;;</div><div class="line">        &#125; else &#123;</div><div class="line">            chars[newIndex--] = chars[index];</div><div class="line">        &#125;</div><div class="line">        index--;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return new String(chars);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 剔除字符串收尾的空格</div><div class="line"> *</div><div class="line"> * @param origin</div><div class="line"> * @return</div><div class="line"> */</div><div class="line">private String trim(String origin) &#123;</div><div class="line">    char[] chars = origin.toCharArray();</div><div class="line">    int length = chars.length;</div><div class="line">    int st = 0;</div><div class="line">    while (st &lt; length &amp;&amp; chars[st] == &apos; &apos;) &#123;</div><div class="line">        st++;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    while (st &lt; length &amp;&amp; chars[length - 1] == &apos; &apos;) &#123;</div><div class="line">        length--;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // 如果收尾有空格，就截取生成新的字符串</div><div class="line">    if (st &gt; 0 || length &lt; chars.length) &#123;</div><div class="line">        origin = new String(chars, st, (length - st));</div><div class="line">    &#125;</div><div class="line">    return origin;</div><div class="line">&#125;</div><div class="line"></div><div class="line">private int getSpaceCount(String sentence) &#123;</div><div class="line">    char[] chars = sentence.toCharArray();</div><div class="line">    int count = 0;</div><div class="line">    for (char c : chars) &#123;</div><div class="line">        if (c == &apos; &apos;) &#123;</div><div class="line">            count++;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return count;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>C++实现</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">// todo</div></pre></td></tr></table></figure>
+<h3 id="题目2：调整数组中元素顺序"><a href="#题目2：调整数组中元素顺序" class="headerlink" title="题目2：调整数组中元素顺序"></a>题目2：调整数组中元素顺序</h3><blockquote>
+<p>题目： 给定一个整数数组，请实现一个函数来调整数组中数字的顺序，使得所有奇数都位于偶数之前。</p>
+</blockquote>
+<h4 id="解题思路-2"><a href="#解题思路-2" class="headerlink" title="解题思路"></a>解题思路</h4><p>此题比较简单，我最先想到的解法是这样：我们维护两个指针(索引)，一个指针指向数组的第一个数字，称之为头指针，向右移动；一个指针指向最后一个数字，称之为尾指针，向左移动。</p>
+<p>这样，两个指针分别从数组的头部和尾部向数组的中间移动，如果第一个指针指向的数字是偶数而第二个指针指向的数字是奇数，我们就交换这两个数字。</p>
+<p>循环结束条件：两个指针重叠时，已完成排序，此时退出循环。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2217296-4172ebdd960979ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="v2_0画图分析过程"></p>
+<p>可以看出此算法，一次循环搞定，所以时间复杂度O(n), 由于在原数组上操作，所以空间复杂度O(1)。</p>
+<h4 id="测试用例-2"><a href="#测试用例-2" class="headerlink" title="测试用例"></a>测试用例</h4><ul>
+<li>功能测试：全是奇数、全是偶数、奇偶数存在但已排好序/未排好序。</li>
+<li>特殊输入测试： null对象、数组元素为0、有负数情况。</li>
+</ul>
+<h4 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h4><ul>
+<li>Java实现</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">private int[] v2_0_solution(int[] nums) &#123;</div><div class="line">     if (nums == null || nums.length &lt;= 1) &#123;</div><div class="line">         return nums;</div><div class="line">     &#125;</div><div class="line">     int st = 0;</div><div class="line">     int end = nums.length - 1;</div><div class="line"></div><div class="line">     while (st &lt; end) &#123;</div><div class="line">         // find even number</div><div class="line">         if (isOdd(nums[st])) &#123;</div><div class="line">             st++;// 奇数，索引右移</div><div class="line">         &#125; else if (!isOdd(nums[end])) &#123;</div><div class="line">             end--;// 偶数，索引左移</div><div class="line">         &#125; else &#123;</div><div class="line">             // 奇偶数互换</div><div class="line">             int temp = nums[st];</div><div class="line">             nums[st] = nums[end];</div><div class="line">             nums[end] = temp;</div><div class="line">             st++;</div><div class="line">             end--;</div><div class="line">         &#125;</div><div class="line">     &#125;</div><div class="line">     return nums;</div><div class="line"> &#125;</div><div class="line"></div><div class="line"> // 与1做按位运算，不为0就是奇数，反之为偶数</div><div class="line"> private boolean isOdd(int n) &#123;</div><div class="line">     return (n &amp; 1) != 0;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>C++实现</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">//判断是否为奇数</div><div class="line">bool IsOdd(int data)</div><div class="line">&#123;</div><div class="line">    return data &amp; 1 != 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//奇偶互换</div><div class="line">void OddEvenSort(int *pData, unsigned int length)</div><div class="line">&#123;</div><div class="line">    if (pData == NULL || length == 0)</div><div class="line">        return;</div><div class="line"></div><div class="line">    int *pBegin = pData;</div><div class="line">    int *pEnd = pData + length - 1;</div><div class="line"></div><div class="line">    while (pBegin &lt; pEnd)</div><div class="line">    &#123;</div><div class="line">        //如果pBegin指针指向的是奇数，正常，向右移</div><div class="line">        if (IsOdd(*pBegin))  </div><div class="line">        &#123;</div><div class="line">            pBegin++;</div><div class="line">        &#125;</div><div class="line">        //如果pEnd指针指向的是偶数，正常，向左移</div><div class="line">        else if (!IsOdd(*pEnd))</div><div class="line">        &#123;</div><div class="line">            pEnd--;</div><div class="line">        &#125;</div><div class="line">        else</div><div class="line">        &#123;</div><div class="line">            //否则都不正常，交换</div><div class="line">            //swap是STL库函数，声明为void swap(int&amp; a, int&amp; b);</div><div class="line">            swap(*pBegin, *pEnd);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>有经验的面试官又来了，题目难度需要升下级，😶~</p>
+<blockquote>
+<p>题目： 接上题，面试官会继续要求改造此函数使其能够保证原先输入数组的奇数内部顺序以及偶数内部顺序，即如果输入为{2，1，3，6，4，7，8，5}，则输出应为{1，3，7，5，2，6，4，8}，奇数之间的相互顺序和偶数之间的相互顺序不得被改变。</p>
+</blockquote>
+<h4 id="解题思路-3"><a href="#解题思路-3" class="headerlink" title="解题思路"></a>解题思路</h4><p>要想保证原数组内元素的顺序，可使用O(n)的temp数组空间按顺序缓存偶数，奇数依次放到原数组前面，最后将temp中偶数取出放在原数组后面。</p>
+<p>来画图理解下~</p>
+<h4 id="测试用例-3"><a href="#测试用例-3" class="headerlink" title="测试用例"></a>测试用例</h4><p>同上一题。这里就省略了。</p>
+<h4 id="编码-1"><a href="#编码-1" class="headerlink" title="编码"></a>编码</h4><ul>
+<li>Java实现</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">private int[] v2_1_solution(int[] nums) &#123;</div><div class="line">     if (nums == null || nums.length &lt;= 1) &#123;</div><div class="line">         return nums;</div><div class="line">     &#125;</div><div class="line"></div><div class="line">     int st = 0;</div><div class="line">     int evenCount = 0;</div><div class="line">     // 申请的内存空间temp</div><div class="line">     int[] temp = new int[nums.length];</div><div class="line">     for (int i = 0; i &lt; nums.length; i++) &#123;</div><div class="line">         if (!isOdd(nums[i])) &#123;</div><div class="line">             evenCount += 1;</div><div class="line">             temp[evenCount - 1] = nums[i];</div><div class="line">         &#125; else &#123;</div><div class="line">             if (st &lt; i) &#123;</div><div class="line">                 // 将奇数依次放在原数组前面</div><div class="line">                 nums[st] = nums[i];</div><div class="line">             &#125;</div><div class="line">             st++;</div><div class="line">         &#125;</div><div class="line">     &#125;</div><div class="line">     // 将temp中偶数取出放在原数组后面</div><div class="line">     if (evenCount &gt; 0) &#123;</div><div class="line">         for (int i = st; i &lt; nums.length; i++) &#123;</div><div class="line">             nums[i] = temp[i - st];</div><div class="line">         &#125;</div><div class="line">     &#125;</div><div class="line">     return nums;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>C++实现</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">// todo</div></pre></td></tr></table></figure>
+<h3 id="题目3：利用数组实现一个简易版的List"><a href="#题目3：利用数组实现一个简易版的List" class="headerlink" title="题目3：利用数组实现一个简易版的List"></a>题目3：利用数组实现一个简易版的List</h3><blockquote>
+<p>题目：请利用数组实现一个简易版的List，需要实现poll和push两个接口，前者为移除并获得队头元素，后者为向队尾添加一个元素，并要求能够自动扩容。</p>
+</blockquote>
+<h4 id="解题思路-4"><a href="#解题思路-4" class="headerlink" title="解题思路"></a>解题思路</h4><p>此题关键是在怎么实现poll和push两个接口上。</p>
+<ul>
+<li>poll（获取并移动对头元素）：移动数组并置空最后一个元素。</li>
+<li>push（添加元素）：按索引添加到数组中，size大于数组长度就先扩容。</li>
+</ul>
+<h4 id="测试用例-4"><a href="#测试用例-4" class="headerlink" title="测试用例"></a>测试用例</h4><ul>
+<li>功能测试： 添加、移除元素</li>
+<li>特殊测试： 添加大量数据（测试扩容）、移除所有元素、null数据</li>
+</ul>
+<h4 id="编码-2"><a href="#编码-2" class="headerlink" title="编码"></a>编码</h4><ul>
+<li>Java实现</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line">private static final int DEFAULT_CAPACITY = 16;</div><div class="line">private Object[] elementData;</div><div class="line">// 实际存储的元素数量</div><div class="line">//  The size of the List (the number of elements it contains).</div><div class="line">private int size;</div><div class="line"></div><div class="line">public CustomList() &#123;</div><div class="line">    elementData = new Object[DEFAULT_CAPACITY];</div><div class="line">&#125;</div><div class="line"></div><div class="line">public CustomList(int initialCapacity) &#123;</div><div class="line">    if (initialCapacity &gt; 0) &#123;</div><div class="line">        this.elementData = new Object[initialCapacity];</div><div class="line">    &#125; else if (initialCapacity == 0) &#123;</div><div class="line">        this.elementData = new Object[DEFAULT_CAPACITY];</div><div class="line">    &#125; else &#123;</div><div class="line">        throw new IllegalArgumentException(&quot;Illegal Capacity: &quot; +</div><div class="line">                initialCapacity);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 移除并获得队头元素</div><div class="line"> *</div><div class="line"> * @return</div><div class="line"> */</div><div class="line">public Object poll() &#123;</div><div class="line">    if (size &lt;= 0)&#123;</div><div class="line">        throw new IndexOutOfBoundsException(&quot; list is empty .&quot;);</div><div class="line">        &#125;</div><div class="line">    // 获取队头第一个元素</div><div class="line">    Object oldValue = elementData[0];</div><div class="line"></div><div class="line">    // 数组元素左移一位 &amp; 最后一位元素置空</div><div class="line">    System.arraycopy(elementData, 1, elementData, 0, size - 1);</div><div class="line">    elementData[--size] = null; // clear to let GC do its work</div><div class="line"></div><div class="line">    return oldValue;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 向队尾添加一个元素</div><div class="line"> *</div><div class="line"> * @param item</div><div class="line"> */</div><div class="line">public void push(Object item) &#123;</div><div class="line">    ensureExplicitCapacity(size + 1);  // Increments modCount!!</div><div class="line">    elementData[size++] = item;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@Override</div><div class="line">public String toString() &#123;</div><div class="line">    return Arrays.toString(elementData);</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 这里扩容参考的ArrayList，具体实现请点击文末源代码链接前往查看。</div><div class="line">private void ensureExplicitCapacity(int minCapacity) &#123;</div><div class="line">    // 期望的最小容量大于现有数组的长度，则进行扩容</div><div class="line">    if (minCapacity - elementData.length &gt; 0)</div><div class="line">        grow(minCapacity);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>C++实现</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">// todo</div></pre></td></tr></table></figure>
+<h3 id="题目4：数组中出现次数超过一半的数"><a href="#题目4：数组中出现次数超过一半的数" class="headerlink" title="题目4：数组中出现次数超过一半的数"></a>题目4：数组中出现次数超过一半的数</h3><blockquote>
+<p>题目： 一个整数数组中有一个数字出现的次数超过了数组长度的一半，请找出这个数字。如输入一个长度为9的数组{1，2，3，2，2，2，5，4，2}，由于2出现了5次，超过了数组长度的一半，因此应输出2。</p>
+</blockquote>
+<h4 id="解题思路-5"><a href="#解题思路-5" class="headerlink" title="解题思路"></a>解题思路</h4><p>如果我们将数组排序，那么排序后位于数组中间的的数字一定是那个出现次数超过数组长度一半的数字。</p>
+<h4 id="测试用例-5"><a href="#测试用例-5" class="headerlink" title="测试用例"></a>测试用例</h4><ul>
+<li>存在（或者不存在）次数超过数组长度一半的数。</li>
+<li>特殊用例： null、空元素、 只有一个数。<h4 id="编码-3"><a href="#编码-3" class="headerlink" title="编码"></a>编码</h4></li>
+<li>Java实现</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">// todo</div></pre></td></tr></table></figure>
+<ul>
+<li>C++ 实现</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">todo</div></pre></td></tr></table></figure>
+<p>有经验的面试官又来了，题目难度需要升下级，😶~</p>
+<blockquote>
+<p>题目：这个题目有很多变种，其中一个引申为输入的是一个对象数组，该对象无法比较大小，只能利用equals()方法比较是否相等，此时该如何解（若要用到O(n)的辅助空间，能否避免？）。</p>
+</blockquote>
+<h4 id="解题思路-6"><a href="#解题思路-6" class="headerlink" title="解题思路"></a>解题思路</h4><p>   数组中有一个元素出现的次数超过数组长度的一半，<strong>也就是说它出现的次数比其他所有元素出现次数的和还要多。</strong></p>
+<p>   因此我们可以考虑在遍历数组的时候保存两个值： 一个是数组中的一个元素， 一个是次数。当我们遍历到下一个元素的时候，如果下一个原色和我们之前保存的元素相等（equals返回true），则次数加1；如果下一个元素和我们之前保存的不相等，则次数减1。如果次数为0，我们需要保存下一个元素，并把次数设为1。由于我们要找的数字出现的次数比其他所有数字出现的次数之和还要多，那么要找的数字肯定是最后一次把次数设为1时对应的那个元素。</p>
+<p>此思路：空间复杂度O(1),时间复杂度O(n)。</p>
+<h4 id="编码-4"><a href="#编码-4" class="headerlink" title="编码"></a>编码</h4><ul>
+<li>Java实现</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line"> private Object v4_1_solution(Object[] objects) &#123;</div><div class="line">     if (objects == null || objects.length &lt; 1) &#123;</div><div class="line">         throw new IllegalArgumentException(&quot; array is empty. &quot;);</div><div class="line">     &#125;</div><div class="line">     // 假设第一个元素就是超过长度一半的那个</div><div class="line">     Object result = objects[0];</div><div class="line">     int times = 1;</div><div class="line"></div><div class="line">     // 从第二个元素开始遍历</div><div class="line">     for (int i = 1; i &lt; objects.length; i++) &#123;</div><div class="line">         if (times == 0) &#123;</div><div class="line">             // 重新设置</div><div class="line">             result = objects[i];</div><div class="line">             times = 1;</div><div class="line">         &#125; else if (objects[i].equals(result)) &#123;</div><div class="line">             times++;</div><div class="line">         &#125; else &#123;</div><div class="line">             times--;</div><div class="line">         &#125;</div><div class="line">     &#125;</div><div class="line">     if (checkMoreThanHalf(objects, result)) &#123;</div><div class="line">         return result;</div><div class="line">     &#125; else &#123;</div><div class="line">         throw new IllegalArgumentException(&quot; array is invalid &quot;);</div><div class="line">     &#125;</div><div class="line"> &#125;</div><div class="line"></div><div class="line"> private boolean checkMoreThanHalf(Object[] objects, Object obj) &#123;</div><div class="line">     int times = 0;</div><div class="line">     for (int i = 0; i &lt; objects.length; i++) &#123;</div><div class="line">         if (objects[i].equals(obj)) &#123;</div><div class="line">             times++;</div><div class="line">         &#125;</div><div class="line">     &#125;</div><div class="line">     return times * 2 &gt; objects.length;</div><div class="line"> &#125;</div><div class="line"></div><div class="line">// 测试类，重点在于实现了equals和hashcode方法。</div><div class="line"> private static class TestObject &#123;</div><div class="line">     String unique;</div><div class="line"></div><div class="line">     public TestObject(String unique) &#123;</div><div class="line">         this.unique = unique;</div><div class="line">     &#125;</div><div class="line"></div><div class="line">     @Override</div><div class="line">     public boolean equals(Object o) &#123;</div><div class="line">         if (this == o) return true;</div><div class="line">         if (o == null || getClass() != o.getClass()) return false;</div><div class="line"></div><div class="line">         TestObject that = (TestObject) o;</div><div class="line"></div><div class="line">         return unique != null ? unique.equals(that.unique) : that.unique == null;</div><div class="line">     &#125;</div><div class="line"></div><div class="line">     @Override</div><div class="line">     public int hashCode() &#123;</div><div class="line">         return unique != null ? unique.hashCode() : 0;</div><div class="line">     &#125;</div><div class="line"></div><div class="line">     @Override</div><div class="line">     public String toString() &#123;</div><div class="line">         return &quot;TestObject&#123;&quot; +</div><div class="line">                 &quot;unique=&apos;&quot; + unique + &apos;\&apos;&apos; +</div><div class="line">                 &apos;&#125;&apos;;</div><div class="line">     &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>C++实现</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">todo</div></pre></td></tr></table></figure>
+<h3 id="学习心得-amp-解题套路"><a href="#学习心得-amp-解题套路" class="headerlink" title="学习心得&amp;解题套路"></a>学习心得&amp;解题套路</h3><p>细心的读者可能发现了，文中解题过程大致是这样的：分析思路-&gt;测试用例-&gt;编码-&gt;调试并通过测试。</p>
+<ul>
+<li><p>关于解题思路（详见剑指offer）</p>
+<ul>
+<li>画图让抽象问题形象化</li>
+<li>举例让抽象问题具体化</li>
+<li>分解让复杂问题简单化</li>
+</ul>
+</li>
+<li><p>学习资源(信息大爆炸，好资源很重要)</p>
+<ul>
+<li>各种数据结构及算法书籍： 大话数据结构、剑指offer、算法导论等等。</li>
+<li>在线编程：<a href="https://leetcode.com/" target="_blank" rel="external">LeetCode</a>、<a href="https://www.nowcoder.com" target="_blank" rel="external">牛客网</a>、<a href="http://www.julyedu.com/" target="_blank" rel="external">七月在线</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li><p>怎样才能很好的掌握算法编程呢？ </p>
+<p>答曰：有事没事刷道题吧。勤加练习，终成大神。</p>
+</li>
+<li><p>哪有那么多算法题？刷完了咋办？</p>
+<p>答曰：文中提到了学习资源已经有很多题了而且在不断更新，大可不用担心没提的情况。同一道题建议练习2-3遍，以达到最佳学习效果。 </p>
+</li>
+</ul>
+<p>编程能力就像任何其他技能一样，也是一个可以通过刻意练习大大提高的。文中所有代码均编译运行并通过测试用例检查。代码获取请前往：<br>由于作者水平有限，文中错误之处在所难免，敬请读者指正。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Jiantao
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://github.com/yangjiantao/2018/07/16/resume/" title="玉刚写作平台-常见算法之(Array、String、List)">https://github.com/yangjiantao/2018/07/16/resume/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/16/常见算法面试题(Array:String:List)/" rel="next" title="玉刚写作平台-常见算法之(Array、String、List)">
+                <i class="fa fa-chevron-left"></i> 玉刚写作平台-常见算法之(Array、String、List)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar_x225.jpeg"
+                alt="Jiantao" />
+            
+              <p class="site-author-name" itemprop="name">Jiantao</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yangjiantao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:jiantaoyoung@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/888f58971e84" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-book"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://blog.csdn.net/JianTao_Yang" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-crosshairs"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据结构和算法有多重要？"><span class="nav-number">1.</span> <span class="nav-text">数据结构和算法有多重要？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目1：翻转句子"><span class="nav-number">2.</span> <span class="nav-text">题目1：翻转句子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解题思路"><span class="nav-number">2.1.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试用例"><span class="nav-number">2.2.</span> <span class="nav-text">测试用例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编码实现"><span class="nav-number">2.3.</span> <span class="nav-text">编码实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解题思路-1"><span class="nav-number">2.4.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试用例-1"><span class="nav-number">2.5.</span> <span class="nav-text">测试用例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编码实现-1"><span class="nav-number">2.6.</span> <span class="nav-text">编码实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目2：调整数组中元素顺序"><span class="nav-number">3.</span> <span class="nav-text">题目2：调整数组中元素顺序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解题思路-2"><span class="nav-number">3.1.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试用例-2"><span class="nav-number">3.2.</span> <span class="nav-text">测试用例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编码"><span class="nav-number">3.3.</span> <span class="nav-text">编码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解题思路-3"><span class="nav-number">3.4.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试用例-3"><span class="nav-number">3.5.</span> <span class="nav-text">测试用例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编码-1"><span class="nav-number">3.6.</span> <span class="nav-text">编码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目3：利用数组实现一个简易版的List"><span class="nav-number">4.</span> <span class="nav-text">题目3：利用数组实现一个简易版的List</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解题思路-4"><span class="nav-number">4.1.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试用例-4"><span class="nav-number">4.2.</span> <span class="nav-text">测试用例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编码-2"><span class="nav-number">4.3.</span> <span class="nav-text">编码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目4：数组中出现次数超过一半的数"><span class="nav-number">5.</span> <span class="nav-text">题目4：数组中出现次数超过一半的数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解题思路-5"><span class="nav-number">5.1.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试用例-5"><span class="nav-number">5.2.</span> <span class="nav-text">测试用例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编码-3"><span class="nav-number">5.3.</span> <span class="nav-text">编码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解题思路-6"><span class="nav-number">5.4.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编码-4"><span class="nav-number">5.5.</span> <span class="nav-text">编码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#学习心得-amp-解题套路"><span class="nav-number">6.</span> <span class="nav-text">学习心得&解题套路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiantao</span>
+
+  
+</div>
+
+<div class="powered-by">
+<i class="fa fa-users"></i><span id="busuanzi_container_site_uv">
+  访问用户: <span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+<span class="post-meta-divider">   |   </span>
+<div class="powered-by">
+<i class="fa fa-eye"></i><span id="busuanzi_container_site_pv">
+  访问量: <span id="busuanzi_value_site_pv"></span>
+</span>
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("TtBkE4yS0DgwwJ7ew5J8lC2i-gzGzoHsz", "OYl57QlnOB4NOSU5UWfyvV6h");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
