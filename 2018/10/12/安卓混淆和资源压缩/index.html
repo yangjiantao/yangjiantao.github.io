@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Android,statusBar," />
+  <meta name="keywords" content="Android,proguard," />
 
 
 
@@ -79,23 +79,18 @@
 
 
 
-<meta name="description" content="背景公司长期以来只有一套UI稿，而且是按照iOS标准来设计的，状态栏效果自然是白底黑字。无奈啊，不过没办法，所以想着怎么也得适配一下。经过调研后得知：Android5.0以上系统版本可以修改状态栏颜色，但是只有部分小米的MIUI、魅族的Flyme和Android6.0以上系统可以把状态栏文字和图标换成深色，其他的系统状态栏文字默认都是白色的，换成浅色背景的话字体和图标就看不到；所以我们适配的前提是">
-<meta name="keywords" content="Android,statusBar">
+<meta name="description" content="proguard开启混淆配置 12345678910111213141516android &amp;#123;    ...    buildTypes &amp;#123;        release &amp;#123;        	  // zipAlign可以让安装包中的资源按4字节对齐，这样可以减少应用在运行时的内存消耗。        	  zipAlignEnabled true">
+<meta name="keywords" content="Android,proguard">
 <meta property="og:type" content="article">
-<meta property="og:title" content="安卓状态栏适配技巧">
-<meta property="og:url" content="https://github.com/yangjiantao/2018/10/06/安卓状态栏适配技巧/index.html">
+<meta property="og:title" content="安卓混淆和资源压缩">
+<meta property="og:url" content="https://github.com/yangjiantao/2018/10/12/安卓混淆和资源压缩/index.html">
 <meta property="og:site_name" content="Jiantao">
-<meta property="og:description" content="背景公司长期以来只有一套UI稿，而且是按照iOS标准来设计的，状态栏效果自然是白底黑字。无奈啊，不过没办法，所以想着怎么也得适配一下。经过调研后得知：Android5.0以上系统版本可以修改状态栏颜色，但是只有部分小米的MIUI、魅族的Flyme和Android6.0以上系统可以把状态栏文字和图标换成深色，其他的系统状态栏文字默认都是白色的，换成浅色背景的话字体和图标就看不到；所以我们适配的前提是">
+<meta property="og:description" content="proguard开启混淆配置 12345678910111213141516android &amp;#123;    ...    buildTypes &amp;#123;        release &amp;#123;        	  // zipAlign可以让安装包中的资源按4字节对齐，这样可以减少应用在运行时的内存消耗。        	  zipAlignEnabled true">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2217296-9f3feb8c6360573b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2217296-dfe6bd4979224ddc.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2217296-e736d3ebd52ec5b7.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2217296-0bbf1b214ab0cb5e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-10-06T14:04:01.006Z">
+<meta property="og:updated_time" content="2018-10-12T15:47:59.903Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="安卓状态栏适配技巧">
-<meta name="twitter:description" content="背景公司长期以来只有一套UI稿，而且是按照iOS标准来设计的，状态栏效果自然是白底黑字。无奈啊，不过没办法，所以想着怎么也得适配一下。经过调研后得知：Android5.0以上系统版本可以修改状态栏颜色，但是只有部分小米的MIUI、魅族的Flyme和Android6.0以上系统可以把状态栏文字和图标换成深色，其他的系统状态栏文字默认都是白色的，换成浅色背景的话字体和图标就看不到；所以我们适配的前提是">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2217296-9f3feb8c6360573b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="安卓混淆和资源压缩">
+<meta name="twitter:description" content="proguard开启混淆配置 12345678910111213141516android &amp;#123;    ...    buildTypes &amp;#123;        release &amp;#123;        	  // zipAlign可以让安装包中的资源按4字节对齐，这样可以减少应用在运行时的内存消耗。        	  zipAlignEnabled true">
 
 
 
@@ -125,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/yangjiantao/2018/10/06/安卓状态栏适配技巧/"/>
+  <link rel="canonical" href="https://github.com/yangjiantao/2018/10/12/安卓混淆和资源压缩/"/>
 
 
 
 
 
-  <title>安卓状态栏适配技巧 | Jiantao</title>
+  <title>安卓混淆和资源压缩 | Jiantao</title>
   
 
 
@@ -288,7 +283,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/yangjiantao/2018/10/06/安卓状态栏适配技巧/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/yangjiantao/2018/10/12/安卓混淆和资源压缩/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jiantao">
@@ -305,7 +300,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">安卓状态栏适配技巧</h2>
+          <h2 class="post-title" itemprop="name headline">安卓混淆和资源压缩</h2>
         
 
         <div class="post-meta">
@@ -317,8 +312,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-06T21:56:12+08:00">
-                2018-10-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-12T21:56:12+08:00">
+                2018-10-12
               </time>
             
 
@@ -357,7 +352,7 @@
 
           
           
-             <span id="/2018/10/06/安卓状态栏适配技巧/" class="leancloud_visitors" data-flag-title="安卓状态栏适配技巧">
+             <span id="/2018/10/12/安卓混淆和资源压缩/" class="leancloud_visitors" data-flag-title="安卓混淆和资源压缩">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -388,77 +383,49 @@
       
 
       
-        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>公司长期以来只有一套UI稿，而且是按照iOS标准来设计的，状态栏效果自然是白底黑字。无奈啊，不过没办法，所以想着怎么也得适配一下。经过调研后得知：Android5.0以上系统版本可以修改状态栏颜色，但是只有部分小米的MIUI、魅族的Flyme和Android6.0以上系统可以把状态栏文字和图标换成深色，其他的系统状态栏文字默认都是白色的，换成浅色背景的话字体和图标就看不到；所以我们适配的前提是系统能将状态栏字体设置成深（黑）色。</p>
+        <h2 id="proguard"><a href="#proguard" class="headerlink" title="proguard"></a>proguard</h2><p><strong>开启混淆配置</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">android &#123;</div><div class="line">    ...</div><div class="line">    buildTypes &#123;</div><div class="line">        release &#123;</div><div class="line">        	  // zipAlign可以让安装包中的资源按4字节对齐，这样可以减少应用在运行时的内存消耗。</div><div class="line">        	  zipAlignEnabled true</div><div class="line">            // 压缩资源</div><div class="line">            shrinkResources true</div><div class="line">            // 开启混淆</div><div class="line">            minifyEnabled true</div><div class="line">            proguardFiles getDefaultProguardFile(&apos;proguard-android.txt&apos;),</div><div class="line">                    &apos;proguard-rules.pro&apos;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <a id="more"></a>
-<h2 id="我司App适配后效果对比"><a href="#我司App适配后效果对比" class="headerlink" title="我司App适配后效果对比"></a>我司App适配后效果对比</h2><table>
-<thead>
-<tr>
-<th>before</th>
-<th>after</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><img src="https://upload-images.jianshu.io/upload_images/2217296-9f3feb8c6360573b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></td>
-<td><img src="https://upload-images.jianshu.io/upload_images/2217296-dfe6bd4979224ddc.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></td>
-</tr>
-<tr>
-<td><img src="https://upload-images.jianshu.io/upload_images/2217296-e736d3ebd52ec5b7.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></td>
-<td><img src="https://upload-images.jianshu.io/upload_images/2217296-0bbf1b214ab0cb5e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></td>
-</tr>
-</tbody>
-</table>
-<h2 id="适配方案"><a href="#适配方案" class="headerlink" title="适配方案"></a>适配方案</h2><h3 id="状态栏浅色背景（比如白底黑字）"><a href="#状态栏浅色背景（比如白底黑字）" class="headerlink" title="状态栏浅色背景（比如白底黑字）"></a>状态栏浅色背景（比如白底黑字）</h3><ul>
-<li>安卓版本6.0及以上直接使用系统api，style里面配置。</li>
-<li>系统版本在4.4和6.0之间，特殊处理MIUI6+和Flyme4+；</li>
-<li>沉浸式和全屏模式需单独处理。</li>
-<li>其它情况不处理。（系统默认深色背景+白色字体。）</li>
+<h3 id="通用规则"><a href="#通用规则" class="headerlink" title="通用规则"></a>通用规则</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div></pre></td><td class="code"><pre><div class="line">#指定压缩级别</div><div class="line">-optimizationpasses 5</div><div class="line"></div><div class="line">#不跳过非公共的库的类成员</div><div class="line">-dontskipnonpubliclibraryclassmembers</div><div class="line"></div><div class="line">#混淆时采用的算法</div><div class="line">-optimizations !code/simplification/arithmetic,!field/*,!class/merging/*</div><div class="line"></div><div class="line">#把混淆类中的方法名也混淆了</div><div class="line">-useuniqueclassmembernames</div><div class="line"></div><div class="line">#优化时允许访问并修改有修饰符的类和类的成员 </div><div class="line">-allowaccessmodification</div><div class="line"></div><div class="line">#将文件来源重命名为“SourceFile”字符串</div><div class="line">-renamesourcefileattribute SourceFile</div><div class="line">#保留行号</div><div class="line">-keepattributes SourceFile,LineNumberTable</div><div class="line">#保持泛型</div><div class="line">-keepattributes Signature</div><div class="line"></div><div class="line">#保持所有实现 Serializable 接口的类成员</div><div class="line">-keepclassmembers class * implements java.io.Serializable &#123;</div><div class="line">    static final long serialVersionUID;</div><div class="line">    private static final java.io.ObjectStreamField[] serialPersistentFields;</div><div class="line">    private void writeObject(java.io.ObjectOutputStream);</div><div class="line">    private void readObject(java.io.ObjectInputStream);</div><div class="line">    java.lang.Object writeReplace();</div><div class="line">    java.lang.Object readResolve();</div><div class="line">&#125;</div><div class="line"></div><div class="line">#Fragment不需要在AndroidManifest.xml中注册，需要额外保护下</div><div class="line">-keep public class * extends android.support.v4.app.Fragment</div><div class="line">-keep public class * extends android.app.Fragment</div><div class="line"></div><div class="line"></div><div class="line"># For native methods, see http://proguard.sourceforge.net/manual/examples.html#native</div><div class="line">-keepclasseswithmembernames class * &#123;</div><div class="line">    native &lt;methods&gt;;</div><div class="line">&#125;</div><div class="line"></div><div class="line"># keep setters in Views so that animations can still work.</div><div class="line"># see http://proguard.sourceforge.net/manual/examples.html#beans</div><div class="line">-keepclassmembers public class * extends android.view.View &#123;</div><div class="line">   void set*(***);</div><div class="line">   *** get*();</div><div class="line">&#125;</div><div class="line"></div><div class="line"># We want to keep methods in Activity that could be used in the XML attribute onClick</div><div class="line">-keepclassmembers class * extends android.app.Activity &#123;</div><div class="line">   public void *(android.view.View);</div><div class="line">&#125;</div><div class="line"></div><div class="line"># For enumeration classes, see http://proguard.sourceforge.net/manual/examples.html#enumerations</div><div class="line">-keepclassmembers enum * &#123;</div><div class="line">    public static **[] values();</div><div class="line">    public static ** valueOf(java.lang.String);</div><div class="line">&#125;</div><div class="line"></div><div class="line">-keepclassmembers class * implements android.os.Parcelable &#123;</div><div class="line"> # 保持Parcelable不被混淆  </div><div class="line">  public static final android.os.Parcelable$Creator CREATOR;</div><div class="line">&#125;</div><div class="line"></div><div class="line">-keepclassmembers class **.R$* &#123;</div><div class="line">    public static &lt;fields&gt;;</div><div class="line">&#125;</div><div class="line"></div><div class="line"># The support library contains references to newer platform versions.</div><div class="line"># Don&apos;t warn about those in case this app is linking against an older</div><div class="line"># platform version.  We know about them, and they are safe.</div><div class="line">-dontwarn android.support.**</div><div class="line"></div><div class="line"># Understand the @Keep support annotation.</div><div class="line">-keep class android.support.annotation.Keep</div><div class="line"></div><div class="line">-keep @android.support.annotation.Keep class * &#123;*;&#125;</div><div class="line"></div><div class="line">-keepclasseswithmembers class * &#123;</div><div class="line">    @android.support.annotation.Keep &lt;methods&gt;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">-keepclasseswithmembers class * &#123;</div><div class="line">    @android.support.annotation.Keep &lt;fields&gt;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">-keepclasseswithmembers class * &#123;</div><div class="line">    @android.support.annotation.Keep &lt;init&gt;(...);</div><div class="line">&#125;</div><div class="line"></div><div class="line"># 保持测试相关的代码</div><div class="line">-dontnote junit.framework.**</div><div class="line">-dontnote junit.runner.**</div><div class="line">-dontwarn android.test.**</div><div class="line">-dontwarn android.support.test.**</div><div class="line">-dontwarn org.junit.**</div></pre></td></tr></table></figure>
+<h3 id="哪些需要添加keep规则"><a href="#哪些需要添加keep规则" class="headerlink" title="哪些需要添加keep规则"></a>哪些需要添加keep规则</h3><ul>
+<li>三方库</li>
+<li>反射代码</li>
+<li>JNI native代码</li>
+<li>webview js注入方法相关类</li>
+<li></li>
 </ul>
-<h3 id="状态栏深色背景（能明显看到状态栏白色字体）"><a href="#状态栏深色背景（能明显看到状态栏白色字体）" class="headerlink" title="状态栏深色背景（能明显看到状态栏白色字体）"></a>状态栏深色背景（能明显看到状态栏白色字体）</h3><blockquote>
-<p>由于系统状态栏上字体默认就是白色的，只需更改背景色就能完成适配。</p>
-</blockquote>
+<h3 id="自定义规则及语法"><a href="#自定义规则及语法" class="headerlink" title="自定义规则及语法"></a>自定义规则及语法</h3><ul>
+<li>不混淆某个类</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-keep public class name.huihui.example.Test &#123; *; &#125;</div></pre></td></tr></table></figure>
 <ul>
-<li>系统版本5.0及以上使用系统API设置状态栏颜色。</li>
-<li>系统版本为4.4，使用<strong>WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS</strong>属性，伪造一个状态栏高度的view并设置其背景色。</li>
-<li>沉浸式和全屏模式需单独处理。</li>
+<li>不混淆某个包所有的类</li>
 </ul>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><blockquote>
-<p>下面代码就以状态栏浅色背景为例作简单示范；状态栏为深色背景时较简单，读者可根据文末提供的代码参考，自行完成适配。</p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-keep class name.huihui.test.** &#123; *; &#125;</div></pre></td></tr></table></figure>
 <ul>
-<li>普通页面适配（逻辑建议放在BaseActivity中，特殊页面覆盖其方法实现即可）</li>
+<li>不混淆某个类的子类</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">// BaseActivity中定义方法</div><div class="line">    /**</div><div class="line">     * 配置沉浸式模式</div><div class="line">     */</div><div class="line">    protected void configImmersiveMode()&#123;</div><div class="line">        ImmersiveModeUtil.setDefaultImmersiveMode(this);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    </div><div class="line">// ImmersiveModeUtil 工具类</div><div class="line">    /**</div><div class="line">     * App默认的沉浸式默认</div><div class="line">     *</div><div class="line">     * @param activity</div><div class="line">     */</div><div class="line">    public static void setDefaultImmersiveMode(@NonNull Activity activity) &#123;</div><div class="line">        // 设置状态栏和darkMode，如果设置成功，则设置状态栏背景为白色即可。</div><div class="line">        final boolean darkMode = setStatusBarDarkMode(activity, true);</div><div class="line">        if (darkMode) &#123;</div><div class="line">            setStatusBarBgColor(activity, Color.WHITE);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">     /**</div><div class="line">     * 先判断MIUI系统，然后Flyme，最后主流系统</div><div class="line">     *</div><div class="line">     * @param activity</div><div class="line">     * @param isFontColorDark 深色字体(Light)模式</div><div class="line">     * @return 是否设置成功</div><div class="line">     */</div><div class="line">    @TargetApi(Build.VERSION_CODES.M)</div><div class="line">    public static boolean setStatusBarDarkMode(@NonNull Activity activity, boolean isFontColorDark) &#123;</div><div class="line">        boolean result = setMIUIStatusBarDarkIcon(activity, isFontColorDark);</div><div class="line">        if (!result) &#123;</div><div class="line">            result = setMeizuStatusBarDarkIcon(activity, isFontColorDark);</div><div class="line">            if (!result) &#123;</div><div class="line">                result = setCommonStatusBarDarkMode(activity, isFontColorDark);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        if (result) &#123;</div><div class="line">            currentStatusBarStyle = isFontColorDark ? 2 : 1;</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p>以上代码，重点在于setStatusBarDarkMode()方法逻辑。先解释下参数<strong>isFontColorDark</strong>的意思，<strong>true表示状态栏中字体和icon显示为深色（黑色），false则显示成白色</strong>（也就是系统默认样式）。这里可以看到，<strong>在setStatusBarDarkMode()方法中，先设置MIUI系统，如果失败，继续设置魅族系统，如果又失败，就调用6.0以上官方API；其中任何一个方法成功则直接返回。</strong> 再看setDefaultImmersiveMode()方法，只有在设置darkMode返回成功的情况下才设置状态栏背景为白色；换句话说，如果系统不支持darkMode,则放弃适配。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-keep public class * extends name.huihui.example.Test &#123; *; &#125;</div></pre></td></tr></table></figure>
 <ul>
-<li>状态栏背景全透明、沉浸式和全屏模式等处理<blockquote>
-<p>这种情况只需调用setSystemUiVisibility()方法就能搞定，状态栏背景设置官方5.0也有api支持，4.4系统可添加 WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS亦能实现。</p>
-</blockquote>
-</li>
+<li>不混淆所有类名中包含了“model”的类及其成员</li>
 </ul>
-<p>这里就不贴代码了，具体可参看文末提供的demo工程代码。</p>
-<p>注意点：</p>
-<ol>
-<li>如果内容区域为全屏(显示到状态栏下面)，建议使用paddingTop一个状态栏高度的view来实现。如果界面中没有输入框，也可使用<code>android:fitsSystemWindows=&quot;true&quot;</code>属性适配。</li>
-</ol>
-<h2 id="全屏模式下的问题及解决办法"><a href="#全屏模式下的问题及解决办法" class="headerlink" title="全屏模式下的问题及解决办法"></a>全屏模式下的问题及解决办法</h2><ul>
-<li>问题1：显示对话框导致状态栏或虚拟导航栏UI异常<ul>
-<li>办法1：dialog显示前设置FLAG_NOT_FOCUSABLE，显示后清除改标识。</li>
-<li>办法2：监听Dialog的onDismiss事件，重新恢复全屏。</li>
-</ul>
-</li>
-</ul>
-<p>参考：<a href="https://stackoverflow.com/questions/22794049/how-do-i-maintain-the-immersive-mode-in-dialogs/23207365#23207365" target="_blank" rel="external">how-do-i-maintain-the-immersive-mode-in-dialogs</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-keep public class **.*model*.** &#123;*;&#125;</div></pre></td></tr></table></figure>
 <ul>
-<li>问题2：全屏模式下，输入框弹出时，ajustResize无效</li>
+<li>不混淆某个接口的实现</li>
 </ul>
-<p>参考：<a href="https://stackoverflow.com/questions/7417123/android-how-to-adjust-layout-in-full-screen-mode-when-softkeyboard-is-visible/19494006#19494006" target="_blank" rel="external">android-how-to-adjust-layout-in-full-screen-mode-when-softkeyboard-is-visible</a></p>
-<p><a href="https://github.com/yangjiantao/AndroidUiKit/blob/master/uikit/src/main/java/io/jiantao/android/uikit/util/ImmersiveModeUtil.java">demo源码已上传github</a>，如果对你有帮助，欢迎star~</p>
-<h2 id="推荐阅读"><a href="#推荐阅读" class="headerlink" title="推荐阅读"></a>推荐阅读</h2><ul>
-<li><a href="https://github.com/googlesamples/android-AdvancedImmersiveMode/blob/master/Application/src/main/java/com/example/android/advancedimmersivemode/AdvancedImmersiveModeFragment.java">GoogleSamples-ImmersiveMode</a></li>
-<li><a href="https://blog.csdn.net/guolin_blog/article/details/51763825" target="_blank" rel="external">安卓状态栏微技巧</a></li>
-<li><a href="https://www.jianshu.com/p/6ebc25b9306e" target="_blank" rel="external">安卓状态栏白底黑字</a></li>
-<li><a href="http://www.miui.com/thread-8946673-1-1.html" target="_blank" rel="external">小米系统修改说明</a></li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-keep class * implements name.huihui.example.TestInterface &#123; *; &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>不混淆某个类的构造方法</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">-keepclassmembers class name.huihui.example.Test &#123; </div><div class="line"></div><div class="line">  &lt;init&gt;; #匹配所有构造器</div><div class="line">  &lt;fields&gt;;#匹配所有域</div><div class="line">  &lt;methods&gt;;#匹配所有方法&#125;</div><div class="line">  </div><div class="line">  public void test(java.lang.String); # 特定方法</div><div class="line">  public &lt;methods&gt;;#保持该类下所有的共有方法不被混淆</div><div class="line">  public *;#保持该类下所有的共有内容不被混淆</div><div class="line">  private &lt;methods&gt;;#保持该类下所有的私有方法不被混淆</div><div class="line">  private *;#保持该类下所有的私有内容不被混淆</div><div class="line">  public &lt;init&gt;(java.lang.String);#保持该类的String类型的构造方法</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>不混淆某个类的内部类</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-keep class name.huihui.example.Test$* &#123;</div><div class="line">      *;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="keep-资源-参考下面官方文档"><a href="#keep-资源-参考下面官方文档" class="headerlink" title="keep 资源 参考下面官方文档"></a>keep 资源 参考下面官方文档</h2><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://mp.weixin.qq.com/s/5n9j-59o8D5ByvZQ2INddQ" target="_blank" rel="external">https://mp.weixin.qq.com/s/5n9j-59o8D5ByvZQ2INddQ</a></li>
+<li><a href="https://mp.weixin.qq.com/s/7NaBIaE7-YRHLzrYPqmTMw" target="_blank" rel="external">https://mp.weixin.qq.com/s/7NaBIaE7-YRHLzrYPqmTMw</a></li>
+<li><a href="https://developer.android.com/studio/build/shrink-code#keep-resources" target="_blank" rel="external">https://developer.android.com/studio/build/shrink-code#keep-resources</a></li>
 </ul>
 
       
@@ -480,7 +447,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://github.com/yangjiantao/2018/10/06/安卓状态栏适配技巧/" title="安卓状态栏适配技巧">https://github.com/yangjiantao/2018/10/06/安卓状态栏适配技巧/</a>
+    <a href="https://github.com/yangjiantao/2018/10/12/安卓混淆和资源压缩/" title="安卓混淆和资源压缩">https://github.com/yangjiantao/2018/10/12/安卓混淆和资源压缩/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -497,7 +464,7 @@
           
             <a href="/tags/Android/" rel="tag"># Android</a>
           
-            <a href="/tags/statusBar/" rel="tag"># statusBar</a>
+            <a href="/tags/proguard/" rel="tag"># proguard</a>
           
         </div>
       
@@ -510,8 +477,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/16/常见算法面试题(Array:String:List)/" rel="next" title="玉刚写作平台-常见算法之(Array、String、List)">
-                <i class="fa fa-chevron-left"></i> 玉刚写作平台-常见算法之(Array、String、List)
+              <a href="/2018/10/11/得到精品课《如何成为有效学习的高手》学习笔记/" rel="next" title="得到精品课《如何成为有效学习的高手》学习笔记">
+                <i class="fa fa-chevron-left"></i> 得到精品课《如何成为有效学习的高手》学习笔记
               </a>
             
           </div>
@@ -519,10 +486,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/11/得到精品课《如何成为有效学习的高手》学习笔记/" rel="prev" title="得到精品课《如何成为有效学习的高手》学习笔记">
-                得到精品课《如何成为有效学习的高手》学习笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -691,7 +654,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我司App适配后效果对比"><span class="nav-number">2.</span> <span class="nav-text">我司App适配后效果对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#适配方案"><span class="nav-number">3.</span> <span class="nav-text">适配方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#状态栏浅色背景（比如白底黑字）"><span class="nav-number">3.1.</span> <span class="nav-text">状态栏浅色背景（比如白底黑字）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#状态栏深色背景（能明显看到状态栏白色字体）"><span class="nav-number">3.2.</span> <span class="nav-text">状态栏深色背景（能明显看到状态栏白色字体）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现"><span class="nav-number">3.3.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全屏模式下的问题及解决办法"><span class="nav-number">4.</span> <span class="nav-text">全屏模式下的问题及解决办法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推荐阅读"><span class="nav-number">5.</span> <span class="nav-text">推荐阅读</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#proguard"><span class="nav-number">1.</span> <span class="nav-text">proguard</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通用规则"><span class="nav-number">1.1.</span> <span class="nav-text">通用规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#哪些需要添加keep规则"><span class="nav-number">1.2.</span> <span class="nav-text">哪些需要添加keep规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义规则及语法"><span class="nav-number">1.3.</span> <span class="nav-text">自定义规则及语法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#keep-资源-参考下面官方文档"><span class="nav-number">2.</span> <span class="nav-text">keep 资源 参考下面官方文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
