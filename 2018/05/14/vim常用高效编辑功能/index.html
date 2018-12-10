@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Jiantao">
 <meta property="og:description" content="vim常用高效编辑功能使用方式记录。 多文件编辑 打开另外一个文件  :edit fileName  打开多个文件   vim file1 file2 file3  文件间切换    :next , :last, : previous, :first">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-28T08:23:35.231Z">
+<meta property="og:updated_time" content="2018-12-10T06:46:26.617Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vim常用高效编辑功能">
 <meta name="twitter:description" content="vim常用高效编辑功能使用方式记录。 多文件编辑 打开另外一个文件  :edit fileName  打开多个文件   vim file1 file2 file3  文件间切换    :next , :last, : previous, :first">
@@ -384,7 +384,7 @@
 
       
         <p>vim常用高效编辑功能使用方式记录。</p>
-<h2 id="多文件编辑"><a href="#多文件编辑" class="headerlink" title="多文件编辑"></a>多文件编辑</h2><ul>
+<h3 id="多文件编辑"><a href="#多文件编辑" class="headerlink" title="多文件编辑"></a>多文件编辑</h3><ul>
 <li><p>打开另外一个文件 </p>
 <p><strong>:edit fileName</strong></p>
 </li>
@@ -396,7 +396,7 @@
 </li>
 </ul>
 <a id="more"></a>
-<h2 id="分隔窗口"><a href="#分隔窗口" class="headerlink" title="分隔窗口"></a>分隔窗口</h2><ul>
+<h3 id="分隔窗口"><a href="#分隔窗口" class="headerlink" title="分隔窗口"></a>分隔窗口</h3><ul>
 <li><p>多窗口方式打个文件</p>
 <p>  <strong>:split/vsplit file,</strong></p>
 </li>
@@ -410,7 +410,7 @@
 <p>  <strong>:qall(退出)， :wall(保存)， :wqall(保存退出),   :qall!(强制退出)</strong></p>
 </li>
 </ul>
-<h2 id="做大修改"><a href="#做大修改" class="headerlink" title="做大修改"></a>做大修改</h2><ul>
+<h3 id="做大修改"><a href="#做大修改" class="headerlink" title="做大修改"></a>做大修改</h3><ul>
 <li><p><strong>记录和回放命令</strong>：三步走</p>
 <ul>
 <li>q{register}, q+寄存器名（a-z字母）</li>
@@ -443,9 +443,57 @@
 </ul>
 </li>
 </ul>
-<h2 id="命令行编辑"><a href="#命令行编辑" class="headerlink" title="命令行编辑"></a>命令行编辑</h2><ul>
+<h3 id="命令行编辑"><a href="#命令行编辑" class="headerlink" title="命令行编辑"></a>命令行编辑</h3><blockquote>
+<p>vim编辑器中使用<strong>:、/、 ?</strong>等进入命令行模式。</p>
+</blockquote>
+<ul>
 <li>移动： <strong>Ctrl+B</strong> 行首、<strong>Ctrl+E</strong> 行尾</li>
 <li>删除： <strong>Ctrl+w</strong>删除光标签整个单词，<strong>Ctrl+u</strong>删除命令行所以文字</li>
+</ul>
+<h3 id="挂起和继续"><a href="#挂起和继续" class="headerlink" title="挂起和继续"></a>挂起和继续</h3><ul>
+<li>挂起： CTRL+Z ,将vim挂起并让你回到启动Vim时的shell里。</li>
+<li>继续： fg， 从shell回到之前挂起的vim。</li>
+</ul>
+<h3 id="寻找要编辑的文件"><a href="#寻找要编辑的文件" class="headerlink" title="寻找要编辑的文件"></a>寻找要编辑的文件</h3><blockquote>
+<p>强大的查找及跳转功能。</p>
+</blockquote>
+<h4 id="文件浏览器"><a href="#文件浏览器" class="headerlink" title="文件浏览器"></a>文件浏览器</h4><ul>
+<li><p>打开文件浏览器 <strong>:edit .</strong></p>
+<ul>
+<li><strong>F1</strong> 打开帮助文档</li>
+<li><strong>-</strong> 进入上一级目录</li>
+<li>移动光标+enter键打开对应文件或目录。</li>
+<li>CTRL-O 返回</li>
+<li>o 横向分割窗口并显示文件 </li>
+<li>v 竖向分割窗口并显示文件</li>
+<li>s 切换排序规则</li>
+<li>D 删除光标下文件，有确认提示。</li>
+</ul>
+</li>
+<li><p>查找文件</p>
+<ul>
+<li>光标移动到文件名上，键入：<strong>gf 或者 CTRL-W</strong> f(新窗口中打开)，vim会找到并打开该文件</li>
+<li>如果文件名不在编辑的文件里，可使用 <strong>:find xxxFileName 或者 :sfind xxxFileName</strong>(新窗口中打开)</li>
+</ul>
+</li>
+</ul>
+<h3 id="编辑特殊的文件"><a href="#编辑特殊的文件" class="headerlink" title="编辑特殊的文件"></a>编辑特殊的文件</h3><ul>
+<li>新建加密文件： <strong>vim -x file.txt</strong></li>
+<li>撤销文件密码： <strong>:set key=</strong></li>
+<li>给编辑中的文件加密 <strong>:X</strong></li>
+</ul>
+<h3 id="快速插入"><a href="#快速插入" class="headerlink" title="快速插入"></a>快速插入</h3><ul>
+<li>如果某个单词打错了，可以使用<strong>Ctrl+W</strong>来更正。</li>
+<li>如果想从头修改一行内容，可以使用<strong>Ctrl+U</strong>来删除光标与行首的字符。</li>
+<li><strong>Ctrl-A、Ctrl-@</strong> 重复一次插入。</li>
+</ul>
+<h3 id="查找命令及模式"><a href="#查找命令及模式" class="headerlink" title="查找命令及模式"></a>查找命令及模式</h3><blockquote>
+<p>查找支持正则表达式。</p>
+</blockquote>
+<ul>
+<li><p>忽略大小写</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">// ignore</div><div class="line">:set ignorecase</div><div class="line">// clear</div><div class="line">:set noignorecase</div><div class="line">// smart mode</div><div class="line">:set ignorecase smartcase</div><div class="line"></div><div class="line">// 单个模式控制\c（忽略）和\C（大小写敏感）</div><div class="line">\CWord Word</div><div class="line">\cword word，Word，WORD，WoRd，等。</div></pre></td></tr></table></figure>
+</li>
 </ul>
 
       
@@ -676,7 +724,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#多文件编辑"><span class="nav-number">1.</span> <span class="nav-text">多文件编辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分隔窗口"><span class="nav-number">2.</span> <span class="nav-text">分隔窗口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#做大修改"><span class="nav-number">3.</span> <span class="nav-text">做大修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令行编辑"><span class="nav-number">4.</span> <span class="nav-text">命令行编辑</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#多文件编辑"><span class="nav-number">1.</span> <span class="nav-text">多文件编辑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分隔窗口"><span class="nav-number">2.</span> <span class="nav-text">分隔窗口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#做大修改"><span class="nav-number">3.</span> <span class="nav-text">做大修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令行编辑"><span class="nav-number">4.</span> <span class="nav-text">命令行编辑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#挂起和继续"><span class="nav-number">5.</span> <span class="nav-text">挂起和继续</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#寻找要编辑的文件"><span class="nav-number">6.</span> <span class="nav-text">寻找要编辑的文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件浏览器"><span class="nav-number">6.1.</span> <span class="nav-text">文件浏览器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编辑特殊的文件"><span class="nav-number">7.</span> <span class="nav-text">编辑特殊的文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速插入"><span class="nav-number">8.</span> <span class="nav-text">快速插入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查找命令及模式"><span class="nav-number">9.</span> <span class="nav-text">查找命令及模式</span></a></li></ol></div>
             
 
           </div>
