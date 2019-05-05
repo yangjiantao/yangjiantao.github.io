@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Architecture," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Android Jetpack介绍 Android Jetpack 是一套组件、工具和指导，可以帮助您快速构建出色的 Android 应用。">
+<meta name="keywords" content="Architecture">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Jetpack 架构组件最佳实践">
+<meta property="og:url" content="https://github.com/yangjiantao/2019/04/24/Android-Jetpack最佳实践/index.html">
+<meta property="og:site_name" content="Jiantao">
+<meta property="og:description" content="Android Jetpack介绍 Android Jetpack 是一套组件、工具和指导，可以帮助您快速构建出色的 Android 应用。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2217296-e7970c5033ac2e22.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://developer.android.google.cn/topic/libraries/architecture/images/final-architecture.png">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2217296-e14e988eb60e7ad6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://developer.android.com/images/topic/libraries/architecture/viewmodel-lifecycle.png">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2217296-914a1d7f04780817.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2217296-6dc99fde0eca2144.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-05-05T14:34:04.146Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android Jetpack 架构组件最佳实践">
+<meta name="twitter:description" content="Android Jetpack介绍 Android Jetpack 是一套组件、工具和指导，可以帮助您快速构建出色的 Android 应用。">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2217296-e7970c5033ac2e22.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://github.com/yangjiantao/2019/04/24/Android-Jetpack最佳实践/"/>
+
+
+
+
+
+  <title>Android Jetpack 架构组件最佳实践 | Jiantao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?5946086a98998af8f48b6192f72cca2c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jiantao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">android developer</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/yangjiantao/2019/04/24/Android-Jetpack最佳实践/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiantao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar_x225.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jiantao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Android Jetpack 架构组件最佳实践</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-24T00:04:24+08:00">
+                2019-04-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/04/24/Android-Jetpack最佳实践/" class="leancloud_visitors" data-flag-title="Android Jetpack 架构组件最佳实践">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Android-Jetpack介绍"><a href="#Android-Jetpack介绍" class="headerlink" title="Android Jetpack介绍"></a>Android Jetpack介绍</h2><blockquote>
+<p>Android Jetpack 是一套组件、工具和指导，可以帮助您快速构建出色的 Android 应用。</p>
+</blockquote>
+<a id="more"></a>
+<ul>
+<li><p>Google在17年的I/O大会上推出了架构组件(Architecture Component)工具集。</p>
+</li>
+<li><p>随后在18年I/O大会上发布了 <a href="https://developer.android.com/jetpack" target="_blank" rel="external">Android Jetpack</a>，Jetpack 是Android开发组件工具集，旨在帮助我们轻松构建更稳定、更健壮、以及更可维护的应用程序。</p>
+</li>
+</ul>
+<p>  <img src="https://upload-images.jianshu.io/upload_images/2217296-e7970c5033ac2e22.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="android-jetpack.png"></p>
+<p>  每个 Jetpack 组件均可单独采用，并且它们依然可以流畅地协作。</p>
+<p>  Jetpack主要分为4个部分，<strong>基础、架构、行为、界面</strong>。从图中得知，Jetpack并不全是些新东西，只要是能够帮助开发者更好更方便地构建应用程序的组件，Google都将其归纳入了Jetpack，可以看出Google对jetpack很重视，对开发者很上心。</p>
+<ul>
+<li><p>紧接着Google推出<a href="https://developer.android.com/jetpack/androidx" target="_blank" rel="external"><strong>AndroidX</strong></a>，将许多Google认为是正确的方案和实践集中起来。</p>
+<ul>
+<li>AndroidX 是对support library的重大改进。</li>
+<li>AndroidX中的所有软件包名都以字符串androidx.开头，位于一致的命名空间中。</li>
+<li>与support支持库不同，AndroidX软件包可单独维护和更新。</li>
+<li>所有新的支持库开发都将在AndroidX库中进行。</li>
+</ul>
+</li>
+</ul>
+<h2 id="官方推荐架构"><a href="#官方推荐架构" class="headerlink" title="官方推荐架构"></a>官方推荐架构</h2><p><img src="https://developer.android.google.cn/topic/libraries/architecture/images/final-architecture.png" alt="官方架构图"></p>
+<h3 id="使用此架构能带来什么好处？"><a href="#使用此架构能带来什么好处？" class="headerlink" title="使用此架构能带来什么好处？"></a>使用此架构能带来什么好处？</h3><ul>
+<li><p>UI和业务逻辑解耦。</p>
+</li>
+<li><p>有效避免生命周期组件内存泄漏。</p>
+</li>
+<li>提高模块可测试性。</li>
+<li>提高应用稳定性，有效降低以下异常发生概率。<ul>
+<li>Can not perform this action after onSaveInstanceState</li>
+<li>WindowManager$BadTokenException, is your activity running?</li>
+<li>OOM 、 NullPointerException</li>
+<li>…</li>
+</ul>
+</li>
+</ul>
+<h3 id="测试每个组件"><a href="#测试每个组件" class="headerlink" title="测试每个组件"></a>测试每个组件</h3><ul>
+<li><p><strong>界面和交互</strong>：使用 <a href="https://developer.android.com/training/testing/unit-testing/instrumented-unit-tests.html" target="_blank" rel="external">Android 界面插桩测试</a>。基于此架构只需mock 一个<code>ViewModel</code>即可完成界面测试。</p>
+</li>
+<li><p><strong>ViewModel</strong>：使用 <a href="https://developer.android.com/training/testing/unit-testing/local-unit-tests.html" target="_blank" rel="external">JUnit 测试</a>。只需mock一个类，即 <code>Repository</code>。</p>
+</li>
+<li><p><strong>Repository</strong>：使用 <a href="https://developer.android.com/training/testing/unit-testing/local-unit-tests.html" target="_blank" rel="external">JUnit 测试</a>。只需mock两个类，XxxDao，XxxService；由于XxxDao，XxxService都是接口，还可以创建虚拟实现来完成复杂测试用例。</p>
+</li>
+<li><p><strong>XxxDao</strong>：可以使用插桩测试来测试 DAO 类。这里注意对于每个测试，都请创建内存中数据库以确保测试没有任何副作用（例如更改磁盘上的数据库文件）。</p>
+</li>
+<li><p><strong>XxxService</strong>：就Retrofit而言可以使用<a href="https://github.com/square/okhttp/tree/master/mockwebserver">MockWebServer</a>模拟本地服务器。</p>
+</li>
+</ul>
+<h2 id="Lifecycle"><a href="#Lifecycle" class="headerlink" title="Lifecycle"></a>Lifecycle</h2><blockquote>
+<p>Lifecycle是一个类，它包含组件(Activity或Fragment)生命周期状态的信息，并允许其他对象观察此状态。</p>
+</blockquote>
+<h3 id="跟踪组件生命周期"><a href="#跟踪组件生命周期" class="headerlink" title="跟踪组件生命周期"></a>跟踪组件生命周期</h3><p><img src="https://upload-images.jianshu.io/upload_images/2217296-e14e988eb60e7ad6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="lifecycle-states"></p>
+<ul>
+<li>Lifecycle内部使用两个主要枚举(<strong>Event</strong>、<strong>State</strong>)来跟踪其关联组件的生命周期状态。</li>
+<li><strong>Event</strong>：对应Activity或Fragment组件的生命周期回调事件。</li>
+<li><strong>State</strong>：表示被跟踪组件的当前状态，其中 <a href="https://developer.android.com/reference/androidx/lifecycle/Lifecycle.State.html#STARTED" target="_blank" rel="external"><code>STARTED</code></a> 和 <a href="https://developer.android.com/reference/androidx/lifecycle/Lifecycle.State.html#RESUMED" target="_blank" rel="external"><code>RESUMED</code></a> 为活跃状态，可接受到liveData的数据更新。</li>
+</ul>
+<h3 id="LifecycleOwner和LifecycleRegistry"><a href="#LifecycleOwner和LifecycleRegistry" class="headerlink" title="LifecycleOwner和LifecycleRegistry"></a>LifecycleOwner和LifecycleRegistry</h3><ul>
+<li><strong>LifecycleOwner </strong>： <strong>是一个单一的方法接口，表示该类具有生命周期。</strong>support包从26.1.0版本开始，Fragment和Activity就默认实现了该接口。</li>
+<li><strong>LifecycleRegistry </strong>: Lifecycle接口的实现类，协助组件处理生命周期，可处理多个观察者。如果你想自定义LifecyclerOwner请参考support包中Fragment和Activity实现。</li>
+</ul>
+<h2 id="ViewModel"><a href="#ViewModel" class="headerlink" title="ViewModel"></a>ViewModel</h2><blockquote>
+<p>ViewModel 是用来保存应用UI数据的类，它会在配置变更（Configuration Change）后继续存在。</p>
+</blockquote>
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><p><img src="https://developer.android.com/images/topic/libraries/architecture/viewmodel-lifecycle.png" alt="viewmodel-lifecycle"></p>
+<p>关于ViewModel的生命周期就一句话：<strong>在Activity/Fragment等组件整个生命周期过程中，ViewModel的实例有且只有一个。</strong></p>
+<h4 id="这样设计好处在哪呢？"><a href="#这样设计好处在哪呢？" class="headerlink" title="这样设计好处在哪呢？"></a>这样设计好处在哪呢？</h4><ul>
+<li>可用ViewModel存储数据，它能安全度过手机旋转等配置变更场景。</li>
+<li>ViewModel能很好的实现多个Fragment之间的数据共享。</li>
+</ul>
+<h3 id="单一责任原则"><a href="#单一责任原则" class="headerlink" title="单一责任原则"></a>单一责任原则</h3><p><img src="https://upload-images.jianshu.io/upload_images/2217296-914a1d7f04780817.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="viewmodel_duty"></p>
+<p>上图为官方中文视频截图。</p>
+<ul>
+<li>Actvity或Fragment只显示UI和接收互动。</li>
+<li>为避免ViewModel臃肿，可创建presenter处理UI数据。（比如从数据列表中获取某个item的属性）</li>
+<li>Repository 数据源操作入口。（便于单元测试）</li>
+<li>配合其它架构组件使用。</li>
+</ul>
+<h3 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h3><ul>
+<li>如何时候都不要将Context传入ViewModel。</li>
+<li>如果要在ViewModel中使用Application实例，请使用AndroidViewModel子类。</li>
+<li>ViewModel+LiveData+Databinding 可构建反应式UI。（请查看文末提供的参考资料）</li>
+<li><p>ViewModel与onSaveInstanceState要配合使用。</p>
+<p> ViewModel | onSaveInstanceState<br>  —|—<br>  能度过配置变更 | 能度过配置变更和进程关闭<br>  存储大量数据 | 存储少量数据</p>
+<pre><code>| 可序列化
+</code></pre><p> ViewModel和onSaveInstanceState是相辅相成的，当进程被关闭时，ViewModel会被销毁，而onSaveInstanceState不会受影响。所以用onSaveInstanceState存储少量关键数据(如xxxId)，并在该场景恢复后用来加载页面数据。</p>
+</li>
+</ul>
+<h4 id="ViewModel和View之间通信"><a href="#ViewModel和View之间通信" class="headerlink" title="ViewModel和View之间通信"></a>ViewModel和View之间通信</h4><p><img src="https://upload-images.jianshu.io/upload_images/2217296-6dc99fde0eca2144.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Communication between ViewModel and View"></p>
+<ul>
+<li>UserProfileActivity引用UserViewModel，可观察其提供的UserLiveData、StatusLiveData、PageStateLiveData数据源变更来刷新UI。</li>
+<li>响应用户事件，比如更新用户信息。Activity将更新事件传递给ViewModel，ViewModel有将其委托给Presenter处理，Presenter处理过程及结果通过LiveData与Activity交互。</li>
+<li>注意Activity和ViewModel之间是单向引用。<strong>为避免内存泄漏，ViewModel不能持有任何Context引用。</strong></li>
+</ul>
+<h2 id="LiveData"><a href="#LiveData" class="headerlink" title="LiveData"></a>LiveData</h2><blockquote>
+<p>LiveData是一个具有生命周期感知特性的可观察的数据保持类。</p>
+</blockquote>
+<ul>
+<li>LiveData只通知活跃状态( <a href="https://developer.android.com/reference/androidx/lifecycle/Lifecycle.State.html#STARTED" target="_blank" rel="external"><code>STARTED</code></a> or <a href="https://developer.android.com/reference/androidx/lifecycle/Lifecycle.State.html#RESUMED" target="_blank" rel="external"><code>RESUMED</code></a> )的Observer更新，并在 <a href="https://developer.android.com/reference/androidx/lifecycle/Lifecycle.State.html#DESTROYED" target="_blank" rel="external"><code>DESTROYED</code></a>状态时自动移除Observer，避免内存泄漏。</li>
+<li>始终保持最新数据。举例：1.退后台的Activity在返回前台后会立即收到最新数据。2. 配置变更导致Activity重建后也会立即收到最新数据。</li>
+<li>共享资源。单利模式共享同一个LiveData。</li>
+</ul>
+<h3 id="LiveData、MutableLiveData、MediatorLiveData区别"><a href="#LiveData、MutableLiveData、MediatorLiveData区别" class="headerlink" title="LiveData、MutableLiveData、MediatorLiveData区别?"></a>LiveData、MutableLiveData、MediatorLiveData区别?</h3><ul>
+<li>继承关系：MediatorLiveData -&gt; MutableLiveData -&gt; LiveData。 所以MediatorLiveData功能最强大。</li>
+<li>LiveData 是一个具有生命周期感知的可观察的数据保持类。</li>
+<li>MutableLiveData 在LiveData基础上打开了修改Value的方法权限。</li>
+<li>MediatorLiveData 可管理多个LiveData。</li>
+</ul>
+<h3 id="Transformations"><a href="#Transformations" class="headerlink" title="Transformations"></a>Transformations</h3><ul>
+<li><p><strong>map</strong> : 将一种数据类型的<figure class="highlight plain"><figcaption><span>转换为另一种类型 ```LiveData<b>```</b></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"> </div></pre></td></tr></table></figure></p>
+<p>// 观察将被转换LiveData<user>，待其数据源变更后转换为LiveData<b>并通知订阅者。<br>// 内部使用的MediatorLiveData实现。<br>LiveData<user> userLiveData = …;</user></b></user></p>
+<pre><code>LiveData&lt;String&gt; userName = Transformations.map(userLiveData, user -&gt; {
+  user.name + &quot; &quot; + user.lastName
+</code></pre><p>});</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- **switchMap** : 和map类似。差别在于triggerLiveData变更后，会触发和等待另外一个LiveData获取数据。</div></pre></td></tr></table></figure>
+<p>// 实例代码：将addressInputLiveData转换为postalCodeLiveData.<br>class MyViewModel extends ViewModel {<br>  private final PostalCodeRepository repository;<br>  private final MutableLiveData<string> addressInput = new MutableLiveData();<br>  public final LiveData<string> postalCode =</string></string></p>
+<pre><code>      Transformations.switchMap(addressInput, (address) -&gt; {
+          return repository.getPostCode(address);
+       });
+
+public MyViewModel(PostalCodeRepository repository) {
+this.repository = repository
+}
+</code></pre><p> // addressInputLiveData变更时触发repository.getPostCode，<br> // 待其回去成功后，再将数据设置给postalCodeLiveData。</p>
+<pre><code>private void setInput(String address) {
+        addressInput.setValue(address);
+    }
+</code></pre><p>}</p>
+<p>```</p>
+</li>
+</ul>
+<h2 id="几个问题"><a href="#几个问题" class="headerlink" title="几个问题"></a>几个问题</h2><h3 id="LifecycleOwner组件是如何与liveData通信的？"><a href="#LifecycleOwner组件是如何与liveData通信的？" class="headerlink" title="LifecycleOwner组件是如何与liveData通信的？"></a>LifecycleOwner组件是如何与liveData通信的？</h3><ul>
+<li>SupportActivity 通过添加一个空的ReportFragment来处理生命周期状态变更回调；Fragment则在自身生命周期函数中处理。</li>
+<li>LifecycleOwner组件，通过LifecycleRegistry类中handleLifecycleEvent -&gt; dispatchEvent方法与liveData通信，从而是liveData具有自动感知组件生命周期的能力。</li>
+<li>组件销毁时，LifecycleRegistry会通知liveData移除observer。</li>
+</ul>
+<h3 id="ViewModel如何做到一直在内存中，直到Activity销毁或Fragment被移除时才被清除的？"><a href="#ViewModel如何做到一直在内存中，直到Activity销毁或Fragment被移除时才被清除的？" class="headerlink" title="ViewModel如何做到一直在内存中，直到Activity销毁或Fragment被移除时才被清除的？"></a>ViewModel如何做到一直在内存中，直到Activity销毁或Fragment被移除时才被清除的？</h3><h4 id="1-x-x版本实现"><a href="#1-x-x版本实现" class="headerlink" title="1.x.x版本实现"></a>1.x.x版本实现</h4><ul>
+<li>Activity或Fragment会添加一个空的HolderFragment，而ViewModelStore实例被HolderFragment持有，所以就保证了整个生命周期中ViewModelStore实例始终唯一，也就保证了其缓存的ViewModel实例会一直存在直到组件销毁（在onDestroy中会调用ViewModelStore.clear()方法清除其缓存的ViewModel实例）。</li>
+<li><strong>由于这个HolderFragment设置了setRetainInstance(true)， 这样在Activity重建时它不会执行onDestroy回调，这就是它能度过配置变更的原因</strong>。</li>
+</ul>
+<h4 id="2-x-x版本实现"><a href="#2-x-x版本实现" class="headerlink" title="2.x.x版本实现"></a>2.x.x版本实现</h4><ul>
+<li><p>Activity </p>
+<ul>
+<li>缓存：onRetainNonConfigurationInstance()回调方法中将ViewModelStore实例缓存到NonConfigurationInstances中。</li>
+<li>恢复：在onCreate中通过getLastNonConfigurationInstance()获取重建前的状态并回复ViewModelStore。</li>
+</ul>
+</li>
+<li><p>Fragment</p>
+<ul>
+<li><p>缓存：FragmentActivity.onSaveInstanceState -&gt; Fragment.saveAllState -&gt; Fragment.saveNonConfig，将ViewModelStore实例缓存到了FragmentManagerNonConfig中，最终通过FragmentActivity将其缓存到NonConfigurationInstances中。</p>
+</li>
+<li><p>回复：FragmentActivity.onCreate -&gt; FragmentManager.restoreAllState(arg1, nonConfig) -&gt; FragmentState.instantiate(x,x,x,nonConfig, viewModelStore)此方法会创建一个新的Fragment并将ViewModelStore变量赋值。    </p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://developer.android.com/jetpack" target="_blank" rel="external">Jetpack 官方文档</a></li>
+<li><a href="https://developer.android.com/topic/libraries/architecture" target="_blank" rel="external">架构组件官方文档</a></li>
+<li><a href="https://googledeveloperschina.blogspot.com/2018/05/android-jetpack.html" target="_blank" rel="external">【官方】使用 Android Jetpack 加快应用开发速度</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLWz5rJ2EKKc9mxIBd0DRw9gwXuQshgmn2" target="_blank" rel="external">【官方】YouTube-Jetpack系列视频</a></li>
+<li><a href="https://mp.weixin.qq.com/s/uGWH1os8Kq3Pp6_x5hXI8Q" target="_blank" rel="external">Android Jetpack: ViewModel | 中文教学视频</a></li>
+<li><a href="https://android.jlelse.eu/android-architecture-communication-between-viewmodel-and-view-ce14805d72bf" target="_blank" rel="external">android-architecture-communication-between-viewmodel-and-view</a></li>
+<li><a href="https://github.com/googlesamples/android-sunflower">【samples】android-sunflower</a></li>
+<li><a href="https://github.com/googlesamples/android-architecture-components">【samples】android-architecture-components</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Jiantao
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://github.com/yangjiantao/2019/04/24/Android-Jetpack最佳实践/" title="Android Jetpack 架构组件最佳实践">https://github.com/yangjiantao/2019/04/24/Android-Jetpack最佳实践/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Architecture/" rel="tag"># Architecture</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/16/前端开发-Gitflow/" rel="next" title="前端开发-Gitflow">
+                <i class="fa fa-chevron-left"></i> 前端开发-Gitflow
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar_x225.jpeg"
+                alt="Jiantao" />
+            
+              <p class="site-author-name" itemprop="name">Jiantao</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yangjiantao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:jiantaoyoung@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/888f58971e84" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-book"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://blog.csdn.net/JianTao_Yang" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-crosshairs"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-Jetpack介绍"><span class="nav-number">1.</span> <span class="nav-text">Android Jetpack介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#官方推荐架构"><span class="nav-number">2.</span> <span class="nav-text">官方推荐架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用此架构能带来什么好处？"><span class="nav-number">2.1.</span> <span class="nav-text">使用此架构能带来什么好处？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试每个组件"><span class="nav-number">2.2.</span> <span class="nav-text">测试每个组件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lifecycle"><span class="nav-number">3.</span> <span class="nav-text">Lifecycle</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#跟踪组件生命周期"><span class="nav-number">3.1.</span> <span class="nav-text">跟踪组件生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LifecycleOwner和LifecycleRegistry"><span class="nav-number">3.2.</span> <span class="nav-text">LifecycleOwner和LifecycleRegistry</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ViewModel"><span class="nav-number">4.</span> <span class="nav-text">ViewModel</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#生命周期"><span class="nav-number">4.1.</span> <span class="nav-text">生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#这样设计好处在哪呢？"><span class="nav-number">4.1.1.</span> <span class="nav-text">这样设计好处在哪呢？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单一责任原则"><span class="nav-number">4.2.</span> <span class="nav-text">单一责任原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最佳实践"><span class="nav-number">4.3.</span> <span class="nav-text">最佳实践</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ViewModel和View之间通信"><span class="nav-number">4.3.1.</span> <span class="nav-text">ViewModel和View之间通信</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LiveData"><span class="nav-number">5.</span> <span class="nav-text">LiveData</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LiveData、MutableLiveData、MediatorLiveData区别"><span class="nav-number">5.1.</span> <span class="nav-text">LiveData、MutableLiveData、MediatorLiveData区别?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Transformations"><span class="nav-number">5.2.</span> <span class="nav-text">Transformations</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几个问题"><span class="nav-number">6.</span> <span class="nav-text">几个问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LifecycleOwner组件是如何与liveData通信的？"><span class="nav-number">6.1.</span> <span class="nav-text">LifecycleOwner组件是如何与liveData通信的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ViewModel如何做到一直在内存中，直到Activity销毁或Fragment被移除时才被清除的？"><span class="nav-number">6.2.</span> <span class="nav-text">ViewModel如何做到一直在内存中，直到Activity销毁或Fragment被移除时才被清除的？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-x-x版本实现"><span class="nav-number">6.2.1.</span> <span class="nav-text">1.x.x版本实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-x-x版本实现"><span class="nav-number">6.2.2.</span> <span class="nav-text">2.x.x版本实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">7.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiantao</span>
+
+  
+</div>
+
+<div class="powered-by">
+<i class="fa fa-users"></i><span id="busuanzi_container_site_uv">
+  访问用户: <span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+<span class="post-meta-divider">   |   </span>
+<div class="powered-by">
+<i class="fa fa-eye"></i><span id="busuanzi_container_site_pv">
+  访问量: <span id="busuanzi_value_site_pv"></span>
+</span>
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("TtBkE4yS0DgwwJ7ew5J8lC2i-gzGzoHsz", "OYl57QlnOB4NOSU5UWfyvV6h");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
