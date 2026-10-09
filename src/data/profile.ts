@@ -1,17 +1,153 @@
+// Resume content approved by the user in October 2026, based on the supplied resume and career updates.
+
 export const profile = {
-  name: '杨剑涛',
-  englishName: 'Jiantao Yang',
-  email: 'jiantaoyoung@gmail.com',
-  github: 'https://github.com/yangjiantao',
-  role: '开发者 · 产品探索者',
-  description: '从 Android 应用到独立游戏，关注清晰的逻辑、细腻的交互，以及值得反复使用的产品。',
+  "name": "杨剑涛",
+  "englishName": "Jiantao Yang",
+  "email": "jiantaoyoung@gmail.com",
+  "github": "https://github.com/yangjiantao",
+  "website": "https://yangjiantao.github.io/",
+  "role": "软件工程师 · 平台工具研发",
+  "description": "从移动 App 到游戏平台与独立游戏，关注清晰的逻辑、细腻的交互，以及值得反复使用的产品。"
 };
 
-// Historical experience comes from the previous resume, last updated in 2018.
-// Update verified dates here before representing an employer as current.
+export const resume = {
+  "headline": "软件工程师｜移动 App · 客户端平台 · SDK 与研发工具",
+  "description": "杨剑涛的个人简历：10 年以上移动 App 研发经验，游戏客户端平台通用能力、AI 工作流、性能与稳定性，以及架构和 SDK 建设。",
+  "summary": [
+    "具备 10 年以上移动 App 研发经验，近三年专注于游戏客户端平台通用能力与基础工具研发。曾参与海外浏览器、电商、即时通信和医疗等业务，拥有大型应用架构演进、SDK 从零到一建设、性能优化及研发提效经验。",
+    "关注代码质量、产品体验与工程效率，善于将业务需求转化为可维护、可扩展的技术方案。目前在 tap4fun 从事客户端平台能力建设、AI 项目实战与工作流提效，以及性能监控和稳定性优化。持续学习游戏设计、基础框架、平台能力，将移动应用研发积累拓展到游戏相关的基础技术与工具建设。"
+  ],
+  "technology": "Java、Kotlin、Android、Jetpack、Gradle、ASM / APT；熟悉 Compose，具备 Flutter、iOS 原生及 Android NDK 开发经验。重视数据结构与算法、多线程、设计模式、代码重构和单元测试等基础能力。",
+  "education": {
+    "school": "电子科技大学成都学院",
+    "degree": "电子信息工程 · 本科",
+    "period": "2008 — 2012"
+  },
+  "interests": "阅读、篮球，喜欢探索新技术与新产品，保持主动学习和实践的习惯。"
+};
+
+export const strengths = [
+  {
+    "title": "平台架构与 SDK",
+    "body": "具备组件化架构、业务解耦、公共组件抽象及 SDK 设计经验，能够推动基础能力沉淀与跨业务复用。"
+  },
+  {
+    "title": "性能与稳定性",
+    "body": "拥有启动、网络、线程、内存及包体积优化经验，能够结合监控数据定位问题并验证优化效果。"
+  },
+  {
+    "title": "工具与研发效率",
+    "body": "具备工程模板、Gradle 插件、构建流程及性能监控工具开发经验，并通过 AI 项目实战探索工作流优化。"
+  },
+  {
+    "title": "团队协作与交付",
+    "body": "具有开发组长经历，熟悉需求评审、技术方案设计、任务拆解及进度与风险管理，推动过代码评审、单元测试和团队技术分享。"
+  }
+];
+
 export const experience = [
-  { company: '京东', role: 'Android 开发工程师', period: '2018.08 加入', note: '历史经历 · 结束时间待补充', body: '参与京东咚咚 SDK 安卓端核心功能开发。' },
-  { company: '医联', role: 'Android Leader', period: '2015.08 — 2018.08', body: '负责 Android 架构演进、公共组件与业务埋点建设；参与直播、IM 与混合开发，推进持续集成和团队技术分享。' },
-  { company: '当乐', role: 'Android 开发工程师', period: '2013.03 — 2015.08', body: '参与游戏应用分发产品开发，设计下载与应用管理模块，开发图片加载组件及自定义交互。' },
-  { company: '四川金网通', role: 'Android 开发工程师', period: '2011.11 — 2013.03', body: '开发 Android 智能机顶盒应用，参与系统裁剪与定制、系统组件和相册浏览功能。' },
+  {
+    "company": "tap4fun",
+    "role": "游戏平台基础工具研发",
+    "period": "2023.10 — 至今",
+    "context": "",
+    "details": [
+      {
+        "label": "游戏客户端平台通用能力",
+        "text": "参与通用能力的设计与搭建，沉淀可复用的基础模块，支持游戏业务研发与功能迭代。"
+      },
+      {
+        "label": "AI 项目实战与工作流提效",
+        "text": "开展 AI 项目实践，结合实际研发场景探索 AI 能力的应用，优化工作流程，提高日常研发效率。"
+      },
+      {
+        "label": "性能监控与稳定性优化",
+        "text": "参与性能监控能力建设与稳定性优化，结合监控数据定位性能瓶颈和异常问题，持续改善客户端运行表现。"
+      }
+    ]
+  },
+  {
+    "company": "云览科技",
+    "role": "资深 Android 工程师",
+    "period": "2022.04 — 2023.10",
+    "context": "参与千万级日活海外浏览器 Phoenix 的研发，承担架构演进、核心业务开发及性能优化工作。",
+    "details": [
+      {
+        "label": "架构与基础组件",
+        "text": "参与 Android 端架构分层设计，推动业务模块与通用能力解耦；开发和维护线程池、网络、图片及工具组件，支持基础能力独立维护与跨项目复用。"
+      },
+      {
+        "label": "核心业务与插件化",
+        "text": "负责探索、游戏、文档等模块的开发与维护。主导文档插件动态下发能力建设，基于 Android App Bundle 改造分发与加载流程，实现按需下载和加载，减少 APK 体积、CDN 分发成本及重复下载流量。"
+      },
+      {
+        "label": "启动优化",
+        "text": "梳理启动流程与首页生命周期，结合 Systrace、Matrix 等工具定位耗时问题，优化启动任务及 CPU 利用率，将应用打开率由约 93% 提升至 95%，提升约 2 个百分点。"
+      },
+      {
+        "label": "网络优化",
+        "text": "接入 Cronet 网络库，支持 QUIC / HTTP/3 请求，相较原 HTTP/1.1 方案，将请求成功率由约 97% 提升至 98%，提升约 1 个百分点。"
+      }
+    ]
+  },
+  {
+    "company": "京东",
+    "role": "高级 Android 工程师",
+    "period": "2018.08 — 2022.03",
+    "context": "在京东零售技术与数据中台部门担任 Android 核心研发成员，参与京东印尼站 JD.ID、零售云 CMS 和咚咚聊天 SDK 等项目。",
+    "details": [
+      {
+        "label": "组件化架构与基础库",
+        "text": "主导 JD.ID 组件化架构方案设计与落地，负责首页、搜索等核心模块；建设通用 UI、网络、图片、日志及工具基础库，支持多条业务线复用。"
+      },
+      {
+        "label": "性能监控与工程提效",
+        "text": "使用 ASM 字节码插桩、APT 和多线程等技术开发页面加载时长监控工具；通过组件工程模板、版本管理插件和复合构建方案，改善重复开发、环境配置及编译联调流程。"
+      },
+      {
+        "label": "零售云 CMS SDK",
+        "text": "担任 Android 端负责人，主导端侧 SDK 框架设计，从零到一独立完成开发、测试与上线。支持 UI、点击与曝光事件及业务功能扩展，并编写接入文档与技术说明，降低业务接入和维护成本。"
+      },
+      {
+        "label": "咚咚聊天 SDK",
+        "text": "设计并实现跨设备聊天记录迁移方案；通过重试机制、消息回执、线程池与队列优化消息收发流程；治理通讯录模块的业务耦合、主线程耗时及数据源管理问题。"
+      },
+      {
+        "label": "技术应用",
+        "text": "推动 Kotlin、Android Jetpack 等技术在团队中的应用，并在部分业务中引入 Flutter 跨端开发。"
+      }
+    ]
+  },
+  {
+    "company": "医联",
+    "role": "Android Leader",
+    "period": "2015.08 — 2018.08",
+    "context": "担任 Android 开发小组长及核心研发成员，负责医联 App 架构建设、业务交付和团队工程实践。",
+    "details": [
+      {
+        "label": "",
+        "text": "负责架构设计与迭代升级，抽象和封装公共组件；推动单元测试、代码评审及线上错误分析，持续改善应用质量和研发效率。"
+      },
+      {
+        "label": "",
+        "text": "参与技术选型与关键问题攻坚，承担需求评审、任务拆解、进度跟踪和风险预判，组织团队技术分享与经验沉淀。"
+      }
+    ]
+  },
+  {
+    "company": "当乐",
+    "role": "Android 工程师",
+    "period": "2013.03 — 2015.08",
+    "context": "作为当乐游戏中心 App 核心研发成员，参与业务模块和基础能力建设。",
+    "details": [
+      {
+        "label": "",
+        "text": "设计并开发多任务并行下载模块，负责首页核心组件开发与性能优化。"
+      },
+      {
+        "label": "",
+        "text": "开发应用管理模块、图片选择器及自定义组件与动画，参与项目结构规划，改善交互体验和代码可维护性。"
+      }
+    ]
+  }
 ];

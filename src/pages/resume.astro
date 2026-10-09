@@ -1,25 +1,51 @@
 ---
 import Base from '../layouts/Base.astro';
-import Icon from '../components/Icon.astro';
-import { profile, experience } from '../data/profile';
+import { profile, resume, experience, strengths } from '../data/profile';
 ---
-<Base title="个人简历 · 杨剑涛 / Jiantao Yang" description="杨剑涛的开发经历：Android 应用、SDK、移动架构与独立产品。">
+<Base title="个人简历 · 杨剑涛 / Jiantao Yang" description={resume.description}>
   <section class="page-intro section-shell">
     <div class="breadcrumb"><a href="/">首页</a><span>/</span><span>个人简历</span></div>
     <span class="eyebrow">03 / EXPERIENCE & PRACTICE</span>
-    <h1>杨剑涛<span class="accent-text">。</span></h1>
-    <p class="page-subtitle">Android 应用与 SDK 开发 · 移动架构 · 独立产品探索</p>
-    <div class="resume-intro-bottom"><div class="resume-contact"><a href={`mailto:${profile.email}`}>{profile.email}</a><a href={profile.github} target="_blank" rel="noopener noreferrer">GitHub / yangjiantao</a></div><button class="print-resume" type="button" data-print hidden>打印 / 保存为 PDF</button></div>
-    <p class="history-note">职业经历整理自 2018 年的历史简历。京东任职结束时间及其后经历尚待补充，本页不代表当前任职情况。</p>
+    <h1>{profile.name}<span class="accent-text">。</span></h1>
+    <p class="page-subtitle">{resume.headline}</p>
+    <div class="resume-intro-bottom">
+      <div class="resume-contact">
+        <a href={`mailto:${profile.email}`}>{profile.email}</a>
+        <a href={profile.github} target="_blank" rel="noopener noreferrer">GitHub / yangjiantao</a>
+        <a href="/">yangjiantao.github.io</a>
+      </div>
+      <button class="print-resume" type="button" data-print hidden>打印 / 保存为 PDF</button>
+    </div>
   </section>
   <div class="section-shell">
-    <section class="resume-section" id="experience" aria-labelledby="experience-title"><h2 id="experience-title"><span>01 / CAREER</span>工作经历</h2><div>{experience.map(item => <article class="experience-item" data-reveal><div class="experience-top"><h3>{item.company}</h3><div><time>{item.period}</time>{item.note && <span class="experience-note">{item.note}</span>}</div></div><p class="experience-role">{item.role}</p><p>{item.body}</p></article>)}</div></section>
-    <section class="resume-section" aria-labelledby="projects-title"><h2 id="projects-title"><span>02 / PROJECTS</span>项目实践</h2><div>
-      <article class="experience-item" data-reveal><div class="experience-top"><h3>熊猫数独</h3><time>独立游戏 / 2026</time></div><p class="experience-role">Godot · Android · 逻辑解谜</p><p>以颜色区域、行列与相邻约束构建解谜体验，包含新手引导、主线关卡、每日挑战与进度保存。</p><a href="/projects/pandadoku/" class="text-link">查看产品与开发故事 <Icon size={15} /></a></article>
-      <article class="experience-item" data-reveal><div class="experience-top"><h3>医联 App</h3><time>历史项目</time></div><p class="experience-role">架构设计 · 核心业务 · 工程建设</p><p>参与 MVP 架构分层与模块化设计，以及视频直播、IM、Hybrid 和 React Native 业务；开发与维护图片浏览组件，推动开发规范和持续集成。</p></article>
-      <article class="experience-item" data-reveal><div class="experience-top"><h3>当乐 App</h3><time>历史项目</time></div><p class="experience-role">游戏应用分发 · 基础能力建设</p><p>参与多任务下载、应用管理及图片加载模块的设计与开发。</p></article>
-    </div></section>
-    <section class="resume-section" aria-labelledby="skills-title"><h2 id="skills-title"><span>03 / TOOLKIT</span>技术与能力</h2><div class="skill-groups" data-reveal><div class="skill-group"><h3>移动开发</h3><p>Android 应用、SDK 设计、NDK、React Native 与 Hybrid 混合开发。</p></div><div class="skill-group"><h3>架构与组件</h3><p>应用分层、模块化、公共组件、埋点体系和稳定性建设。</p></div><div class="skill-group"><h3>工程与协作</h3><p>持续集成、需求拆解、技术方案评审、团队管理与技术分享。</p></div><div class="skill-group"><h3>产品与体验</h3><p>自定义交互、动画、性能优化，以及独立游戏开发实践。</p></div></div></section>
-    <section class="resume-section" aria-labelledby="education-title"><h2 id="education-title"><span>04 / EDUCATION</span>教育经历</h2><div class="education" data-reveal><h3>电子科技大学成都学院</h3><p>电子信息工程 · 本科</p><p>2008 — 2012</p></div></section>
+    <section class="resume-section" aria-labelledby="summary-title">
+      <h2 id="summary-title"><span>01 / PROFILE</span>个人简介</h2>
+      <div class="resume-summary" data-reveal>{resume.summary.map(paragraph => <p>{paragraph}</p>)}</div>
+    </section>
+    <section class="resume-section" aria-labelledby="strengths-title">
+      <h2 id="strengths-title"><span>02 / STRENGTHS</span>核心优势</h2>
+      <div class="skill-groups" data-reveal>{strengths.map(item => <div class="skill-group"><h3>{item.title}</h3><p>{item.body}</p></div>)}</div>
+    </section>
+    <section class="resume-section" id="experience" aria-labelledby="experience-title">
+      <h2 id="experience-title"><span>03 / CAREER</span>工作经历</h2>
+      <div>{experience.map(item => <article class="experience-item" data-reveal>
+        <div class="experience-top"><h3>{item.company}</h3><time>{item.period}</time></div>
+        <p class="experience-role">{item.role}</p>
+        {item.context && <p class="experience-context">{item.context}</p>}
+        <ul class="experience-details">{item.details.map(detail => <li>{detail.label && <strong>{detail.label}：</strong>}{detail.text}</li>)}</ul>
+      </article>)}</div>
+    </section>
+    <section class="resume-section" aria-labelledby="skills-title">
+      <h2 id="skills-title"><span>04 / TOOLKIT</span>技术能力</h2>
+      <p class="resume-text" data-reveal>{resume.technology}</p>
+    </section>
+    <section class="resume-section" aria-labelledby="education-title">
+      <h2 id="education-title"><span>05 / EDUCATION</span>教育经历</h2>
+      <div class="education" data-reveal><h3>{resume.education.school}</h3><p>{resume.education.degree}</p><p>{resume.education.period}</p></div>
+    </section>
+    <section class="resume-section" aria-labelledby="interests-title">
+      <h2 id="interests-title"><span>06 / OUTSIDE WORK</span>兴趣爱好</h2>
+      <p class="resume-text" data-reveal>{resume.interests}</p>
+    </section>
   </div>
 </Base>

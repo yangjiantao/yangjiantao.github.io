@@ -23,14 +23,14 @@ npm run preview
 ## Pages
 
 - `/`: introduction, selected work, personal approach and contact.
-- `/resume/`: historical work experience and a print layout. The browser's Print / Save as PDF dialog exports the resume.
+- `/resume/`: approved current career history, core strengths and a print layout. The browser's Print / Save as PDF dialog exports the resume.
 - `/projects/pandadoku/`: actual product screenshots and development story.
 - `/pandadoku/privacy/`: the original bilingual privacy policy, copied without modification from `public/pandadoku/privacy/index.html`.
 - `/404.html`: missing-page navigation.
 
 ## Update content
 
-Edit `src/data/profile.ts` to change public name, email and career history. The career information is from the 2018 resume; the site intentionally does not represent the last listed employer as current. Add verified recent experience before using it as an up-to-date professional resume.
+Edit `src/data/profile.ts` to change public name, email, resume summary, strengths and career history. Resume content was approved by the user in October 2026, combining the supplied 2023 resume with current tap4fun experience. The public resume omits the phone number. Preserve confirmed responsibilities and metric definitions when updating it.
 
 Shared markup lives in `src/components/` and `src/layouts/Base.astro`. Page content lives in `src/pages/`; the visual system is `src/styles/global.css`; animation and interaction logic is `src/scripts/motion.ts`.
 
