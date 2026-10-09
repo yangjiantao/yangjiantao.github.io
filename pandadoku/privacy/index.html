@@ -24,53 +24,61 @@
 <body>
   <main>
     <h1>《熊猫数独》隐私政策</h1>
-    <p class="meta">适用于 Pandadoku（Android 包名：<code>com.shanmei.pandadoku</code>）<br>更新日期：2026 年 10 月 7 日</p>
+    <p class="meta">适用于 Pandadoku（Android 包名：<code>com.shanmei.pandadoku</code>）<br>更新日期：2026 年 10 月 9 日</p>
 
     <h2>开发者与联系方式</h2>
     <p>开发者：shanmei。隐私问题或删除请求请联系 <a href="mailto:shanmeiyang89@gmail.com">shanmeiyang89@gmail.com</a>。</p>
 
     <h2>本地游戏数据</h2>
-    <p>游戏在设备上保存关卡进度、游玩记录、设置及统计偏好，以便继续游玩。本地游玩无需注册账号。清除应用数据或卸载游戏会删除这些本地数据；只有此前已经成功同步的云存档，才可能通过同一 Google Play 游戏身份恢复。</p>
+    <p>游戏在设备上保存关卡进度、游玩记录及设置，以便继续游玩。本地游玩无需注册账号。清除应用数据或卸载游戏会删除这些本地数据；使用同一 Google Play 游戏身份，可以恢复最后一次已确认的云端备份，尚未同步的变化无法恢复。</p>
 
-    <h2>可选的云存档</h2>
-    <p>已配置的 Android 版本使用 Google Play 游戏服务识别玩家。你可以在首页设置中主动启用云存档，游戏会读取游戏玩家标识及显示名称，并把关卡进度、棋盘状态、道具库存、成绩、每日挑战和连续通关奖励保存到 Google Saved Games。存档包含版本、保存时间、存档标识和随机设备来源标识，用于检查数据及处理不同设备的进度冲突。</p>
-    <p>声音、语言、统计同意和游戏统计标识不随云存档上传。云存档不要求开启统计。关闭云存档会停止后续同步并保留本地进度，不会删除已经保存到 Google 的云端数据；卸载游戏也不会自动删除已有云存档。如需删除协助，请联系上述邮箱。联网失败或云端未确认时，游戏继续使用本地进度，不保证尚未同步的进度能够恢复。</p>
 
-    <h2>可选的游戏统计</h2>
-    <p>只有在你同意后，我们才通过 Google Analytics for Firebase 收集游戏统计，用于了解卡关位置、难度和功能使用情况。自定义事件包括关卡开始与结束、结果、用时、失误与重开、道具使用、新手引导、连续打卡、结果展示与操作、每日挑战入口，以及定时或进入后台时的游玩检查点；还包括最高关和难度档。Firebase 也可能自动收集应用版本、设备型号、系统版本、语言、会话和使用时长，并根据网络地址推断大致地区。统计与 Firebase 为本次安装分配的随机应用实例标识关联，并用每局棋盘的随机标识关联续玩，不关联 Google Play 游戏玩家标识。</p>
+    <h2>连接 Play Games 后自动备份</h2>
+    <p>0.1.5 及后续已配置的 Android 版本会自动尝试连接 Google Play 游戏服务；需要交互式登录时，你可以取消并继续本地游玩，也可以从首页设置中登录。登录成功后自动备份，游戏不提供备份开关或日常手动同步按钮。游戏读取玩家标识及显示名称：显示名称用于设置页展示，玩家标识用于确定存档归属。关卡进度、未完成的主线和每日棋盘、生命、道具库存、最近一次每日成绩、历史最快用时和连续通关状态保存到 Google Saved Games。云端存档包含版本、玩家标识、保存时间、内容校验值和进度数据，不包含随机设备来源标识或单独的存档标识。</p>
+    <p>声音、语言、统计配置和游戏统计标识不随云存档上传。云存档与统计控制独立。联网失败或云端未确认时，游戏继续使用本地进度并自动重试，未同步的进度无法保证恢复。卸载游戏不会删除已有云存档；如需删除协助，请联系上述邮箱。开发阶段的精简 v2 存档不读取旧 v1 云存档。0.1.3 的云存档版本仍可通过设置开关控制后续同步，关闭不会删除已有云存档。</p>
+
+
+    <h2>游戏统计</h2>
+    <p>当前开发和封闭测试版本默认开启游戏统计，设置中不提供统计开关。开发包仅记录本地诊断事件，不发送到 Firebase；已配置的 Android 正式构建通过 Google Analytics for Firebase 收集游戏统计，用于了解卡关位置、难度和功能使用情况。自定义事件包括关卡开始与结束、结果、用时、失误与重开、道具使用、新手引导、连续打卡、结果展示与操作、每日挑战入口，以及定时或进入后台时的游玩检查点；还包括最高关和难度档。Firebase 也可能自动收集应用版本、设备型号、系统版本、语言、会话和使用时长，并根据网络地址推断大致地区。统计与 Firebase 为本次安装分配的随机应用实例标识关联，并用每局棋盘的随机标识关联续玩，不关联 Google Play 游戏玩家标识。</p>
     <p>游戏不要求提供姓名、邮箱、联系人、照片或精确位置。此版本不使用广告标识符，不展示广告，也没有应用内购买。若你主动发邮件联系我们，我们会收到你提供的邮件地址和内容。</p>
 
-    <h2>你的选择</h2>
-    <p>统计默认关闭。首次启动时可以同意或拒绝，拒绝后仍可正常游玩；之后可在游戏设置中随时打开或关闭。关闭后停止收集，并请求 Firebase 清除设备上的统计标识与本地统计数据；此前已传送的服务器端数据不会因此立即删除。如需提出进一步删除请求，请发邮件至上述地址。</p>
+
+    <h2>登录、统计控制与反馈</h2>
+    <p>需要先取得同意的发行版本会在收集前询问，拒绝不影响游玩或云存档。0.1.3 及更早版本的统计默认关闭，可以在设置中更改；关闭后停止收集并请求 Firebase 清除本地统计数据，不会立即删除此前已上传的数据。当前封测版本的隐私或删除请求可发送到上述邮箱。反馈入口只创建邮件草稿，由你决定填写和发送；草稿附版本、系统及当前关卡，不自动附账号标识、存档或诊断日志。</p>
+
 
     <h2>处理方、保存与删除</h2>
-    <p>同意后的统计数据通过加密连接发送给 Google 提供的 Firebase/Google Analytics 服务，由 Google 代表开发者处理。可选云存档由 Google Play 游戏服务及 Saved Games 保存、处理。我们用汇总报表改善游戏，不向广告商出售游戏统计。</p>
+    <p>按适用的发行配置和同意状态启用后，统计数据通过加密连接发送给 Google 提供的 Firebase/Google Analytics 服务，由 Google 代表开发者处理。连接 Play Games 后的云存档由 Google Play 游戏服务及 Saved Games 保存、处理。我们用汇总报表改善游戏，不向广告商出售游戏统计。</p>
     <p>Google Analytics 标准媒体资源的用户级及事件级详细数据保留设置为 2 个月或 14 个月；到期数据由 Google 定期删除，用户标识的保留期可能因新活动而重新计算。首版上线前，我们会核对项目的实际设置并在本页注明具体期限。汇总报表及 Google 服务运行数据适用不同的保存规则。设备上的进度和设置保留到你清除应用数据或卸载游戏。</p>
     <p>如以后增加广告、购买或新的数据用途，我们会在相应版本发布前更新本政策、游戏内说明和 Google Play 数据安全申报，并在需要时重新征求选择。</p>
 
     <section class="lang" lang="en">
       <h1>Pandadoku Privacy Policy</h1>
-      <p class="meta">Applies to Pandadoku (Android package: <code>com.shanmei.pandadoku</code>)<br>Last updated: 7 October 2026</p>
+      <p class="meta">Applies to Pandadoku (Android package: <code>com.shanmei.pandadoku</code>)<br>Last updated: 9 October 2026</p>
 
       <h2>Developer and contact</h2>
       <p>Developer: shanmei. For privacy questions or deletion requests, email <a href="mailto:shanmeiyang89@gmail.com">shanmeiyang89@gmail.com</a>.</p>
 
       <h2>Data stored on your device</h2>
-      <p>The game stores your level progress, play history, settings and analytics preference on your device so that you can continue playing. Local play requires no separate account registration. Clearing app data or uninstalling the game deletes this local data. Only a previously confirmed cloud save may be restored using the same Google Play Games identity.</p>
+      <p>The game stores level progress, play history and settings on your device so that you can continue playing. Local play requires no separate account registration. Clearing app data or uninstalling deletes local data. Using the same Google Play Games identity can restore the last confirmed cloud backup; changes that have not synchronized cannot be recovered.</p>
 
-      <h2>Optional cloud saves</h2>
-      <p>Configured Android versions use Google Play Games to identify the player. You can enable cloud saving in home settings. The game reads the gaming player ID and display name, and saves level progress, puzzle state, tool inventory, scores, daily challenges and streak rewards with Google Saved Games. Saves include a version, save time, save ID and random device/source ID to validate data and handle progress conflicts between devices.</p>
-      <p>Sound, language, analytics consent and gameplay analytics identifiers are not uploaded with cloud saves. Cloud saving does not require analytics consent. Disabling cloud saving stops further synchronization and keeps local progress; it does not delete saves already stored by Google. Uninstalling the game does not automatically delete existing cloud saves either. Contact the email above for deletion assistance. When offline or awaiting cloud confirmation, the game continues with local progress; progress that has not synchronized is not guaranteed to be recoverable.</p>
 
-      <h2>Optional gameplay analytics</h2>
-      <p>Only after you agree, we use Google Analytics for Firebase to collect gameplay statistics to understand where players get stuck and how they use the game. Custom events cover level starts and ends, results, time, mistakes, restarts, tool use, tutorial progress, daily streaks, result views and actions, daily challenge entry, and periodic or background play checkpoints; user properties include the highest level and difficulty setting. Firebase may also collect app version, device model, operating system version, language, sessions and engagement time, and infer an approximate region from the network address. Analytics uses a random app instance identifier assigned by Firebase and a random ID for each board run to connect resumed visits. These are not linked to the Google Play Games player ID.</p>
+      <h2>Automatic backup after connecting to Play Games</h2>
+      <p>Configured Android versions from 0.1.5 automatically try to connect to Google Play Games. If interactive sign-in is needed, you may cancel and keep playing locally, or sign in from home settings. After sign-in, progress backs up automatically; there is no backup switch or routine manual sync button. The game reads the player ID to associate saves with their owner and the display name for settings. Google Saved Games stores main progress, unfinished main and daily boards, lives, tool inventory, the latest daily result, the fastest daily time and streak state. A cloud save contains its version, player ID, save time, content checksum and progress data. It contains no random device/source ID or separate save ID.</p>
+      <p>Sound, language, analytics configuration and gameplay analytics identifiers are not uploaded with cloud saves. Cloud backup is independent of analytics controls. Offline or awaiting confirmation, the game continues with local progress and retries automatically; unsynced progress is not guaranteed to be recoverable. Uninstalling does not delete existing cloud saves. Contact the email above for deletion assistance. During development, compact v2 saves do not read old v1 cloud saves. Version 0.1.3 retains its backup switch; turning it off does not delete an existing cloud save.</p>
+
+
+      <h2>Gameplay analytics</h2>
+      <p>Current development and closed-test builds enable gameplay statistics by default, without a statistics switch in Settings. Development packages only log local diagnostic events and do not send them to Firebase. Configured Android release packages use Google Analytics for Firebase to understand where players get stuck and how they use the game. Custom events cover level starts and ends, results, time, mistakes, restarts, tool use, tutorial progress, daily streaks, result views and actions, daily challenge entry, and periodic or background play checkpoints; user properties include the highest level and difficulty setting. Firebase may also collect app version, device model, operating system version, language, sessions and engagement time, and infer an approximate region from the network address. Analytics uses a random app instance identifier assigned by Firebase and a random ID for each board run to connect resumed visits. These are not linked to the Google Play Games player ID.</p>
       <p>The game does not ask for your name, email address, contacts, photos or precise location. This version does not use the advertising ID, display ads or offer in-app purchases. If you email us, we receive the address and message you provide.</p>
 
-      <h2>Your choice</h2>
-      <p>Analytics is off by default. You may agree or decline at first launch and can play normally either way. You can change your choice in Settings at any time. Turning analytics off stops collection and asks Firebase to clear the local analytics identifier and cached data; it does not immediately erase data already sent to the server. Email us at the address above for a further deletion request.</p>
+
+      <h2>Sign-in, analytics controls and feedback</h2>
+      <p>Distributions requiring consent ask before collection; declining does not affect gameplay or cloud backup. Versions through 0.1.3 default analytics to off and retain the settings choice. Disabling it stops collection and asks Firebase to clear local analytics data, but does not immediately delete data already uploaded. For current closed-test builds, contact the email above with privacy or deletion requests. Feedback opens a draft that you choose to edit and send. The draft includes app version, system and current level; it does not automatically include account identifiers, saves or diagnostic logs.</p>
+
 
       <h2>Processor, retention and deletion</h2>
-      <p>After consent, analytics is sent over an encrypted connection to Google's Firebase/Google Analytics service, which processes it for the developer. Optional cloud saves are stored and processed by Google Play Games and Saved Games. We use aggregate reports to improve the game and do not sell gameplay analytics to advertisers.</p>
+      <p>When enabled under the applicable distribution configuration and consent state, analytics is sent over an encrypted connection to Google's Firebase/Google Analytics service, which processes it for the developer. Cloud backups after connection are stored and processed by Google Play Games and Saved Games. We use aggregate reports to improve the game and do not sell gameplay analytics to advertisers.</p>
       <p>For a standard Google Analytics property, user-level and event-level detailed data retention is set to either 2 or 14 months; Google periodically deletes data when that period expires, and new activity may reset the retention period for a user identifier. Before the first app release, we will verify the project's actual setting and state the specific period here. Different rules apply to aggregate reports and Google's service operation data. Local progress and settings remain until you clear app data or uninstall the game.</p>
       <p>Before a future version adds ads, purchases or new data uses, we will update this policy, the in-app explanation and the Google Play Data safety declaration, and ask for your choice again where required.</p>
     </section>
