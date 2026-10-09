@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 import { join, resolve } from 'node:path';
 
 const root = resolve('dist');
-const required = ['index.html', 'resume/index.html', 'projects/pandadoku/index.html', 'pandadoku/privacy/index.html', '404.html'];
+const required = ['index.html', 'resume/index.html', 'projects/pandadoku/index.html', 'pandadoku/privacy/index.html', '404.html', '.nojekyll'];
 const failures = [];
 for (const file of required) {
   try { await stat(join(root, file)); } catch { failures.push(`Missing route: ${file}`); }
@@ -46,5 +46,5 @@ if (failures.length) {
   console.error([...new Set(failures)].join('\n'));
   process.exitCode = 1;
 } else {
-  console.log(`Verified ${required.length} routes, all local links and anchors, preserved privacy checksum, and removal of legacy output.`);
+  console.log(`Verified ${required.length - 1} routes, the Pages .nojekyll marker, all local links and anchors, preserved privacy checksum, and removal of legacy output.`);
 }

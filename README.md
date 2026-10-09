@@ -50,4 +50,14 @@ The privacy document SHA-256 is pinned in `scripts/verify-build.mjs`. An intenti
 
 The previous generated Hexo blog is preserved intact in `legacy/`, outside the new build. The Git tag `legacy-blog-2026-10-09` also points to its original commit. No legacy dependencies or pages enter `dist/`.
 
-The repository contains source files and a lockfile. `.github/workflows/deploy.yml` verifies and builds the site on each push to `master`, then uploads only `dist/` and deploys it to GitHub Pages. The workflow can also be run manually from Actions. Repository Settings → Pages → Source must be set to **GitHub Actions**. The public site is https://yangjiantao.github.io/. Deployment permissions are limited to reading source and publishing Pages; archived files and source code are excluded from the published artifact.
+Source files, the lockfile and the archive are kept on `codex/personal-studio`. The `master` branch contains only the built static site and is the existing GitHub Pages publishing source (branch `master`, folder `/`). No Pages settings change is required. `.nojekyll` preserves the `_astro/` assets and skips Jekyll processing.
+
+After committing your source changes, publish with:
+
+```sh
+npm run deploy
+```
+
+This command verifies and builds the site, pushes the current source branch, and creates a normal commit on remote `master` containing only `dist/`. Its commit message records the source revision. It uses a separate temporary Git index, keeps the source checkout intact, preserves the existing `master` history, and never force-pushes. A concurrent remote update causes the push to fail safely; rerun after reviewing that update.
+
+GitHub then deploys `master` automatically to https://yangjiantao.github.io/. Watch the **pages build and deployment** run in [Actions](https://github.com/yangjiantao/yangjiantao.github.io/actions) to confirm publication. `.github/workflows/check.yml` also checks source pushes and pull requests; pushing source alone does not publish it.
