@@ -1,0 +1,20 @@
+---
+import Icon from './Icon.astro';
+import { profile } from '../data/profile';
+---
+<footer id="contact" class="contact-section">
+  <div class="contact-top"><span class="eyebrow">04 / GET IN TOUCH</span><span class="contact-caption">好的产品，往往始于一次对话。</span></div>
+  <a class="contact-title" href={`mailto:${profile.email}`}><span>让想法<span class="contact-title-bottom">发生<span class="contact-orbit" aria-hidden="true"><Icon size={60} /></span></span></span></a>
+  <div class="contact-links">
+    <a href={`mailto:${profile.email}`} class="email-link">{profile.email}<Icon size={20} /></a>
+    <button class="copy-email" type="button" hidden data-email={profile.email} aria-label="复制联系邮箱">复制邮箱</button>
+    <a href={profile.github} target="_blank" rel="noopener noreferrer" class="github-link"><Icon name="github" size={18} /> GitHub</a>
+  </div>
+  <span class="copy-status" aria-live="polite"></span>
+  <div class="footer-bottom">
+    <span>© {new Date().getFullYear()} JIANTAO YANG</span>
+    <a href="/pandadoku/privacy/">熊猫数独隐私政策</a>
+    <button class="motion-toggle" type="button" aria-pressed="false" hidden><Icon name="motion" size={14} /><span>动效</span><span class="motion-label">开</span></button>
+    <a href="#top" class="back-to-top">回到顶部 ↑</a>
+  </div>
+</footer>

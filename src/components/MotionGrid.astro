@@ -1,0 +1,17 @@
+---
+const tiles = [
+  { value: '01', kind: 'number' }, { value: '', kind: 'rings' }, { value: '+', kind: 'plus' },
+  { value: '', kind: 'cross' }, { value: 'J', kind: 'letter' }, { value: '02', kind: 'number' },
+  { value: '↗', kind: 'arrow' }, { value: '03', kind: 'number' }, { value: '', kind: 'dots' },
+];
+---
+<div class="grid-composition" data-grid-scene>
+  <div class="grid-caption"><span class="eyebrow">A LITTLE ORDER. A LITTLE PLAY.</span><span class="grid-coordinate">[ 03 × 03 ]</span></div>
+  <div class="motion-grid" aria-hidden="true">
+    {tiles.map((tile, i) => <div class={`grid-tile kind-${tile.kind} tile-${i}`} data-tile data-index={i}>
+      {tile.kind === 'rings' ? <div class="tile-rings"><i /><i /><i /></div> : tile.kind === 'cross' ? <div class="tile-cross"><i /><i /></div> : tile.kind === 'dots' ? <div class="tile-dots">{Array.from({ length: 9 }, () => <i />)}</div> : <span>{tile.value}</span>}
+      <small>{String(i + 1).padStart(2, '0')} / 09</small>
+    </div>)}
+  </div>
+  <div class="grid-bottom"><span class="grid-hint"><span class="desktop-hint">移动光标，看看秩序的另一面。</span><span class="mobile-hint">点一下，让网格换个排列。</span></span><button type="button" class="grid-shuffle" hidden aria-label="重新排列装饰网格">换个排列 <span aria-hidden="true">↻</span></button></div>
+</div>

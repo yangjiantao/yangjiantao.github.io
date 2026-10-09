@@ -1,0 +1,18 @@
+---
+import Icon from './Icon.astro';
+const path = Astro.url.pathname;
+---
+<header class="site-header">
+  <a class="wordmark" href="/" aria-label="Jiantao 首页">
+    <span class="brand-grid" aria-hidden="true">{Array.from({ length: 9 }, (_, i) => <i class:list={{ accent: i === 4 || i === 8 }} />)}</span>
+    <span>jiantao<span class="brand-period">.</span></span>
+  </a>
+  <button class="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false"><span>菜单</span><span class="menu-lines" aria-hidden="true"></span></button>
+  <nav id="site-nav" class="site-nav" aria-label="主导航">
+    <a href="/#work" data-nav="work">作品 <span class="nav-number">01</span></a>
+    <a href="/#about" data-nav="about">关于 <span class="nav-number">02</span></a>
+    <a href="/resume/" aria-current={path === '/resume/' ? 'page' : undefined}>简历 <span class="nav-number">03</span></a>
+    <a class="nav-contact" href="/#contact">聊一聊 <Icon size={15} /></a>
+  </nav>
+</header>
+<div class="reading-progress" aria-hidden="true"></div>
