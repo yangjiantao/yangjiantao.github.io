@@ -1,4 +1,4 @@
-// Resume content approved by the user in October 2026, based on the supplied resume and career updates.
+// Resume content approved by the user in October 2026, including the final PDF and career interview updates.
 
 export const profile = {
   "name": "杨剑涛",
@@ -12,12 +12,12 @@ export const profile = {
 
 export const resume = {
   "headline": "软件工程师｜移动 App · 客户端平台 · SDK 与研发工具",
-  "description": "杨剑涛的个人简历：10 年以上移动 App 研发经验，游戏客户端平台通用能力、AI 工作流、性能与稳定性，以及架构和 SDK 建设。",
+  "description": "杨剑涛的个人简历：10 年以上移动客户端研发经验，Unity、Android、iOS 平台基础框架、HybridCLR 热更新、AI 自动化问题处理、性能与稳定性，以及架构和 SDK 建设。",
   "summary": [
     "具备 10 年以上移动 App 研发经验，近三年专注于游戏客户端平台通用能力与基础工具研发。曾参与海外浏览器、电商、即时通信和医疗等业务，拥有大型应用架构演进、SDK 从零到一建设、性能优化及研发提效经验。",
-    "关注代码质量、产品体验与工程效率，善于将业务需求转化为可维护、可扩展的技术方案。目前在 tap4fun 从事客户端平台能力建设、AI 项目实战与工作流提效，以及性能监控和稳定性优化。持续学习游戏设计、基础框架、平台能力，将移动应用研发积累拓展到游戏相关的基础技术与工具建设。"
+    "关注代码质量、产品体验与工程效率，善于将业务需求转化为可维护、可扩展的技术方案。目前在 tap4fun 负责 Unity、Android、iOS 客户端基础框架建设与维护，参与 HybridCLR 热更新框架设计，主导业务与网络监控、稳定性问题排查，并落地 AI 分析、建单与代码修复工作流。具有开发组长经历，能够承担技术方案设计、跨团队协作与项目交付。"
   ],
-  "technology": "Java、Kotlin、Android、Jetpack、Gradle、ASM / APT；熟悉 Compose，具备 Flutter、iOS 原生及 Android NDK 开发经验。重视数据结构与算法、多线程、设计模式、代码重构和单元测试等基础能力。",
+  "technology": "Unity / C#、HybridCLR、Android / Java / Kotlin、Jetpack、Gradle、ASM / APT；熟悉 Compose，具备 iOS / Objective-C、Flutter 及 Android NDK 开发经验。具备 Firebase、业务埋点与告警、HTTP 监控及 AI 定时任务与自定义 Skill 工作流建设经验。重视数据结构与算法、多线程、设计模式、代码重构和单元测试等基础能力。",
   "education": {
     "school": "电子科技大学成都学院",
     "degree": "电子信息工程 · 本科",
@@ -37,7 +37,7 @@ export const strengths = [
   },
   {
     "title": "工具与研发效率",
-    "body": "具备工程模板、Gradle 插件、构建流程及性能监控工具开发经验，并通过 AI 项目实战探索工作流优化。"
+    "body": "具备工程模板、Gradle 插件、构建流程及性能监控工具开发经验，已落地基于 AI 的问题分析、Jira 建单、代码修复与 MR 审核工作流。"
   },
   {
     "title": "团队协作与交付",
@@ -48,21 +48,37 @@ export const strengths = [
 export const experience = [
   {
     "company": "tap4fun",
-    "role": "游戏平台基础工具研发",
+    "role": "平台客户端研发",
     "period": "2023.10 — 至今",
-    "context": "",
+    "context": "负责公司项目客户端基础功能框架搭建与维护、业务监控和性能优化。",
     "details": [
       {
-        "label": "游戏客户端平台通用能力",
-        "text": "参与通用能力的设计与搭建，沉淀可复用的基础模块，支持游戏业务研发与功能迭代。"
+        "label": "基础框架",
+        "text": "基于 Unity、Android、iOS 建设和维护游戏登录、支付、聊天、邮箱、翻译、推送等基础能力。"
       },
       {
-        "label": "AI 项目实战与工作流提效",
-        "text": "开展 AI 项目实践，结合实际研发场景探索 AI 能力的应用，优化工作流程，提高日常研发效率。"
+        "label": "登录架构重构",
+        "text": "主导登录模块重构，优化代码结构；将大部分登录代码从原生 Java / Objective-C 层迁移至 Unity C#，支持随客户端代码动态热更新，提升代码可读性与可维护性。"
       },
       {
-        "label": "性能监控与稳定性优化",
-        "text": "参与性能监控能力建设与稳定性优化，结合监控数据定位性能瓶颈和异常问题，持续改善客户端运行表现。"
+        "label": "HybridCLR 热更新",
+        "text": "参与 Unity C# 程序集热更新框架设计与搭建；负责平台客户端代码的程序集拆分，明确可热更新与不可热更新模块边界，并配合项目组完成联调验证。"
+      },
+      {
+        "label": "稳定性与 AI 分析",
+        "text": "主导客户端稳定性监控与问题自动化排查。基于 Firebase 闪退及 ANR 数据，通过 AI 定时任务、自定义工作流 Skill 与 Service Account 授权，每日抓取和分析问题，识别新增问题及历史问题恶化趋势，分析解决方案并生成日报。"
+      },
+      {
+        "label": "自动化问题处理",
+        "text": "落地 AI 分析、创建 Jira 问题单、修改代码及 MR 审核流程。大部分问题仅需人工审核最终 MR 代码，部分案例需人工介入核实。"
+      },
+      {
+        "label": "业务与网络监控",
+        "text": "主导启动初始化、登录认证、支付等核心链路的埋点统计与及时预警；HTTP 监控覆盖客户端全部请求，支持接口耗时统计与问题告警，通过指标曲线识别地区性网络异常。"
+      },
+      {
+        "label": "启动与登录优化",
+        "text": "基于某项目埋点数据定位启动阶段耗时与登录流程失败问题，完成针对性优化、上线及验收，启动和登录成功率提升约 1.5 个百分点。"
       }
     ]
   },
