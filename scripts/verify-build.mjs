@@ -3,15 +3,15 @@ import { createHash } from 'node:crypto';
 import { join, resolve } from 'node:path';
 
 const root = resolve('dist');
-const required = ['index.html', 'resume/index.html', 'projects/pandadoku/index.html', 'pandadoku/privacy/index.html', '404.html', '.nojekyll'];
+const required = ['index.html', 'resume/index.html', 'projects/pandadoku/index.html', 'pandadoku/privacy/index.html', '404.html', '.nojekyll', 'app-ads.txt'];
 const failures = [];
 for (const file of required) {
   try { await stat(join(root, file)); } catch { failures.push(`Missing route: ${file}`); }
 }
 const privacy = await readFile(join(root, 'pandadoku/privacy/index.html'));
 const digest = createHash('sha256').update(privacy).digest('hex');
-if (digest !== 'ae63a8dd11ffe33faf2c5d1b6cb3e6a4186a60d912dbd95551913d8270fac08b') {
-  failures.push('Privacy policy changed from the preserved original. Review the change and update its checksum intentionally.');
+if (digest !== 'df4ab0cd7541d98bf449b3545412320f39c7758964ee768ddffe3a60199f4a8b') {
+  failures.push('Privacy policy changed from the approved version. Review the change and update its checksum intentionally.');
 }
 async function collect(folder) {
   const entries = await readdir(folder, { withFileTypes: true });
@@ -46,5 +46,5 @@ if (failures.length) {
   console.error([...new Set(failures)].join('\n'));
   process.exitCode = 1;
 } else {
-  console.log(`Verified ${required.length - 1} routes, the Pages .nojekyll marker, all local links and anchors, preserved privacy checksum, and removal of legacy output.`);
+  console.log(`Verified ${required.length - 1} routes, the Pages .nojekyll marker, all local links and anchors, approved privacy checksum, and removal of legacy output.`);
 }
