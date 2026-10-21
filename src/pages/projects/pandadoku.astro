@@ -2,12 +2,16 @@
 import Base from '../../layouts/Base.astro';
 import Icon from '../../components/Icon.astro';
 ---
-<Base title="熊猫数独 · Pandadoku / Jiantao Yang" description="熊猫数独：用颜色区域、行列与相邻约束组成的逻辑解谜游戏。看看实际游戏画面，以及让规则清晰、让交互有回应的开发思考。">
+<Base title="pandadoku（熊猫数独）· Android 逻辑解谜游戏" description="pandadoku（熊猫数独）是一款 Android 颜色分区逻辑解谜游戏：每行、每列、每个颜色区域各放一只熊猫，且熊猫之间不能相邻。查看玩法、游戏画面与隐私政策。">
   <section class="page-intro section-shell">
     <div class="breadcrumb"><a href="/">首页</a><span>/</span><a href="/#work">作品</a><span>/</span><span>熊猫数独</span></div>
-    <span class="eyebrow">PROJECT 001 / AN EXERCISE IN PLAY</span>
-    <div class="project-intro-heading"><img class="project-icon" src="/images/pandadoku-icon.png" width="512" height="512" alt="熊猫数独应用图标" /><h1>熊猫数独<span class="accent-text">。</span></h1></div>
-    <p class="page-subtitle">一只熊猫，一个格子，一点恰到好处的挑战。<br />把抽象的逻辑规则，变成直观、轻松的解谜体验。</p>
+    <span class="eyebrow">PANDADOKU / ANDROID LOGIC PUZZLE</span>
+    <div class="project-intro-heading"><img class="project-icon" src="/images/pandadoku-icon.png" width="512" height="512" alt="pandadoku（熊猫数独）应用图标" /><h1>pandadoku<span class="project-localized-name">熊猫数独</span></h1></div>
+    <p class="page-subtitle">pandadoku（中文名：熊猫数独）是一款 Android 颜色分区逻辑解谜游戏。每行、每列、每个颜色区域各放一只熊猫，并且熊猫之间不能相邻。主线关卡与每日挑战带来不同的推理体验。</p>
+    <p class="page-subtitle" lang="en">pandadoku is an Android logic-puzzle game. Place one panda in each row, column and colored region, without letting pandas touch. Explore the gameplay and screenshots below.</p>
+    <p class="page-subtitle">Google Play Games 登录用于识别玩家身份；Google Saved Games 云存档用于保存和恢复游戏进度。云端备份需要连接相应的 Google 服务，本页的应用介绍与隐私政策无需登录即可阅读。</p>
+    <p class="page-subtitle" lang="en">Google Play Games sign-in identifies the player. Google Saved Games cloud backups save and restore game progress. Cloud backup requires a connection to the relevant Google services; this app information and the privacy policy are publicly readable without signing in.</p>
+    <p class="app-links"><a href="/pandadoku/privacy/" class="text-link">隐私政策 / Privacy Policy <Icon size={16} /></a></p>
     <dl class="project-meta"><div><dt>PLATFORM</dt><dd>Android</dd></div><div><dt>BUILT WITH</dt><dd>Godot · GDScript</dd></div><div><dt>CATEGORY</dt><dd>颜色分区 · 逻辑解谜</dd></div></dl>
   </section>
   <div class="section-shell">
@@ -18,3 +22,10 @@ import Icon from '../../components/Icon.astro';
     <div class="project-outro"><a href="/#work" class="text-link">返回全部作品 <Icon size={16} /></a><a href="/pandadoku/privacy/" class="text-link">查看熊猫数独隐私政策 <Icon size={16} /></a></div>
   </div>
 </Base>
+
+<style>
+  .project-intro-heading h1 { min-width: 0; overflow-wrap: anywhere; }
+  .project-localized-name { display: block; font-size: .5em; line-height: 1.6; letter-spacing: -.03em; }
+  .app-links { margin-top: 20px; }
+  .app-links .text-link { font-size: 13px; }
+</style>
