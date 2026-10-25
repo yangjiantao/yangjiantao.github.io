@@ -5,7 +5,7 @@ export const profile = {
   "englishName": "Jiantao Yang",
   "email": "jiantaoyoung@gmail.com",
   "github": "https://github.com/yangjiantao",
-  "website": "https://yangjiantao.github.io/",
+  "website": "https://shanmeii.cn/",
   "role": "软件工程师 · 平台工具研发",
   "description": "从移动 App 到游戏平台与独立游戏，关注清晰的逻辑、细腻的交互，以及值得反复使用的产品。"
 };

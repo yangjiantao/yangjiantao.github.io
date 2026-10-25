@@ -12,7 +12,7 @@ import { profile, resume, experience, strengths } from '../data/profile';
       <div class="resume-contact">
         <a href={`mailto:${profile.email}`}>{profile.email}</a>
         <a href={profile.github} target="_blank" rel="noopener noreferrer">GitHub / yangjiantao</a>
-        <a href="/">yangjiantao.github.io</a>
+        <a href={profile.website}>{new URL(profile.website).hostname}</a>
       </div>
       <button class="print-resume" type="button" data-print hidden>打印 / 保存为 PDF</button>
     </div>

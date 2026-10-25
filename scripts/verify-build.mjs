@@ -1,9 +1,13 @@
 import { readFile, readdir, stat } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { join, resolve } from 'node:path';
+import config from '../astro.config.mjs';
 
 const root = resolve('dist');
-const required = ['index.html', 'resume/index.html', 'projects/pandadoku/index.html', 'pandadoku/privacy/index.html', '404.html', '.nojekyll', 'app-ads.txt', 'google079d94aae576d184.html'];
+const site = new URL(config.site);
+const cname = (await readFile(join(root, 'CNAME'), 'utf8')).trim();
+if (cname !== site.hostname) throw new Error('Built CNAME must match the configured site hostname.');
+const required = ['index.html', 'resume/index.html', 'projects/pandadoku/index.html', 'pandadoku/privacy/index.html', '404.html', '.nojekyll', 'app-ads.txt', 'google079d94aae576d184.html', 'CNAME'];
 const failures = [];
 for (const file of required) {
   try { await stat(join(root, file)); } catch { failures.push(`Missing route: ${file}`); }
@@ -42,10 +46,14 @@ async function collect(folder) {
 const files = await collect(root);
 for (const file of files.filter(file => file.endsWith('.html'))) {
   const html = await readFile(file, 'utf8');
+  const canonical = html.match(/<link\b[^>]*rel="canonical"[^>]*href="([^"]+)"/);
+  if (canonical && new URL(canonical[1]).origin !== site.origin) {
+    failures.push(`Wrong canonical origin in ${file.slice(root.length + 1)}`);
+  }
   for (const match of html.matchAll(/(?:href|src)="([\/#][^"]*)"/g)) {
-    const current = new URL('/' + file.slice(root.length + 1), 'https://yangjiantao.github.io');
+    const current = new URL('/' + file.slice(root.length + 1), site.origin);
     const url = new URL(match[1].replaceAll('&amp;', '&'), current);
-    if (url.origin !== 'https://yangjiantao.github.io') continue;
+    if (url.origin !== site.origin) continue;
     const pathname = decodeURIComponent(url.pathname);
     let target = join(root, pathname);
     try {

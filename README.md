@@ -50,7 +50,7 @@ The privacy document SHA-256 is pinned in `scripts/verify-build.mjs`. An intenti
 
 The previous generated Hexo blog is preserved intact in `legacy/`, outside the new build. The Git tag `legacy-blog-2026-10-09` also points to its original commit. No legacy dependencies or pages enter `dist/`.
 
-Source files, the lockfile and the archive are kept on `codex/personal-studio`. The `master` branch contains only the built static site and is the existing GitHub Pages publishing source (branch `master`, folder `/`). No Pages settings change is required. `.nojekyll` preserves the `_astro/` assets and skips Jekyll processing.
+Source files, the lockfile and the archive are kept on `codex/personal-studio`. The `master` branch contains only the built static site and is the existing GitHub Pages publishing source (branch `master`, folder `/`). For the custom-domain cutover, follow [the domain setup checklist](docs/custom-domain.md). `.nojekyll` preserves the `_astro/` assets and skips Jekyll processing.
 
 After committing your source changes, publish with:
 
@@ -60,4 +60,8 @@ npm run deploy
 
 This command verifies and builds the site, pushes the current source branch, and creates a normal commit on remote `master` containing only `dist/`. Its commit message records the source revision. It uses a separate temporary Git index, keeps the source checkout intact, preserves the existing `master` history, and never force-pushes. A concurrent remote update causes the push to fail safely; rerun after reviewing that update.
 
-GitHub then deploys `master` automatically to https://yangjiantao.github.io/. Watch the **pages build and deployment** run in [Actions](https://github.com/yangjiantao/yangjiantao.github.io/actions) to confirm publication. `.github/workflows/check.yml` also checks source pushes and pull requests; pushing source alone does not publish it.
+GitHub then deploys `master` automatically; after the domain cutover the public URL is https://shanmeii.cn/. Watch the **pages build and deployment** run in [Actions](https://github.com/yangjiantao/yangjiantao.github.io/actions) to confirm publication. `.github/workflows/check.yml` also checks source pushes and pull requests; pushing source alone does not publish it.
+
+## Custom domain preparation
+
+The source is prepared for `shanmeii.cn`. `public/CNAME` is copied into every build so later deployments retain the Pages domain association. Astro canonical URLs and the public website link use the same domain. These local changes do not switch the live site until publication. Keep `public/CNAME` and the Astro `site` hostname aligned; verification checks the built CNAME and canonical origins. See [setup and acceptance](docs/custom-domain.md).

@@ -67,7 +67,7 @@ try {
     console.log(`Published commit: ${commit}`);
   }
   console.log('GitHub Pages will deploy the master branch automatically.');
-  console.log('Site: https://yangjiantao.github.io/');
+  console.log('Site: https://shanmeii.cn/');
   console.log('Deployment status: https://github.com/yangjiantao/yangjiantao.github.io/actions');
 } catch (error) {
   console.error(error.message);
