@@ -62,3 +62,12 @@
 - 根域名四条 A 记录和 www CNAME 实测正确，HTTP 首页成功并使用新 canonical，HTTP 隐私政策包含当前封测披露。
 - 原 github.io 隐私政策地址重定向到新域名并保留路径。
 - 截至此次检查，HTTPS 证书尚未匹配新域名；用户 Pages 截图仍为 DNS Check in Progress，Enforce HTTPS 不可选，待 GitHub DNS 检查及证书签发后再开启并验收。
+
+## HTTPS 最终验收（2026-10-25）
+
+- 用户截图确认 DNS check successful，Enforce HTTPS 已勾选。
+- 实测 `https://shanmeii.cn/`、隐私政策及 Google 验证文件返回 200，TLS 证书校验通过。
+- HTTP 根域名和 HTTPS www 均返回 301，目标为 `https://shanmeii.cn/`。
+- PandaDoku 产品页及 `/app-ads.txt` 返回 200；部分首次请求网络超时，重试后成功。
+- 原 github.io 隐私政策链接跟随跳转后为新域名相同路径，HTTPS 200。
+- 域名接入完成。Google Play、AdMob、Search Console 等外部平台地址尚未修改，需按后续授权处理。
