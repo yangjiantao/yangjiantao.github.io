@@ -25,7 +25,8 @@ npm run preview
 - `/`: introduction, selected work, personal approach and contact.
 - `/resume/`: approved current career history, core strengths and a print layout. The browser's Print / Save as PDF dialog exports the resume.
 - `/projects/pandadoku/`: actual product screenshots and development story.
-- `/pandadoku/privacy/`: the original bilingual privacy policy, copied without modification from `public/pandadoku/privacy/index.html`.
+- `/projects/pandadoku/privacy/`: the reviewed bilingual privacy policy, copied without modification from `public/projects/pandadoku/privacy/index.html`.
+- `/pandadoku/privacy/`: compatibility page redirecting visitors to the canonical policy URL.
 - `/404.html`: missing-page navigation.
 
 ## Update content
@@ -65,3 +66,7 @@ GitHub then deploys `master` automatically; after the domain cutover the public 
 ## Custom domain preparation
 
 The source is prepared for `shanmeii.cn`. `public/CNAME` is copied into every build so later deployments retain the Pages domain association. Astro canonical URLs and the public website link use the same domain. These local changes do not switch the live site until publication. Keep `public/CNAME` and the Astro `site` hostname aligned; verification checks the built CNAME and canonical origins. See [setup and acceptance](docs/custom-domain.md).
+
+## App URL convention
+
+All apps use `/projects/<app-id>/` for their homepage and `/projects/<app-id>/privacy/` for their privacy policy. Use these canonical HTTPS URLs in website links, OAuth branding, store listings and review correspondence. PandaDoku values and a review reply template are recorded in [app URLs](docs/app-urls.md).

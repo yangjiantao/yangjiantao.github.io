@@ -7,12 +7,12 @@ const root = resolve('dist');
 const site = new URL(config.site);
 const cname = (await readFile(join(root, 'CNAME'), 'utf8')).trim();
 if (cname !== site.hostname) throw new Error('Built CNAME must match the configured site hostname.');
-const required = ['index.html', 'resume/index.html', 'projects/pandadoku/index.html', 'pandadoku/privacy/index.html', '404.html', '.nojekyll', 'app-ads.txt', 'google079d94aae576d184.html', 'CNAME'];
+const required = ['index.html', 'resume/index.html', 'projects/pandadoku/index.html', 'projects/pandadoku/privacy/index.html', 'pandadoku/privacy/index.html', '404.html', '.nojekyll', 'app-ads.txt', 'google079d94aae576d184.html', 'CNAME'];
 const failures = [];
 for (const file of required) {
   try { await stat(join(root, file)); } catch { failures.push(`Missing route: ${file}`); }
 }
-const privacy = await readFile(join(root, 'pandadoku/privacy/index.html'));
+const privacy = await readFile(join(root, 'projects/pandadoku/privacy/index.html'));
 const digest = createHash('sha256').update(privacy).digest('hex');
 if (digest !== '3393d249ad983470ee035fc2a3550efcf52d847cfefb03bf1c9ed0df086d9ff9') {
   failures.push('Privacy policy changed from the reviewed version. Review the change and update its checksum intentionally.');
@@ -25,11 +25,22 @@ const appHome = await readFile(join(root, 'projects/pandadoku/index.html'), 'utf
 if (!/<h1\b[^>]*>pandadoku\b/.test(appHome) || !appHome.includes('熊猫数独')) {
   failures.push('App homepage must visibly identify pandadoku and its Chinese name.');
 }
-if (!appHome.includes('pandadoku is an Android logic-puzzle game.') || !/<a\b[^>]*href="\/pandadoku\/privacy\/"/.test(appHome)) {
+if (!appHome.includes('pandadoku is an Android logic-puzzle game.') || !/<a\b[^>]*href="\/projects\/pandadoku\/privacy\/"/.test(appHome)) {
   failures.push('App homepage must include a static app description and the configured privacy-policy link.');
 }
 if (!appHome.includes('Google Play Games sign-in identifies the player.') || !appHome.includes('Google Saved Games cloud backups save and restore game progress.')) {
   failures.push('App homepage must explain why Google player identity and cloud saves are used.');
+}
+const privacyUrl = new URL('/projects/pandadoku/privacy/', site).href;
+const legacyPrivacy = await readFile(join(root, 'pandadoku/privacy/index.html'), 'utf8');
+if (!legacyPrivacy.includes(`rel="canonical" href="${privacyUrl}"`) ||
+    !legacyPrivacy.includes(`http-equiv="refresh" content="0;url=${privacyUrl}"`) ||
+    !legacyPrivacy.includes(`href="${privacyUrl}"`)) {
+  failures.push('Legacy privacy route must redirect and link to the canonical policy URL.');
+}
+const homepage = await readFile(join(root, 'index.html'), 'utf8');
+if (!homepage.includes('href="/projects/pandadoku/privacy/"')) {
+  failures.push('Website homepage must link to the canonical app privacy route.');
 }
 const policyText = privacy.toString('utf8');
 for (const text of ['当前封测版本与适用范围', 'Current closed-test version and scope', 'Google AdMob rewarded ads in a test environment', 'data-retention rules configured for this project']) {
@@ -46,6 +57,9 @@ async function collect(folder) {
 const files = await collect(root);
 for (const file of files.filter(file => file.endsWith('.html'))) {
   const html = await readFile(file, 'utf8');
+  if (/href=["'](?:https?:\/\/(?:shanmeii\.cn|yangjiantao\.github\.io))?\/pandadoku\/privacy\/?["']/.test(html)) {
+    failures.push(`Obsolete privacy link in ${file.slice(root.length + 1)}`);
+  }
   const canonical = html.match(/<link\b[^>]*rel="canonical"[^>]*href="([^"]+)"/);
   if (canonical && new URL(canonical[1]).origin !== site.origin) {
     failures.push(`Wrong canonical origin in ${file.slice(root.length + 1)}`);
