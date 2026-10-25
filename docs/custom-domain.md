@@ -49,6 +49,16 @@
 - 基线提交：`d0ef3897c86ab35c88d812d02a35e6683ea6cb1e`。
 - 2026-10-25：`npm run verify` 通过；Astro 检查 12 个文件，0 错误、0 警告。
 - 静态构建及站内链接、锚点、隐私政策校验和检查通过；构建 CNAME 与站点域名一致。
-- 未提交、未推送、未发布；DNS、GitHub 域名验证及线上 HTTPS 待审核通过后执行。
+- 初次准备时未发布；后续发布结果见下方记录。
 
 - 后续接入：已同步远端基线 `21945fa110b639133f54b835fea128c8643d833f`，保留最新隐私政策、Google 验证文件和产品说明检查。
+
+## 发布与线上验收记录（2026-10-25）
+
+- 域名配置源码提交：`f13dd75`，已推送 `codex/personal-studio`。
+- 生成站点提交：`d625e46fb30b858c1bdef7b3b7a89787b82fe459`，已推送 `master`。
+- GitHub Pages 部署成功：https://github.com/yangjiantao/yangjiantao.github.io/actions/runs/40192564774 。
+- 本次部署前 `npm run verify` 通过，包含上游最新隐私政策和产品说明检查。
+- 根域名四条 A 记录和 www CNAME 实测正确，HTTP 首页成功并使用新 canonical，HTTP 隐私政策包含当前封测披露。
+- 原 github.io 隐私政策地址重定向到新域名并保留路径。
+- 截至此次检查，HTTPS 证书尚未匹配新域名；用户 Pages 截图仍为 DNS Check in Progress，Enforce HTTPS 不可选，待 GitHub DNS 检查及证书签发后再开启并验收。
