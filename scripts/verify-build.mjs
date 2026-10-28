@@ -14,7 +14,7 @@ for (const file of required) {
 }
 const privacy = await readFile(join(root, 'projects/pandadoku/privacy/index.html'));
 const digest = createHash('sha256').update(privacy).digest('hex');
-if (digest !== '3393d249ad983470ee035fc2a3550efcf52d847cfefb03bf1c9ed0df086d9ff9') {
+if (digest !== '0ad3b35370f0a1f7b388173c0514a686568b1be976135f9800ae6608160a9e11') {
   failures.push('Privacy policy changed from the reviewed version. Review the change and update its checksum intentionally.');
 }
 const verification = await readFile(join(root, 'google079d94aae576d184.html'), 'utf8').catch(() => null);
@@ -43,8 +43,8 @@ if (!homepage.includes('href="/projects/pandadoku/privacy/"')) {
   failures.push('Website homepage must link to the canonical app privacy route.');
 }
 const policyText = privacy.toString('utf8');
-for (const text of ['当前封测版本与适用范围', 'Current closed-test version and scope', 'Google AdMob rewarded ads in a test environment', 'data-retention rules configured for this project']) {
-  if (!policyText.includes(text)) failures.push(`Privacy policy is missing the current closed-test disclosure: ${text}`);
+for (const text of ['版本与适用范围', 'Versions and scope', '已分发的 0.1.11 封测版本', 'distributed 0.1.11 closed-test build', '首页 → 设置 → 游戏统计', 'Home → Settings → Gameplay statistics', '事件级数据保留 2 个月', '用户级数据保留 14 个月', 'event-level data for 2 months', 'user-level data for 14 months', '不会因此自动从服务端删除', 'does not automatically delete data already sent', '不承诺所有服务端数据会在 90 天内删除', 'does not promise that all server-side data is deleted within 90 days']) {
+  if (!policyText.includes(text)) failures.push(`Privacy policy is missing a reviewed data-practice disclosure: ${text}`);
 }
 if (/首版上线前|Before the first app release|0\.1\.3|2 个月或 14 个月|either 2 or 14 months/.test(policyText)) {
   failures.push('Privacy policy contains obsolete version or unfinished retention wording.');
