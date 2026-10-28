@@ -9,4 +9,9 @@
 - npm run verify 通过：Astro 类型检查、静态构建、路由/站内链接/锚点、政策校验和、原 Google 验证文件及域名一致性。浏览器桌面预览检查中文和英文日期、保留段落可读。
 - 对比 origin/master 与 dist 的全部文件：仅 projects/pandadoku/privacy/index.html 内容变化。同步更新了现有构建校验中的政策校验和与必要披露检查。
 - 政策 SHA-256：0ad3b35370f0a1f7b388173c0514a686568b1be976135f9800ae6608160a9e11。
-- 本记录为本地准备验收；远端发布及线上回读结果需另行确认。
+- 用户明确授权“完成部署，发布上线”后，通过 npm run deploy 发布。
+- 发布源码提交：d208af0c9db484b8ad0133caacc06e8e1c36e3c1（codex/personal-studio）；生成站点提交：dafde707b6e391bd71fd3f3f9360b5fdc3ac8964（master）。
+- GitHub Pages 部署 completed / success：https://github.com/yangjiantao/yangjiantao.github.io/actions/runs/40621305357 。
+- 对原始无查询参数的 https://shanmeii.cn/projects/pandadoku/privacy/ 执行 HTTPS 回读，HTTP 200，完整文件哈希与已审阅的源码一致；中文及英文日期均为 2026-10-28，统计开关和保留设置说明已生效。
+- 本次只发布开发者网站隐私政策；未修改游戏仓库远端、Play 后台、PGS 配置，也未构建或发布游戏 AAB。
+- 本次追加的部署结果记录仅本地提交，不额外推送网站源码分支；不影响已完成的页面发布。
