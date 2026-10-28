@@ -1,14 +1,22 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Icon from '../../components/Icon.astro';
+import GooglePlayDownload from '../../components/GooglePlayDownload.astro';
+import { pandadoku } from '../../data/pandadoku';
 ---
-<Base title="pandadoku（熊猫数独）· Android 逻辑解谜游戏" description="pandadoku（熊猫数独）是一款 Android 颜色分区逻辑解谜游戏：每行、每列、每个颜色区域各放一只熊猫，且熊猫之间不能相邻。查看玩法、游戏画面与隐私政策。">
+<Base title="PandaDoku 熊猫数独 · Google Play 下载与玩法" description="PandaDoku: Cozy Logic Puzzles，熊猫数独安卓逻辑解谜游戏。每行、每列、每个色区各放一只熊猫，彼此不能相邻。查看真实游戏画面，通过官方 Google Play 链接下载。">
   <section class="page-intro section-shell">
     <div class="breadcrumb"><a href="/">首页</a><span>/</span><a href="/#work">作品</a><span>/</span><span>熊猫数独</span></div>
     <span class="eyebrow">PANDADOKU / ANDROID LOGIC PUZZLE</span>
-    <div class="project-intro-heading"><img class="project-icon" src="/images/pandadoku-icon.png" width="512" height="512" alt="pandadoku（熊猫数独）应用图标" /><h1>pandadoku<span class="project-localized-name">熊猫数独</span></h1></div>
-    <p class="page-subtitle">pandadoku（中文名：熊猫数独）是一款 Android 颜色分区逻辑解谜游戏。每行、每列、每个颜色区域各放一只熊猫，并且熊猫之间不能相邻。主线关卡与每日挑战带来不同的推理体验。</p>
-    <p class="page-subtitle" lang="en">pandadoku is an Android logic-puzzle game. Place one panda in each row, column and colored region, without letting pandas touch. Explore the gameplay and screenshots below.</p>
+    <div class="project-intro-heading"><img class="project-icon" src="/images/pandadoku-icon.png" width="512" height="512" alt="PandaDoku（熊猫数独）应用图标" /><h1>PandaDoku<span class="project-localized-name">熊猫数独</span></h1></div>
+    <div class="download-intro">
+      <p class="store-identity" lang="en">{pandadoku.storeTitle} <span>· {pandadoku.developer}</span></p>
+      <p class="download-pitch">彩色棋盘，轻松推理。支持离线游玩，无需注册账号。<span lang="en">Colorful logic puzzles. Play offline, no account required.</span></p>
+      <GooglePlayDownload />
+      <p class="availability">已在 Google Play 正式上线，支持多个国家和地区下载。具体可用性以 Google Play 页面显示为准。<span lang="en">Now on Google Play in multiple countries and regions. Check Google Play for availability in your region.</span></p>
+    </div>
+    <p class="page-subtitle">PandaDoku（中文名：熊猫数独）是一款 Android 颜色分区逻辑解谜游戏。每行、每列、每个颜色区域各放一只熊猫，并且熊猫之间不能相邻。主线关卡与每日挑战带来不同的推理体验。</p>
+    <p class="page-subtitle" lang="en">PandaDoku is an Android logic-puzzle game. Place one panda in each row, column and colored region, without letting pandas touch. Explore the gameplay and screenshots below.</p>
     <p class="page-subtitle">Google Play Games 登录用于识别玩家身份；Google Saved Games 云存档用于保存和恢复游戏进度。云端备份需要连接相应的 Google 服务，本页的应用介绍与隐私政策无需登录即可阅读。</p>
     <p class="page-subtitle" lang="en">Google Play Games sign-in identifies the player. Google Saved Games cloud backups save and restore game progress. Cloud backup requires a connection to the relevant Google services; this app information and the privacy policy are publicly readable without signing in.</p>
     <p class="app-links"><a href="/projects/pandadoku/privacy/" class="text-link">隐私政策 / Privacy Policy <Icon size={16} /></a></p>
@@ -19,13 +27,21 @@ import Icon from '../../components/Icon.astro';
     <section class="project-story" aria-labelledby="idea-title"><h2 id="idea-title"><span>01 / THE IDEA</span>简单规则，<br />丰富的发现。</h2><div class="story-copy" data-reveal><p>熊猫数独是一款颜色分区逻辑谜题。每行、每列、每个颜色区域各放一只熊猫，并且熊猫之间不能相邻。随着棋盘变化，相同的规则会带来不同的推理路径。</p><p>产品的核心是让玩家专注于解谜：颜色表达区域，熊猫表达选择，清晰的反馈帮助理解每一次操作。游戏画面来自实际开发版本。</p></div></section>
     <section class="project-story" aria-labelledby="experience-title"><h2 id="experience-title"><span>02 / THE EXPERIENCE</span>严谨的逻辑，<br />柔和的回应。</h2><div class="story-copy" data-reveal><h3>把规则教得自然</h3><p>新手引导把约束拆成可以逐步理解的小动作。每次放置、标记与撤销，都有明确的交互反馈。</p><h3>让一局游戏完整地结束</h3><p>主线关卡与每日挑战提供不同的游玩节奏；完成后的角色反馈和连续通关记录，让每一次小小的进步有被看见的感觉。</p><h3>照顾不同的使用方式</h3><p>游戏提供中英文界面与图案辅助模式，声音、震动和视觉反馈共同构成体验。</p></div></section>
     <section class="project-story" aria-labelledby="engineering-title"><h2 id="engineering-title"><span>03 / UNDER THE SURFACE</span>把可靠性，<br />放在体验背后。</h2><div class="story-copy" data-reveal><p>好玩的体验需要稳定的基础。开发中关注关卡的唯一解校验、循序渐进的难度、可继续的游戏进度，以及设备上的实际表现。</p><ul><li>关卡生成与精确求解校验，保证谜题逻辑成立。</li><li>本地进度保存，让中断之后可以继续游玩。</li><li>在 Android 设备上验证操作、存档与性能。</li></ul><p>关于云存档、统计与数据处理，请以独立的隐私政策页面为准。</p></div></section>
-    <div class="project-outro"><a href="/#work" class="text-link">返回全部作品 <Icon size={16} /></a><a href="/projects/pandadoku/privacy/" class="text-link">查看熊猫数独隐私政策 <Icon size={16} /></a></div>
+    <div class="project-outro"><GooglePlayDownload compact /><a href="/#work" class="text-link">返回全部作品 <Icon size={16} /></a><a href="/projects/pandadoku/privacy/" class="text-link">查看熊猫数独隐私政策 <Icon size={16} /></a></div>
   </div>
 </Base>
 
 <style>
   .project-intro-heading h1 { min-width: 0; overflow-wrap: anywhere; }
   .project-localized-name { display: block; font-size: .5em; line-height: 1.6; letter-spacing: -.03em; }
+  .download-intro { margin-top: 22px; max-width: 760px; }
+  .store-identity { font-size: 14px; font-weight: 600; line-height: 1.8; }
+  .store-identity span { color: #60665b; font-weight: 400; }
+  .download-pitch { margin: 12px 0 20px; font-size: 14px; line-height: 1.9; }
+  .download-pitch span, .availability span { display: block; }
+  .download-pitch span { color: #60665b; font-size: 13px; }
+  .availability { margin-top: 14px; font-size: 12px; line-height: 1.9; color: #60665b; }
+  .project-outro { align-items: center; }
   .app-links { margin-top: 20px; }
   .app-links .text-link { font-size: 13px; }
 </style>

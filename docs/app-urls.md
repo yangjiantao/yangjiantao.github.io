@@ -7,7 +7,11 @@
 
 ## PandaDoku
 
-- 应用名称：pandadoku（熊猫数独）
+- 应用名称：PandaDoku（熊猫数独）
+- Google Play 名称：PandaDoku: Cozy Logic Puzzles；公开开发者：shanmei。
+- 唯一直接下载链接：https://play.google.com/store/apps/details?id=com.shanmei.pandadoku
+- 宣传下载按钮、简介链接与二维码统一指向该商店详情链接，不使用搜索结果或封测报名入口。
+- 2026-10-28：按用户最新要求，以新增 US、CA、AU、NZ、CN 已审核通过为文案背景；对外写“已在 Google Play 正式上线，支持多个国家和地区下载”，实际可用性以商店显示为准。
 - 应用主页：https://shanmeii.cn/projects/pandadoku/
 - 隐私政策：https://shanmeii.cn/projects/pandadoku/privacy/
 - 网站首页、产品页、页脚和 404 页均链接到上述隐私政策。

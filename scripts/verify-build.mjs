@@ -22,10 +22,10 @@ if (verification !== 'google-site-verification: google079d94aae576d184.html') {
   failures.push('Google site verification file is missing or changed. Preserve the existing verification file exactly.');
 }
 const appHome = await readFile(join(root, 'projects/pandadoku/index.html'), 'utf8');
-if (!/<h1\b[^>]*>pandadoku\b/.test(appHome) || !appHome.includes('熊猫数独')) {
+if (!/<h1\b[^>]*>PandaDoku\b/.test(appHome) || !appHome.includes('熊猫数独')) {
   failures.push('App homepage must visibly identify pandadoku and its Chinese name.');
 }
-if (!appHome.includes('pandadoku is an Android logic-puzzle game.') || !/<a\b[^>]*href="\/projects\/pandadoku\/privacy\/"/.test(appHome)) {
+if (!appHome.includes('PandaDoku is an Android logic-puzzle game.') || !/<a\b[^>]*href="\/projects\/pandadoku\/privacy\/"/.test(appHome)) {
   failures.push('App homepage must include a static app description and the configured privacy-policy link.');
 }
 if (!appHome.includes('Google Play Games sign-in identifies the player.') || !appHome.includes('Google Saved Games cloud backups save and restore game progress.')) {
@@ -41,6 +41,13 @@ if (!legacyPrivacy.includes(`rel="canonical" href="${privacyUrl}"`) ||
 const homepage = await readFile(join(root, 'index.html'), 'utf8');
 if (!homepage.includes('href="/projects/pandadoku/privacy/"')) {
   failures.push('Website homepage must link to the canonical app privacy route.');
+}
+const storeUrl = 'https://play.google.com/store/apps/details?id=com.shanmei.pandadoku';
+for (const [name, html] of [['app homepage', appHome], ['website homepage', homepage]]) {
+  if (!html.includes(`href="${storeUrl}"`)) failures.push(`Missing direct PandaDoku Google Play download on ${name}.`);
+  for (const [, href] of html.matchAll(/href="(https:\/\/play\.google\.com[^" ]*)"/g)) {
+    if (href !== storeUrl) failures.push(`Unexpected Google Play destination on ${name}.`);
+  }
 }
 const policyText = privacy.toString('utf8');
 for (const text of ['版本与适用范围', 'Versions and scope', '已分发的 0.1.11 封测版本', 'distributed 0.1.11 closed-test build', '首页 → 设置 → 游戏统计', 'Home → Settings → Gameplay statistics', '事件级数据保留 2 个月', '用户级数据保留 14 个月', 'event-level data for 2 months', 'user-level data for 14 months', '不会因此自动从服务端删除', 'does not automatically delete data already sent', '不承诺所有服务端数据会在 90 天内删除', 'does not promise that all server-side data is deleted within 90 days']) {

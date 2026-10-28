@@ -1,0 +1,19 @@
+---
+import Icon from './Icon.astro';
+import { pandadoku } from '../data/pandadoku';
+interface Props { compact?: boolean; }
+const { compact = false } = Astro.props;
+---
+<a class:list={['play-download', { compact }]} href={pandadoku.googlePlayUrl} aria-label="在 Google Play 下载 PandaDoku / Get PandaDoku on Google Play">
+  <span><strong>Google Play 下载</strong><small lang="en">Get it on Google Play</small></span>
+  <Icon size={22} />
+</a>
+<style>
+  .play-download { display: inline-flex; align-items: center; justify-content: space-between; gap: 28px; min-height: 66px; padding: 13px 22px; border: 1px solid var(--ink); border-radius: 12px; background: var(--ink); color: var(--white); width: fit-content; max-width: 100%; transition: background .2s, border-color .2s; }
+  .play-download:hover { background: var(--blue); border-color: var(--blue); }
+  .play-download strong { display: block; font-size: 16px; font-weight: 600; line-height: 1.5; }
+  .play-download small { display: block; margin-top: 2px; font-size: 11px; line-height: 1.5; }
+  .play-download :global(svg) { flex-shrink: 0; }
+  .play-download.compact { min-height: 58px; padding: 10px 18px; gap: 22px; }
+  .play-download.compact strong { font-size: 14px; }
+</style>
